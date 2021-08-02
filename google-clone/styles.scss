@@ -1,0 +1,89 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	font-size: 1.3rem;
+	color: #000;
+	padding-top: 1.6rem;
+	max-height: 100vh;
+}
+
+a {
+	color: #000;
+	text-decoration: none;
+}
+
+.hidden-text {
+	display: none;
+}
+.google__top {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+
+	&-left,
+	&-right {
+		.google__list {
+			list-style: none;
+			display: flex;
+			flex-direction: row;
+			margin-top: 0.7rem;
+			margin-left: 1rem;
+
+			.google__link {
+				display: inline-block;
+				padding-left: 1.5rem;
+				text-decoration: none;
+				color: #000;
+				opacity: 0.75;
+			}
+		}
+	}
+
+	&-right {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		min-width: 220px;
+		padding: 0 30px;
+
+		.google__list {
+			margin: 0;
+			padding-right: 15px;
+
+			.google__link:not(:first-of-type) {
+				padding-left: 15px;
+			}
+		}
+
+		.google__buttons {
+			.google__service-button {
+				color: darkgray;
+			}
+			.google__signin-button {
+				display: inline-block;
+				color: white;
+				background: rgb(60, 122, 228);
+				background: linear-gradient(
+					180deg,
+					rgba(60, 122, 228, 1) 0%,
+					rgba(63, 118, 211, 1) 100%
+				);
+				padding: 0 1.2rem;
+				font-weight: 700;
+				line-height: 2.8rem;
+				border-radius: 2px;
+				border: 1px solid rgb(66, 133, 244);
+				margin-left: 15px;
+			}
+		}
+	}
+}
