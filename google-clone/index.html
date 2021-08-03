@@ -10,6 +10,10 @@
 			integrity="sha384-G/ZR3ntz68JZrH4pfPJyRbjW+c0+ojii5f+GYiYwldYU69A+Ejat6yIfLSxljXxD"
 			crossorigin="anonymous"
 		></script>
+		<link
+			href="https://fonts.googleapis.com/icon?family=Material+Icons"
+			rel="stylesheet"
+		/>
 		<link rel="stylesheet" href="styles.min.css" />
 
 		<title>Google - DJ clone</title>
@@ -36,36 +40,53 @@
 					</li>
 				</ul>
 				<div class="google__buttons">
-					<a href="#" class="google__service-button">
-						<i class="fas fa-th fa-lg"></i>
-						<em class="hidden-text">dots</em>
+					<a
+						href="#"
+						class="google__service-button"
+						role="button"
+						title="Google apps"
+					>
 					</a>
-					<a href="#" class="google__signin-button"> Sign In </a>
+					<a href="#" class="google__signin-button">Sign In</a>
 				</div>
 			</div>
 		</header>
 		<main class="google__main-container">
-			<img
-				src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
-				alt="Google logo"
-			/>
+			<div class="google__main-logo">
+				<img
+					src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"
+					alt="Google logo"
+				/>
+			</div>
+
 			<div class="google__form-container">
 				<div class="google__search-icon">
-					<i class="fas fa-search"></i>
+					<span class="material-icons md-24">search</span>
 				</div>
-				<input type="text" name="search-bar" id="search-bar" />
-				<label for="search-bar" style="display: none">Search:</label>
-				<a href="#" class="google_mic-icon">
-					<img
-						src="https://upload.wikimedia.org/wikipedia/commons/e/e8/Google_mic.svg"
-						alt="Microphone Icon"
-					/>
-					<em class="hidden-text">mic</em>
-				</a>
+				<input
+					type="text"
+					name="search-bar"
+					id="search-bar"
+					title="Search"
+					role="combobox"
+				/>
+				<div href="#" class="google__speach-area">
+					<span class="google__mic-icon"></span>
+				</div>
 			</div>
 			<div class="google__search-buttons">
-				<a href="#" class="google__search-button">Google Search</a>
-				<a href="#" class="google__search-button">I'm Feeling Lucky</a>
+				<input
+					type="submit"
+					class="google__search-button"
+					value="Google Search"
+					aria-label="Google Search"
+				/>
+				<input
+					type="submit"
+					class="google__search-button"
+					value="I'm Feeling Lucky"
+					aria-label="I'm Feeling Lucky"
+				/>
 			</div>
 		</main>
 		<footer class="google__footer">
@@ -84,14 +105,14 @@
 			</div>
 			<div class="google__footer-right">
 				<ul class="google__footer-list">
-					<li class="google_footer-item">
-						<a href="#" class="google__fotter-link">Privacy</a>
+					<li class="google__footer-item">
+						<a href="#" class="google__footer-link">Privacy</a>
 					</li>
-					<li class="google_footer-item">
-						<a href="#" class="google__fotter-link">Terms</a>
+					<li class="google__footer-item">
+						<a href="#" class="google__footer-link">Terms</a>
 					</li>
-					<li class="google_footer-item">
-						<a href="#" class="google__fotter-link">Settings</a>
+					<li class="google__footer-item">
+						<a href="#" class="google__footer-link">Settings</a>
 					</li>
 				</ul>
 			</div>
