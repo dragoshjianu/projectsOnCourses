@@ -14,6 +14,7 @@ body {
 	color: #000;
 	padding-top: 1.6rem;
 	max-height: 100vh;
+	position: relative;
 }
 
 a {
@@ -25,10 +26,154 @@ a {
 	display: none;
 }
 
+.hidden {
+	display: none;
+}
+
+.modal {
+	position: absolute;
+	width: 350px;
+	height: 460px;
+	overflow: hidden;
+	top: 0;
+	right: 0;
+	margin-top: 64px;
+	margin-right: 27px;
+	transition: height 2s ease-in-out;
+	max-height: calc(-70px + 100vh);
+	box-shadow: 0px 1px 2px 0px rgba(60, 64, 67, 0.3),
+		0px 2px 6px 2px rgba(60, 64, 67, 0.3);
+
+	border-radius: 8px;
+
+	&__container {
+		background: white;
+		border: 1px solid rgba(0, 0, 0, 0.2);
+		height: 100%;
+		position: relative;
+		width: 100%;
+		overflow: scroll;
+		padding: 10px 24px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	&__app-list {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		column-gap: 2.5rem;
+		row-gap: 2rem;
+		position: relative;
+		list-style: none;
+	}
+
+	&__app-item {
+		position: relative;
+		display: inline-block;
+		width: 80px;
+		height: 80px;
+		list-style-type: none;
+	}
+	&__app-link {
+		vertical-align: top;
+		padding: 8px;
+		margin: 5px 0;
+		text-align: center;
+		border-radius: 8px;
+		position: absolute;
+		text-align: center;
+
+		.modal__app-icon,
+		.modal__app-title {
+			display: inline-block;
+		}
+
+		.modal__app-icon {
+			width: 64px;
+			height: 64px;
+			background-image: url("./google-apps-icons.png");
+			background-size: 64px 3100px;
+
+			&.account {
+				background-position: 0 -2895px;
+			}
+			&.search {
+				background-position: 0 -1790px;
+			}
+			&.business {
+				background-image: url("./google-business.png");
+				background-size: contain;
+				background-position: 0 5px;
+			}
+			&.maps {
+				background-position: 0 2615px;
+			}
+			&.youtube {
+				background-position: 0 3575px;
+			}
+
+			&.youtube {
+				background-position: 0 3575px;
+			}
+			&.news {
+				background-position: 0px 4890px;
+			}
+			&.gmail {
+				background-position: 0px 1100px;
+			}
+			&.meet {
+				background-position: 0px 2410px;
+			}
+			&.chat {
+				background-position: 0px -1655px;
+			}
+			&.contacts {
+				background-position: 0 -2895px;
+			}
+			&.drive {
+				background-position: 0 -2965px;
+			}
+			&.calendar {
+				background-position: 0 -2550px;
+			}
+			&.translate {
+				background-position: 0 -1930px;
+			}
+			&.photos {
+				background-position: 0 -2830px;
+			}
+			&.duo {
+				background-position: 0 -2480px;
+			}
+		}
+
+		.modal__app-title {
+			font-size: 14px;
+			line-height: 18px;
+			color: #202124;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			width: 75px;
+		}
+
+		&:hover {
+			background-color: #e8f0fe;
+			z-index: 1;
+		}
+
+		&:hover .modal__app-title {
+			white-space: normal;
+		}
+	}
+}
+
 .google__top {
 	display: flex;
 	justify-content: space-between;
-	align-items: flex-start;
+	align-items: center;
 
 	&-left,
 	&-right {
@@ -67,10 +212,12 @@ a {
 
 		.google__buttons {
 			display: flex;
+			align-items: center;
+
 			.google__service-button {
 				display: inline-block;
-				background-image: url("./google-icons.png");
-				background-position: -132px -38px;
+				// background-image: url("./google-icons.png");
+				// background-position: -132px -38px;
 				width: 30px;
 				height: 30px;
 				color: #000;
@@ -88,6 +235,22 @@ a {
 				border-radius: 2px;
 				border: 1px solid rgb(66, 133, 244);
 				margin-left: 15px;
+			}
+
+			.google__profile {
+				display: inline-block;
+				position: relative;
+				width: 40px;
+				height: 40px;
+				margin-left: 15px;
+
+				&-icon {
+					display: inline-block;
+					background-image: url("./profile.png");
+					background-size: contain;
+					width: 100%;
+					height: 100%;
+				}
 			}
 		}
 	}
@@ -113,59 +276,6 @@ a {
 		}
 	}
 
-	.google__form-container {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		margin-top: 15px;
-		border: 1px solid #ccc;
-		border-radius: 50px;
-		padding: 10px 20px;
-		width: 582px;
-
-		&:hover {
-			cursor: pointer;
-			box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
-			border-color: rgba(223, 225, 229, 0);
-		}
-
-		.google__search-icon {
-			display: inline-block;
-			margin-right: 13px;
-			width: 20px;
-			height: 20px;
-			opacity: 0.5;
-		}
-
-		& input {
-			background: transparent;
-			border: none;
-			display: flex;
-			flex: 100%;
-			outline: none;
-			margin: 0;
-			padding: 0;
-			height: 30px;
-			line-height: 30px;
-			font-size: 16px;
-		}
-
-		.google__speach-area {
-			display: inline-block;
-			cursor: pointer;
-			margin: 0 8px;
-			width: 24px;
-			height: 24px;
-
-			.google__mic-icon {
-				background-image: url("https://www.gstatic.com/images/branding/googlemic/2x/googlemic_color_24dp.png");
-				background-size: 24px;
-				display: inline-block;
-				width: 100%;
-				height: 100%;
-			}
-		}
-	}
 	.google__search-buttons {
 		margin-top: 18px;
 
@@ -199,6 +309,60 @@ a {
 				color: #222;
 				border: 1px solid #c6c6c6;
 			}
+		}
+	}
+}
+
+.google__form-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-top: 15px;
+	border: 1px solid #ccc;
+	border-radius: 50px;
+	padding: 10px 20px;
+	width: 582px;
+
+	&:hover {
+		cursor: pointer;
+		box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+		border-color: rgba(223, 225, 229, 0);
+	}
+
+	.google__search-icon {
+		display: inline-block;
+		margin-right: 13px;
+		width: 20px;
+		height: 20px;
+		opacity: 0.5;
+	}
+
+	& input {
+		background: transparent;
+		border: none;
+		display: flex;
+		flex: 100%;
+		outline: none;
+		margin: 0;
+		padding: 0;
+		height: 30px;
+		line-height: 30px;
+		font-size: 16px;
+	}
+
+	.google__speach-area {
+		display: inline-block;
+		cursor: pointer;
+		margin: 0 8px;
+		width: 24px;
+		height: 24px;
+
+		.google__mic-icon {
+			background-image: url("https://www.gstatic.com/images/branding/googlemic/2x/googlemic_color_24dp.png");
+			background-size: 24px;
+			display: inline-block;
+			width: 100%;
+			height: 100%;
 		}
 	}
 }
