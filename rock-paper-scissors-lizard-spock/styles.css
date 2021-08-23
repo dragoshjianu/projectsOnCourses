@@ -26,6 +26,7 @@ body {
 	text-align: center;
 	padding: 3em 0;
 	font-size: 1.4rem;
+	position: relative;
 }
 
 main {
@@ -43,17 +44,43 @@ main {
 	color: #f7f7f7;
 }
 
+.gameboard {
+	width: 90%;
+	position: relative;
+}
+
 .options {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
 	min-width: 80%;
+	min-height: 200px;
 	margin-top: 4rem;
+}
+.option {
+	display: block;
+	/* position: relative; */
 }
 
 .option:hover svg path {
 	stroke: #f7f7f7;
 	stroke-width: 35;
+}
+.target {
+	position: absolute;
+	top: 0%;
+	width: 200px;
+	height: 200px;
+	background-color: red;
+}
+
+.transition {
+}
+
+.chosen-option {
+	background-color: salmon;
+	transform: translate(50px, 450px);
+	transition: all 3s;
 }
 
 .scores {
@@ -61,12 +88,15 @@ main {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
-	font-size: 3em;
+	font-size: 1.5em;
+	font-weight: bolder;
 	background-color: #f7f7f7;
 	color: #8c8c8c;
 	padding: 1.5em 3em;
 	border-radius: 1rem;
-	min-height: 250px;
+	min-height: 350px;
+}
+.chosen-option {
 }
 
 .player-score,
@@ -106,6 +136,13 @@ main {
 .btn:hover {
 	color: #8c8c8c;
 	background-color: #f7f7f7;
+}
+
+.rules {
+	position: absolute;
+	bottom: 3%;
+	right: 3%;
+	padding: 0.5em 1em;
 }
 
 .hidden {

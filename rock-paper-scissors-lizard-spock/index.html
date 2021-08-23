@@ -12,6 +12,13 @@
 			<header class="header">
 				<h1 class="heading">Rock - Paper - Scissors - Lizard - Spock Game</h1>
 				<h3 class="sub-heading">hail Sheldon Cooper</h3>
+				<button class="rules btn" type="button">
+					Rules
+					<audio
+						src="./audio/Rock-Paper-Scissors-Lizard-Spock.mp3"
+						id="rules-audio"
+					></audio>
+				</button>
 			</header>
 			<main class="main">
 				<h2 class="main-heading">Choose your weapon</h2>
@@ -33,6 +40,7 @@
 									stroke-linejoin="round"
 								/>
 							</svg>
+							<div class="transition target"></div>
 						</div>
 						<div class="paper option" data-option="paper">
 							<svg
@@ -50,6 +58,7 @@
 									stroke-linecap="round"
 								/>
 							</svg>
+							<div class="transition"></div>
 						</div>
 						<div class="scissors option" data-option="scissors">
 							<svg
@@ -65,8 +74,10 @@
 									stroke-width="20"
 									stroke-linecap="round"
 									stroke-linejoin="round"
+									class="transition"
 								/>
 							</svg>
+							<div class="transition"></div>
 						</div>
 						<div class="lizard option" data-option="lizard">
 							<svg
@@ -84,6 +95,7 @@
 									stroke-linejoin="round"
 								/>
 							</svg>
+							<div class="transition"></div>
 						</div>
 						<div class="spock option" data-option="spock">
 							<svg
@@ -101,14 +113,21 @@
 									stroke-linejoin="round"
 								/>
 							</svg>
+							<div class="transition"></div>
 						</div>
 					</div>
 					<div class="scores">
-						<div class="player-score score">
-							<p>Player Score: <em>0</em></p>
+						<div class="player">
+							<div class="chosen-option" role="spacer"></div>
+							<div class="score">
+								<p>Player Score: <em>0</em></p>
+							</div>
 						</div>
-						<div class="computer-score score">
-							<p>Computer Score: <em>0</em></p>
+						<div class="computer">
+							<div class="chosen-option" role="spacer"></div>
+							<div class="score">
+								<p>Computer Score: <em>0</em></p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -177,5 +196,12 @@
 		</div>
 
 		<script src="app.js"></script>
+		<script>
+			// const rockTransf = document.querySelector(".option.rock ");
+			// const rockOffset = offset(rockTransf);
+			// rockTransf.addEventListener("click", () => {
+			// 	console.log(rockOffset.left, rockOffset.top);
+			// });
+		</script>
 	</body>
 </html>
