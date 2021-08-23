@@ -105,6 +105,21 @@ const spockSVG = `	<svg
 								/>
 							</svg>`;
 
+const addChoiceSVG = (playerChoice, computerChoice) => {
+	choices.forEach((choice) => {
+		if (choice.dataset.option === computerChoice) {
+			console.log(computerChoice);
+			insertedHTML = scissorsSVG;
+			choice.innerHTML += insertedHTML;
+		}
+		if (choice.dataset.option === playerChoice) {
+			console.log(playerChoice);
+			insertedHTML = lizardSVG;
+			choice.innerHTML += insertedHTML;
+		}
+	});
+};
+
 const scores = {
 	player: 0,
 	computer: 0,
@@ -240,20 +255,7 @@ const playSounds = (playerChoice, computerChoise) => {
 	}
 };
 
-const addChoiceSVG = (playerChoice, computerChoice) => {
-	choices.forEach((choice) => {
-		if (choice.dataset.option === computerChoice) {
-			console.log(computerChoice);
-			insertedHTML = scissorsSVG;
-			choice.innerHTML += insertedHTML;
-		}
-		if (choice.dataset.option === playerChoice) {
-			console.log(playerChoice);
-			insertedHTML = lizardSVG;
-			choice.innerHTML += insertedHTML;
-		}
-	});
-};
+
 
 const endGame = (winner) => {
 	if (scores.player === 5 || scores.computer === 5) {
