@@ -66,21 +66,21 @@ main {
 	stroke: #f7f7f7;
 	stroke-width: 35;
 }
-.target {
-	position: absolute;
-	top: 0%;
-	width: 200px;
-	height: 200px;
-	background-color: red;
-}
-
-.transition {
-}
 
 .chosen-option {
+	width: 200px;
+	height: 200px;
+	display: block;
 	background-color: salmon;
-	transform: translate(50px, 450px);
-	transition: all 3s;
+	transform: translateY(-200px);
+	opacity: 0;
+	/* transition: all 0.3s ease-in-out; */
+}
+
+.chosen-option.showed-option {
+	transition: all 0.5s ease-in-out;
+	transform: translateY(0px);
+	opacity: 1;
 }
 
 .scores {
@@ -96,7 +96,12 @@ main {
 	border-radius: 1rem;
 	min-height: 350px;
 }
-.chosen-option {
+
+.scores > div {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-evenly;
 }
 
 .player-score,

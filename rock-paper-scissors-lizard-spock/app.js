@@ -20,8 +20,14 @@ const paperSpock = document.getElementById("paper-spock");
 const spockRock = document.getElementById("spock-rock");
 const rockScissors = document.getElementById("rock-scissors");
 
-// SVGs for transition
+const computerChosen = document.querySelector(".computer .chosen-option");
+const playerChosen = document.querySelector(".player .chosen-option");
 
+// Global variables
+let computerInsertedHTML;
+let playerInsertedHTML;
+
+// SVGs for transition
 const rockSVG = `<svg
 								xmlns="http://www.w3.org/2000/svg"
 								height="200"
@@ -107,16 +113,39 @@ const spockSVG = `	<svg
 
 const addChoiceSVG = (playerChoice, computerChoice) => {
 	choices.forEach((choice) => {
-		if (choice.dataset.option === computerChoice) {
-			console.log(computerChoice);
-			insertedHTML = scissorsSVG;
-			choice.innerHTML += insertedHTML;
+		if (playerChoice === "rock") {
+			playerInsertedHTML = rockSVG;
 		}
-		if (choice.dataset.option === playerChoice) {
-			console.log(playerChoice);
-			insertedHTML = lizardSVG;
-			choice.innerHTML += insertedHTML;
+		if (computerChoice === "rock") {
+			computerInsertedHTML = rockSVG;
 		}
+		if (playerChoice === "paper") {
+			playerInsertedHTML = paperSVG;
+		}
+		if (computerChoice === "paper") {
+			computerInsertedHTML = paperSVG;
+		}
+		if (playerChoice === "scissers") {
+			playerInsertedHTML = scissorsSVG;
+		}
+		if (computerChoice === "scissers") {
+			computerInsertedHTML = scissorsSVG;
+		}
+		if (playerChoice === "lizard") {
+			playerInsertedHTML = lizardSVG;
+		}
+		if (computerChoice === "lizard") {
+			computerInsertedHTML = lizardSVG;
+		}
+		if (playerChoice === "spock") {
+			playerInsertedHTML = spockSVG;
+		}
+		if (computerChoice === "spock") {
+			computerInsertedHTML = spockSVG;
+		}
+
+		computerChosen.innerHTML += computerInsertedHTML;
+		playerChosen.innerHTML += playerInsertedHTML;
 	});
 };
 
@@ -182,8 +211,7 @@ const play = (e) => {
 	} else {
 		playerChoice = e.target.parentElement.parentElement.dataset.option; // if path is clicked
 	}
-
-	// addChoiceSVG(playerChoice, computerChoice);
+	addChoiceSVG(playerChoice, computerChoice);
 	const winner = getWinner(playerChoice, computerChoice);
 	// playSounds(playerChoice, computerChoice);
 	showWinner(winner, playerChoice, computerChoice);
@@ -254,8 +282,6 @@ const playSounds = (playerChoice, computerChoise) => {
 		rockScissors.play();
 	}
 };
-
-
 
 const endGame = (winner) => {
 	if (scores.player === 5 || scores.computer === 5) {
