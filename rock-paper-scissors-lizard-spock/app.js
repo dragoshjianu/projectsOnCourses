@@ -21,6 +21,8 @@ const rockScissors = document.getElementById("rock-scissors");
 const computerChosen = document.querySelector(".computer .chosen-option");
 const playerChosen = document.querySelector(".player .chosen-option");
 
+let gameOver = true;
+
 // SVGs for transition
 const chosenOption = {
 	rock: `<svg
@@ -213,36 +215,42 @@ const getWinner = (playerSelection, computerSelection) => {
 };
 
 const play = (e) => {
-	const computerChoice = getComputerChoice();
-	let playerChoice;
-	if (!e.target.parentElement.parentElement.dataset.option) {
-		playerChoice = e.target.parentElement.dataset.option; // if svg is clciked
+	if (gameOver) {
+		choices.forEach((choice) => {
+			choice.style.pointerEvents = "none";
+		});
 	} else {
-		playerChoice = e.target.parentElement.parentElement.dataset.option; // if path is clicked
+		const computerChoice = getComputerChoice();
+		let playerChoice;
+		if (!e.target.parentElement.parentElement.dataset.option) {
+			playerChoice = e.target.parentElement.dataset.option; // if svg is clciked
+		} else {
+			playerChoice = e.target.parentElement.parentElement.dataset.option; // if path is clicked
+		}
+		addChoiceSVG(playerChoice, computerChoice);
+		const winner = getWinner(playerChoice, computerChoice);
+		message.innerHTML = "";
+		message.classList = "message";
+		if (winner === "draw") {
+			message.innerHTML = `It's a draw`;
+			message.classList.add("yellow");
+			computerChosen.querySelector("svg path").style.stroke = "gold";
+			playerChosen.querySelector("svg path").style.stroke = "gold";
+		} else if (winner === "player") {
+			message.innerHTML = `<span>${winner}<span> won the round!`;
+			message.classList.add("green");
+			playerChosen.querySelector("svg path").style.stroke = "green";
+			computerChosen.querySelector("svg path").style.stroke = "orangered";
+		} else if (winner === "computer") {
+			message.innerHTML = `<span>${winner}<span> won the round!`;
+			message.classList.add("red");
+			playerChosen.querySelector("svg path").style.stroke = "orangered";
+			computerChosen.querySelector("svg path").style.stroke = "green";
+		}
+		playSounds(playerChoice, computerChoice);
+		showWinner(winner, playerChoice, computerChoice);
+		endGame(winner);
 	}
-	addChoiceSVG(playerChoice, computerChoice);
-	const winner = getWinner(playerChoice, computerChoice);
-	message.innerHTML = "";
-	message.classList = "message";
-	if (winner === "draw") {
-		message.innerHTML = `It's a draw`;
-		message.classList.add("yellow");
-		computerChosen.querySelector("svg path").style.stroke = "gold";
-		playerChosen.querySelector("svg path").style.stroke = "gold";
-	} else if (winner === "player") {
-		message.innerHTML = `<span>${winner}<span> won the round!`;
-		message.classList.add("green");
-		playerChosen.querySelector("svg path").style.stroke = "green";
-		computerChosen.querySelector("svg path").style.stroke = "orangered";
-	} else if (winner === "computer") {
-		message.innerHTML = `<span>${winner}<span> won the round!`;
-		message.classList.add("red");
-		playerChosen.querySelector("svg path").style.stroke = "orangered";
-		computerChosen.querySelector("svg path").style.stroke = "green";
-	}
-	playSounds(playerChoice, computerChoice);
-	showWinner(winner, playerChoice, computerChoice);
-	endGame(winner);
 };
 
 const showWinner = (winner, playerChoice, computerChoice) => {
@@ -312,7 +320,11 @@ const playSounds = (playerChoice, computerChoise) => {
 
 const endGame = (winner) => {
 	if (scores.player === 5 || scores.computer === 5) {
-		message.innerHTML = `<span>${winner}<span> won the match!`;
+		gameOver = true;
+		choices.forEach((choice) => {
+			choice.style.pointerEvents = "none";
+		});
+		message.innerHTML = `<span>${winner}<span> won the match! *Restart the game`;
 		if (winner === "computer") {
 			message.classList.add("red");
 		} else if (winner === "player") {
@@ -332,11 +344,15 @@ const togglePlay = () => {
 };
 
 const resetGame = () => {
+	gameOver = false;
 	scores.player = 0;
-	playerScore.textContent = scores.player;
 	scores.computer = 0;
+	playerScore.textContent = scores.player;
 	computerScore.textContent = scores.computer;
 	message.textContent = "";
+	choices.forEach((choice) => {
+		choice.style.pointerEvents = "auto";
+	});
 };
 
 //Event Listeners
@@ -346,3 +362,5 @@ choices.forEach((choice) => {
 
 resetBtn.addEventListener("click", resetGame);
 rulesBtn.addEventListener("click", togglePlay);
+
+window.addEventListener("load", resetGame);
