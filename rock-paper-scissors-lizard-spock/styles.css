@@ -18,6 +18,16 @@ body {
 	width: 100%;
 }
 
+.red {
+	color: orangered;
+}
+.yellow {
+	color: gold;
+}
+.green {
+	color: green;
+}
+
 .header {
 	background-color: #8c8c8c;
 	border-bottom: 3px solid #f7f7f7;
@@ -61,8 +71,12 @@ main {
 	display: block;
 	/* position: relative; */
 }
-
-.option:hover svg path {
+.option svg path {
+	stroke: #000;
+	stroke-width: 20;
+}
+.option:hover svg path,
+.option:active svg path {
 	stroke: #f7f7f7;
 	stroke-width: 35;
 }
@@ -71,22 +85,36 @@ main {
 	width: 200px;
 	height: 200px;
 	display: block;
-	background-color: salmon;
 	transform: translateY(-200px);
 	opacity: 0;
-	/* transition: all 0.3s ease-in-out; */
 }
 
 .chosen-option.showed-option {
 	transition: all 0.5s ease-in-out;
-	transform: translateY(0px);
-	opacity: 1;
+	animation: show-remove-option 3s ease;
+}
+
+@keyframes show-remove-option {
+	from {
+		opacity: 0;
+		transform: translateY(-200px);
+	}
+	35%,
+	75% {
+		opacity: 1;
+		transform: translateY(0px);
+	}
+	to {
+		opacity: 0;
+		transform: translateY(-200px);
+	}
 }
 
 .scores {
 	margin-top: 3em;
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 	justify-content: space-evenly;
 	font-size: 1.5em;
 	font-weight: bolder;
@@ -95,6 +123,15 @@ main {
 	padding: 1.5em 3em;
 	border-radius: 1rem;
 	min-height: 350px;
+}
+
+.message {
+	width: 100%;
+	text-align: center;
+}
+
+.message span {
+	text-transform: capitalize;
 }
 
 .scores > div {

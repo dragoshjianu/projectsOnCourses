@@ -1,14 +1,12 @@
+// Global variables
 // Select all needed elements
 const choices = document.querySelectorAll(".option");
 const playerScore = document.querySelector(".player .score em");
 const computerScore = document.querySelector(".computer .score em");
-const result = document.querySelector(".result");
-const winnerText = result.querySelector(".winner span");
 const resetBtn = document.querySelector(".reset-game");
-const closeBtn = document.querySelector(".close-btn");
 const rulesBtn = document.querySelector(".rules");
 const rulesAudio = document.getElementById("rules-audio");
-
+const message = document.querySelector(".message");
 const scissorsPaper = document.getElementById("scissors-paper");
 const paperRock = document.getElementById("paper-rock");
 const rockLizard = document.getElementById("rock-lizard");
@@ -23,12 +21,9 @@ const rockScissors = document.getElementById("rock-scissors");
 const computerChosen = document.querySelector(".computer .chosen-option");
 const playerChosen = document.querySelector(".player .chosen-option");
 
-// Global variables
-let computerInsertedHTML;
-let playerInsertedHTML;
-
 // SVGs for transition
-const rockSVG = `<svg
+const chosenOption = {
+	rock: `<svg
 								xmlns="http://www.w3.org/2000/svg"
 								height="200"
 								width="200"
@@ -43,8 +38,8 @@ const rockSVG = `<svg
 									stroke-linecap="round"
 									stroke-linejoin="round"
 								/>
-							</svg>`;
-const paperSVG = `<svg
+							</svg>`,
+	paper: `<svg
 								xmlns="http://www.w3.org/2000/svg"
 								height="200"
 								width="200"
@@ -60,9 +55,8 @@ const paperSVG = `<svg
 									stroke-linecap="round"
 									class="rock transition"
 								/>
-							</svg>`;
-
-const scissorsSVG = `<svg
+							</svg>`,
+	scissors: `<svg
 								xmlns="http://www.w3.org/2000/svg"
 								viewBox="0 0 876.325 876.325"
 								height="200"
@@ -77,8 +71,8 @@ const scissorsSVG = `<svg
 									stroke-linecap="round"
 									stroke-linejoin="round"
 								/>
-							</svg>`;
-const lizardSVG = `	<svg
+							</svg>`,
+	lizard: `	<svg
 								xmlns="http://www.w3.org/2000/svg"
 								viewBox="0 0 876.325 876.325"
 								height="200"
@@ -93,8 +87,8 @@ const lizardSVG = `	<svg
 									stroke-linecap="round"
 									stroke-linejoin="round"
 								/>
-							</svg>`;
-const spockSVG = `	<svg
+							</svg>`,
+	spock: `	<svg
 								xmlns="http://www.w3.org/2000/svg"
 								viewBox="0 0 876.325 876.325"
 								height="200"
@@ -109,43 +103,58 @@ const spockSVG = `	<svg
 									stroke-linecap="round"
 									stroke-linejoin="round"
 								/>
-							</svg>`;
+							</svg>`,
+};
 
 const addChoiceSVG = (playerChoice, computerChoice) => {
+	let computerInsertedHTML;
+	let playerInsertedHTML;
+
 	choices.forEach((choice) => {
 		if (playerChoice === "rock") {
-			playerInsertedHTML = rockSVG;
+			playerInsertedHTML = chosenOption.rock;
 		}
 		if (computerChoice === "rock") {
-			computerInsertedHTML = rockSVG;
+			computerInsertedHTML = chosenOption.rock;
 		}
 		if (playerChoice === "paper") {
-			playerInsertedHTML = paperSVG;
+			playerInsertedHTML = chosenOption.paper;
 		}
 		if (computerChoice === "paper") {
-			computerInsertedHTML = paperSVG;
+			computerInsertedHTML = chosenOption.paper;
 		}
-		if (playerChoice === "scissers") {
-			playerInsertedHTML = scissorsSVG;
+		if (playerChoice === "scissors") {
+			playerInsertedHTML = chosenOption.scissors;
 		}
-		if (computerChoice === "scissers") {
-			computerInsertedHTML = scissorsSVG;
+		if (computerChoice === "scissors") {
+			computerInsertedHTML = chosenOption.scissors;
 		}
 		if (playerChoice === "lizard") {
-			playerInsertedHTML = lizardSVG;
+			playerInsertedHTML = chosenOption.lizard;
 		}
 		if (computerChoice === "lizard") {
-			computerInsertedHTML = lizardSVG;
+			computerInsertedHTML = chosenOption.lizard;
 		}
 		if (playerChoice === "spock") {
-			playerInsertedHTML = spockSVG;
+			playerInsertedHTML = chosenOption.spock;
 		}
 		if (computerChoice === "spock") {
-			computerInsertedHTML = spockSVG;
+			computerInsertedHTML = chosenOption.spock;
 		}
 
-		computerChosen.innerHTML += computerInsertedHTML;
-		playerChosen.innerHTML += playerInsertedHTML;
+		choice.style.pointerEvents = "none";
+
+		computerChosen.innerHTML = computerInsertedHTML;
+		playerChosen.innerHTML = playerInsertedHTML;
+
+		computerChosen.classList.add("showed-option");
+		playerChosen.classList.add("showed-option");
+
+		setTimeout(() => {
+			computerChosen.classList.remove("showed-option");
+			playerChosen.classList.remove("showed-option");
+			choice.style.pointerEvents = "auto";
+		}, 3000);
 	});
 };
 
@@ -213,7 +222,25 @@ const play = (e) => {
 	}
 	addChoiceSVG(playerChoice, computerChoice);
 	const winner = getWinner(playerChoice, computerChoice);
-	// playSounds(playerChoice, computerChoice);
+	message.innerHTML = "";
+	message.classList = "message";
+	if (winner === "draw") {
+		message.innerHTML = `It's a draw`;
+		message.classList.add("yellow");
+		computerChosen.querySelector("svg path").style.stroke = "gold";
+		playerChosen.querySelector("svg path").style.stroke = "gold";
+	} else if (winner === "player") {
+		message.innerHTML = `<span>${winner}<span> won the round!`;
+		message.classList.add("green");
+		playerChosen.querySelector("svg path").style.stroke = "green";
+		computerChosen.querySelector("svg path").style.stroke = "orangered";
+	} else if (winner === "computer") {
+		message.innerHTML = `<span>${winner}<span> won the round!`;
+		message.classList.add("red");
+		playerChosen.querySelector("svg path").style.stroke = "orangered";
+		computerChosen.querySelector("svg path").style.stroke = "green";
+	}
+	playSounds(playerChoice, computerChoice);
 	showWinner(winner, playerChoice, computerChoice);
 	endGame(winner);
 };
@@ -285,9 +312,11 @@ const playSounds = (playerChoice, computerChoise) => {
 
 const endGame = (winner) => {
 	if (scores.player === 5 || scores.computer === 5) {
-		if (result.classList.contains("hidden")) {
-			result.classList.remove("hidden");
-			winnerText.textContent = winner;
+		message.innerHTML = `<span>${winner}<span> won the match!`;
+		if (winner === "computer") {
+			message.classList.add("red");
+		} else if (winner === "player") {
+			message.classList.add("green");
 		}
 	} else {
 		return;
@@ -307,15 +336,13 @@ const resetGame = () => {
 	playerScore.textContent = scores.player;
 	scores.computer = 0;
 	computerScore.textContent = scores.computer;
+	message.textContent = "";
 };
 
 //Event Listeners
 choices.forEach((choice) => {
 	choice.addEventListener("click", play);
 });
-closeBtn.addEventListener("click", () => {
-	result.classList.add("hidden");
-	resetGame();
-});
+
 resetBtn.addEventListener("click", resetGame);
 rulesBtn.addEventListener("click", togglePlay);
