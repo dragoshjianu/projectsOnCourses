@@ -168,9 +168,9 @@ const scores = {
 //Get dynamicaly options from DOM
 const getOptions = () => {
 	let allOptions = [];
-	choices.forEach((option) => {
-		option = option.dataset.option;
-		allOptions.push(option);
+	choices.forEach((choise) => {
+		choise = choices.dataset.option;
+		allOptions.push(choise);
 	});
 	return allOptions;
 };
@@ -227,6 +227,7 @@ const play = (e) => {
 		} else {
 			playerChoice = e.target.parentElement.parentElement.dataset.option; // if path is clicked
 		}
+
 		addChoiceSVG(playerChoice, computerChoice);
 		const winner = getWinner(playerChoice, computerChoice);
 		message.innerHTML = "";
