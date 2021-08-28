@@ -5,6 +5,36 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+.main {
+	display: grid;
+	place-items: center;
+}
+
+.header {
+	text-align: center;
+	padding: 4em 0;
+}
+
+.buttons {
+	margin: 3em auto;
+}
+
+.btn {
+	display: inline-block;
+	padding: 1em 2em;
+	background-color: transparent;
+	font-size: 1.125rem;
+	font-family: "Courier New", Courier, monospace;
+	font-weight: 700;
+	border-radius: 0.5em;
+	margin: 0 0.4em;
+}
+
+.btn:hover {
+	color: white;
+	background-color: #4f4f4f;
+}
+
 .grid-container {
 	display: grid;
 	width: 640px;
