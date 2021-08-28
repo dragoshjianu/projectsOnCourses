@@ -5,6 +5,7 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
 .main {
 	display: grid;
 	place-items: center;
@@ -12,11 +13,14 @@
 
 .header {
 	text-align: center;
-	padding: 4em 0;
+	padding: 3em 0;
 }
 
 .buttons {
 	margin: 3em auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .btn {
@@ -33,6 +37,36 @@
 .btn:hover {
 	color: white;
 	background-color: #4f4f4f;
+}
+
+fieldset {
+	border: none;
+	position: relative;
+}
+
+.color-input {
+	width: 5em;
+	height: 3em;
+}
+
+.grid-size-fieldset {
+	align-self: flex-end;
+}
+
+.grid-size-label span {
+	width: 2em;
+	text-align: center;
+	line-height: 2rem;
+	text-align: center;
+	background: #03a9f4;
+	color: #fff;
+	font-size: 1.125rem;
+	display: block;
+	position: absolute;
+	left: 50%;
+	top: -2.5rem;
+	transform: translate(-50%, 0);
+	border-radius: 6px;
 }
 
 .grid-container {
