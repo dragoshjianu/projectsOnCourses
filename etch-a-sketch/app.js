@@ -8,12 +8,35 @@ let currentGridSize = DEFAULT_SIZE;
 
 let defaultAlpha = 0.1;
 
+const setColor = (newColor) => {
+	currentColor = newColor;
+};
+
+const setMode = (newMode) => {
+	currentMode = newMode;
+};
+
+const setSize = (newSize) => {
+	currentSize = newSize;
+};
+
+const clearGrid = () => {
+	grid.innerHTML = "";
+};
+
+const reloadrGrid = () => {
+	clearGrid();
+	createGridCells(currentGridSize);
+};
+
 const grid = document.getElementById("grid-container");
 const clearBtn = document.querySelector(".clear");
 const monochromeBtn = document.querySelector(".monochrome");
-const rainbowBtb = document.querySelector(".rainbow");
-const colorbtn = document.querySelector(".color");
+const rainbowBtn = document.querySelector(".rainbow");
+const colorPicker = document.querySelector(".color");
 const eraseBtn = document.querySelector(".erase");
+
+colorPicker.value = currentColor;
 
 const generateRandomRGB = () => {
 	const randomR = Math.floor(Math.random() * 256);
@@ -84,13 +107,10 @@ const createGridCells = (size) => {
 };
 
 const changeColor = (e) => {
-	if (currentMode === "rainbow") {
-		currentColor = generateRandomRGB();
-		e.target.style.backgroundColor = currentColor;
-	}
 	if (currentMode === "monochrome") {
 		let gotAlpha = getAlpha(e.target.style.backgroundColor);
 		if (!e.target.style.backgroundColor) {
+			console.log("hovered");
 			e.target.style.backgroundColor = rgbToRgba(
 				hexToRGB(currentColor),
 				defaultAlpha,
@@ -102,29 +122,29 @@ const changeColor = (e) => {
 			);
 		}
 	}
+	if (currentMode === "rainbow") {
+		currentColor = generateRandomRGB();
+		e.target.style.backgroundColor = currentColor;
+	}
 
 	if (currentMode === "erase") {
 		e.target.style.backgroundColor = hexToRGB("#ffffff");
 	}
 };
 
-const chooseMode = (mode) => {};
-
 const initializeBoard = () => {
 	createGridCells(DEFAULT_SIZE);
-	// chooseMode(DEFAULT_MODE);
-};
-
-const clearGrid = () => {
-	grid.innerHTML = "";
-	createGridCells(currentGridSize);
+	setMode(currentMode);
 };
 
 window.addEventListener("DOMContentLoaded", initializeBoard);
-clearBtn.addEventListener("click", clearGrid);
-rainbowBtb.addEventListener("click", () => {
-	currentMode = "rainbow";
-});
+clearBtn.addEventListener("click", reloadrGrid);
 eraseBtn.addEventListener("click", () => {
-	currentMode = "erase";
+	setMode("erase");
+});
+monochromeBtn.addEventListener("click", () => {
+	setMode("monochrome");
+});
+rainbowBtn.addEventListener("click", () => {
+	setMode("rainbow");
 });
