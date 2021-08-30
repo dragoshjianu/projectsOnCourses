@@ -4,7 +4,7 @@ const DEFAULT_SIZE = 16;
 
 let currentColor = DEFAULT_COLOR;
 let currentMode = DEFAULT_MODE;
-let currentGridSize = DEFAULT_SIZE;
+let currentSize = DEFAULT_SIZE;
 
 let defaultAlpha = 0.1;
 
@@ -24,17 +24,30 @@ const clearGrid = () => {
 	grid.innerHTML = "";
 };
 
-const reloadrGrid = () => {
+const reloadGrid = () => {
 	clearGrid();
-	createGridCells(currentGridSize);
+	createGridCells(currentSize);
+};
+
+const updateSizeValue = (value) => {
+	gridSizeVal.textContent = value;
+};
+
+const changeSize = (value) => {
+	setSize(value);
+	updateSizeValue(value);
+	reloadGrid();
 };
 
 const grid = document.getElementById("grid-container");
 const clearBtn = document.querySelector(".clear");
 const monochromeBtn = document.querySelector(".monochrome");
 const rainbowBtn = document.querySelector(".rainbow");
-const colorPicker = document.querySelector(".color");
+const colorBtn = document.querySelector(".color");
+const colorPicker = document.querySelector(".color-input");
 const eraseBtn = document.querySelector(".erase");
+const gridSizeVal = document.querySelector(".grid-size-label span");
+const gridSizeSlide = document.querySelector(".gird-size-input");
 
 colorPicker.value = currentColor;
 
@@ -108,6 +121,7 @@ const createGridCells = (size) => {
 
 const changeColor = (e) => {
 	if (currentMode === "monochrome") {
+		currentColor = DEFAULT_COLOR;
 		let gotAlpha = getAlpha(e.target.style.backgroundColor);
 		if (!e.target.style.backgroundColor) {
 			console.log("hovered");
@@ -130,15 +144,27 @@ const changeColor = (e) => {
 	if (currentMode === "erase") {
 		e.target.style.backgroundColor = hexToRGB("#ffffff");
 	}
+
+	if (currentMode === "color") {
+		currentColor = colorPicker.value;
+		e.target.style.backgroundColor = currentColor;
+	}
 };
 
 const initializeBoard = () => {
 	createGridCells(DEFAULT_SIZE);
 	setMode(currentMode);
+	gridSizeSlide.value = DEFAULT_SIZE;
 };
 
 window.addEventListener("DOMContentLoaded", initializeBoard);
-clearBtn.addEventListener("click", reloadrGrid);
+gridSizeSlide.addEventListener("mousemove", (e) => {
+	updateSizeValue(e.target.value);
+});
+gridSizeSlide.addEventListener("change", (e) => {
+	changeSize(e.target.value);
+});
+clearBtn.addEventListener("click", reloadGrid);
 eraseBtn.addEventListener("click", () => {
 	setMode("erase");
 });
@@ -147,4 +173,7 @@ monochromeBtn.addEventListener("click", () => {
 });
 rainbowBtn.addEventListener("click", () => {
 	setMode("rainbow");
+});
+colorBtn.addEventListener("click", () => {
+	setMode("color");
 });
