@@ -1,0 +1,32 @@
+
+ selector {
+  0. CONTENT - if pseudo element
+  1. DISPLAY STUFF
+    - display: flex/grid/block/inline-block
+    - display related stuff
+      * flexbox stuff
+      * grid stuff
+
+  2. POSITIONING STUFF
+    - position
+    - top,right, button, left
+    - z-index
+    
+  3. BOX-MODEL SUFF
+    - width, height
+    - margin, padding, borders
+    - background
+
+  4. TYPOFRAPHY
+    - font stuff
+    - text stuff
+  
+  5. MANIPULATION 
+    - transform
+    - opacity
+    - filters
+
+  6. MISC
+   - border-radious
+   - box shadows
+}
