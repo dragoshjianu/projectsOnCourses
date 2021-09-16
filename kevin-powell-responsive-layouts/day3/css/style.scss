@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap");
+
+$clr-green-blue-dark: #23424a;
+$clr-green-blue: #136c72;
+$clr-green-blue-light: #38cfd9;
+
+$ff-roboto: "Roboto", sans-reif;
+
+$fs-large: 3rem;
+$fs-normal: 1.3125rem;
+
+$fw-black: 900;
+$fw-bold: 700;
+$fw-regular: 400;
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: $ff-roboto;
+
+	.header {
+		background-color: $clr-green-blue-dark;
+		color: white;
+		height: 80%;
+		.hero {
+			width: 80%;
+			height: 100%;
+			margin: 0 auto;
+
+			&__container {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				width: 50%;
+				height: 100%;
+			}
+
+			&__title {
+				font-size: $fs-large;
+				font-weight: $fw-black;
+				margin-bottom: 2rem;
+				line-height: 3.5rem;
+			}
+			&__description {
+				font-size: $fs-normal;
+				font-weight: $fw-regular;
+				line-height: 1.97;
+				margin-bottom: 3em;
+			}
+			&__cta {
+				line-height: 1rem;
+				color: $clr-green-blue-dark;
+				font-weight: $fw-black;
+				font-size: $fs-normal;
+				align-self: flex-start;
+				background-color: $clr-green-blue-light;
+
+				&:hover,
+				&:focus {
+					opacity: 0.75;
+				}
+			}
+		}
+	}
+}
+
+.btn {
+	display: inline-block;
+	text-decoration: none;
+	text-transform: uppercase;
+	padding: 0.75em 2em;
+	border-radius: 3em;
+}
