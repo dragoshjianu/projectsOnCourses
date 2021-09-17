@@ -8,31 +8,33 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<header class="header" 6666666666>
-			<a href="#" class="logo" title="Go back to homepage">
-				<picture class="LogoPicture">
-					<source type="image/svg+xml" srcset="./logo.svg" />
-					<img
-						src="./logo.svg"
-						width="55"
-						height="30"
-						alt="CRL logo - responsive layouts dont't have to be a struggle"
-					/>
-				</picture>
-			</a>
-			<nav class="main-nav">
-				<ul class="nav-list">
-					<li class="nav-item"><a href="#" class="nav-link">Home</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">About</a></li>
-					<li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
-				</ul>
-				<ul class="nav-list">
-					<li class="nav-item"><a href="#" class="nav-link">Sign In</a></li>
-					<li class="nav-item">
-						<a href="#" class="nav-link button">Sign Up</a>
-					</li>
-				</ul>
-			</nav>
+		<header class="header">
+			<div class="container row">
+				<a href="#" class="logo" title="Go back to homepage">
+					<picture class="logo-picture">
+						<source type="image/svg+xml" srcset="./logo.svg" />
+						<img
+							src="./logo.svg"
+							width="55"
+							height="30"
+							alt="CRL logo - responsive layouts dont't have to be a struggle"
+						/>
+					</picture>
+				</a>
+				<nav class="main-nav">
+					<ul class="nav-list">
+						<li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+						<li class="nav-item"><a href="#" class="nav-link">About</a></li>
+						<li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+					</ul>
+					<ul class="nav-list">
+						<li class="nav-item"><a href="#" class="nav-link">Sign In</a></li>
+						<li class="nav-item">
+							<a href="#" class="nav-link button">Sign Up</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
 		</header>
 		<main class="main">
 			<section class="hero">
@@ -52,25 +54,25 @@
 			</section>
 			<section class="strengths">
 				<div class="container row">
-					<div class="strength-item">
+					<div class="strength-content">
 						<h2 class="heading stength-heading">Mobile-first</h2>
-						<p class="description">
+						<p class="strength-text">
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
 							enim ad minim veniam.
 						</p>
 					</div>
-					<div class="strength-item">
+					<div class="strength-content">
 						<h2 class="heading stength-heading">Efficient</h2>
-						<p class="description">
+						<p class="strength-text">
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
 							enim ad minim veniam.
 						</p>
 					</div>
-					<div class="strength-item">
+					<div class="strength-content">
 						<h2 class="heading stength-heading">Done right</h2>
-						<p class="description">
+						<p class="strength-text">
 							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
 							enim ad minim veniam.
@@ -103,22 +105,22 @@
 						</div>
 					</article>
 					<aside class="sidebar">
-						<div class="sidebar-item">
-							<h2 class="sidebar-heading">Brak it down</h2>
+						<div class="sidebar-content">
+							<h3 class="sidebar-heading">Brak it down</h3>
 							<p class="sidebar-text">
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 								eiusmod tempor incididunt ut labore et dolore magna aliqua.
 							</p>
 						</div>
-						<div class="sidebar-item">
-							<h2 class="sidebar-heading">Work your way up</h2>
+						<div class="sidebar-content">
+							<h3 class="sidebar-heading">Work your way up</h3>
 							<p class="sidebar-text">
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 								eiusmod tempor incididunt ut labore et dolore magna aliqua.
 							</p>
 						</div>
-						<div class="sidebar-item">
-							<h2 class="sidebar-heading">&nbsp;</h2>
+						<div class="sidebar-content">
+							<h3 class="sidebar-heading">&nbsp;</h3>
 							<p class="sidebar-text">
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
 								eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -131,7 +133,60 @@
 		<footer class="footer">
 			<div class="container">
 				<h2 class="footer-heading">Just scratching the surface</h2>
-				<div class="row"></div>
+				<div class="footer-content row">
+					<div class="footer-about">
+						<h3 class="footer-content-heading heading">About our company</h3>
+						<p class="footer-text">
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+							eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+							enim ad minim veniam
+						</p>
+					</div>
+					<div class="footer-links-area">
+						<nav class="footer-menu">
+							<h3 class="footer-content-heading heading">Getting around</h3>
+							<ul class="footer-menu-list">
+								<li class="footer-menu-item">
+									<a href="#" class="footer-menu-link">Home</a>
+								</li>
+								<li class="footer-menu-item">
+									<a href="#" class="footer-menu-link">About</a>
+								</li>
+								<li class="footer-menu-item">
+									<a href="#" class="footer-menu-link">Contact</a>
+								</li>
+							</ul>
+						</nav>
+						<nav class="footer-menu">
+							<h3 class="footer-content-heading heading">Other things</h3>
+							<ul class="footer-menu-list">
+								<li class="footer-menu-item">
+									<a href="#" class="footer-menu-link">Lorem Ipsum</a>
+								</li>
+								<li class="footer-menu-item">
+									<a href="#" class="footer-menu-link">dolor</a>
+								</li>
+								<li class="footer-menu-item">
+									<a href="#" class="footer-menu-link">sit amet</a>
+								</li>
+							</ul>
+						</nav>
+						<nav class="footer-menu">
+							<h3 class="footer-content-heading heading">And more</h3>
+							<ul class="footer-menu-list">
+								<li class="footer-menu-item">
+									<a href="#" class="footer-menu-link">Lorem Ipsum</a>
+								</li>
+								<li class="footer-menu-item">
+									<a href="#" class="footer-menu-link">dolor</a>
+								</li>
+								<li class="footer-menu-item">
+									<a href="#" class="footer-menu-link">sit amet</a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+				</div>
 			</div>
 		</footer>
 	</body>
