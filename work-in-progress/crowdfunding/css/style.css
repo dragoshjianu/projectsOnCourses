@@ -151,6 +151,14 @@ fieldset {
   border: 2px solid #3cb4ac !important;
 }
 
+.error {
+  color: red;
+}
+
+svg {
+  fill: currentColor;
+}
+
 .header {
   padding: 2rem 2rem 0 2rem;
   width: 100%;
@@ -506,6 +514,12 @@ fieldset {
   overflow: auto;
 }
 
+@media (min-width: 700px) {
+  .modals .modal {
+    max-width: 750px;
+  }
+}
+
 .modals .modal.thank-you {
   display: none;
   text-align: center;
@@ -525,8 +539,21 @@ fieldset {
   right: 5%;
 }
 
+@media (min-width: 700px) {
+  .modals .modal.choose .choose-product {
+    display: grid;
+    grid-template-areas: "select-product select-product stock " "description description description" "input-area input-area input-area";
+  }
+}
+
 .modals .modal.choose .choose-product .select-product {
   margin-bottom: 2rem;
+}
+
+@media (min-width: 700px) {
+  .modals .modal.choose .choose-product .select-product {
+    grid-area: select-product;
+  }
 }
 
 .modals .modal.choose .choose-product .select-product-content {
@@ -581,8 +608,27 @@ fieldset {
   line-height: 1.3rem;
 }
 
+@media (min-width: 700px) {
+  .modals .modal.choose .choose-product .choose-text {
+    grid-area: description;
+  }
+}
+
+@media (min-width: 700px) {
+  .modals .modal.choose .choose-product .stock {
+    grid-area: stock;
+    justify-self: center;
+  }
+}
+
 .modals .modal.choose .choose-product .pledge-input-area {
   display: none;
+}
+
+@media (min-width: 700px) {
+  .modals .modal.choose .choose-product .pledge-input-area {
+    grid-area: input-area;
+  }
 }
 
 .modals .modal.choose .choose-product .pledge-input-area input,
@@ -603,27 +649,46 @@ fieldset {
   grid-gap: 0.5rem;
 }
 
+@media (min-width: 700px) {
+  .modals .modal.choose .choose-product .pledge-input-area .pledge-pay-area .pledge-pay-label {
+    grid-template-areas: "labels inputs buttons";
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}
+
 .modals .modal.choose .choose-product .pledge-input-area .pledge-pay-area .pledge-pay-text {
   grid-area: labels;
   place-self: center;
   margin-bottom: 1rem;
 }
 
-.modals .modal.choose .choose-product .pledge-input-area .pledge-pay-area .pledge-pay-input {
+@media (min-width: 700px) {
+  .modals .modal.choose .choose-product .pledge-input-area .pledge-pay-area .pledge-pay-text {
+    justify-self: flex-start;
+  }
+}
+
+.modals .modal.choose .choose-product .pledge-input-area .pledge-pay-area .pledge-pay-input-area {
   grid-area: inputs;
+  display: flex;
   place-self: center;
   position: relative;
-  padding: 1rem;
-  padding-left: 2rem;
-  width: 75%;
-  font-size: 1rem;
-  font-weight: 700;
-  background-image: url("../images/icon-dollar.svg");
-  background-size: 1rem 1rem;
-  background-position: 10% center;
-  background-repeat: no-repeat;
+  padding: 0.75rem;
+  max-width: 7rem;
+  height: 3rem;
   border: 2px solid #e6e6e6;
   border-radius: 2rem;
+}
+
+.modals .modal.choose .choose-product .pledge-input-area .pledge-pay-area .pledge-pay-input-area .pledge-pay-input-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.modals .modal.choose .choose-product .pledge-input-area .pledge-pay-area .pledge-pay-input-area .pledge-pay-input {
+  max-width: 80%;
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 .modals .modal.choose .choose-product .pledge-input-area .pledge-pay-area .pledge-pay-button {
