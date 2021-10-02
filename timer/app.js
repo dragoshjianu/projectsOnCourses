@@ -1,13 +1,15 @@
-console.log("App loaded");
+const durationInput = document.querySelector("#duration");
+const startButton = document.querySelector("#start");
+const pauseButton = document.querySelector("#pause");
 
-class Timer {
-	constructor(durationInput, startButton, pauseButton) {
-		this.durationInput = durationInput;
-		this.startButton = startButton;
-		this.pauseButton = pauseButton;
-	}
-
-	start() {
-		console.log("Start timeer");
-	}
-}
+const timer = new Timer(durationInput, startButton, pauseButton, {
+	onStart() {
+		console.log("Timer Started");
+	},
+	onTick() {
+		console.log("Timer just ticked down");
+	},
+	onComplete() {
+		console.log("Timer completed");
+	},
+});
