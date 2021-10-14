@@ -1,5 +1,14 @@
 .sidebar {
-	font-size: 1rem;
+	display: flex;
+	flex-direction: column;
+	padding: 2rem;
+	width: 25vw;
+	background-color: #a3a3a3;
+	font-size: clamp(1rem, 4vw, 1em);
+
+	@media (min-width: 800px) {
+		width: 35vw;
+	}
 
 	.toggle-sidebar {
 		display: flex;
