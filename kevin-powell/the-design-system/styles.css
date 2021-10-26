@@ -1,6 +1,6 @@
-/* ------------------------- */
-/* Custom Properties         */
-/* ------------------------- */
+/* ------------------- */
+/* Custom properties   */
+/* ------------------- */
 
 :root {
 	/* colors */
@@ -24,26 +24,26 @@
 	--ff-sans-normal: "Barlow", sans-serif;
 }
 
-/* ------------------------- */
-/* Reset                     */
-/* ------------------------- */
+/* ------------------- */
+/* Reset               */
+/* ------------------- */
 
-/* Box Sizing */
+/* https://piccalil.li/blog/a-modern-css-reset/ */
+
+/* Box sizing */
 *,
-*::after,
-*::before {
+*::before,
+*::after {
 	box-sizing: border-box;
 }
 
 /* Reset margins */
-
 body,
 h1,
 h2,
 h3,
 h4,
 h5,
-h6,
 p,
 figure,
 picture {
@@ -61,24 +61,23 @@ p {
 }
 
 /* set up the body */
-
 body {
 	font-family: var(--ff-sans-normal);
 	font-size: var(--fs-400);
-	background-color: hsl(var(--clr-dark));
 	color: hsl(var(--clr-white));
+	background-color: hsl(var(--clr-dark));
 	line-height: 1.5;
 	min-height: 100vh;
 }
 
 /* make images easier to work with */
 img,
-picture {
+picutre {
 	max-width: 100%;
 	display: block;
 }
 
-/* make forms easier to work with */
+/* make form elements easier to work with */
 input,
 button,
 textarea,
@@ -87,7 +86,6 @@ select {
 }
 
 /* remove animations for people who've turned them off */
-
 @media (prefers-reduced-motion: reduce) {
 	*,
 	*::before,
@@ -99,9 +97,9 @@ select {
 	}
 }
 
-/* ------------------------- */
-/* Utility Classes           */
-/* ------------------------- */
+/* ------------------- */
+/* Utility classes     */
+/* ------------------- */
 
 /* general */
 
@@ -115,7 +113,7 @@ select {
 	gap: var(--gap, 1rem);
 }
 
-.flow > * + * {
+.flow > *:where(:not(:first-child)) {
 	margin-top: var(--flow-space, 1rem);
 }
 
@@ -133,7 +131,7 @@ select {
 	margin: -1px;
 	overflow: hidden;
 	clip: rect(0, 0, 0, 0);
-	white-space: nowrap;
+	white-space: nowrap; /* added line */
 	border: 0;
 }
 
@@ -227,19 +225,19 @@ select {
 .numbered-title span {
 	margin-right: 0.5em;
 	font-weight: 700;
-	color: hsl(var(--clr-light) / 0.25);
+	color: hsl(var(--clr-white) / 0.25);
 }
 
-/* ------------------------- */
-/* Components                */
-/* ------------------------- */
+/* ------------------- */
+/* Compontents         */
+/* ------------------- */
 
 .large-button {
 	position: relative;
-	display: grid;
 	z-index: 1;
+	display: grid;
 	place-items: center;
-	padding-inline: 2em;
+	padding: 0 2em;
 	border-radius: 50%;
 	aspect-ratio: 1;
 	text-decoration: none;
@@ -251,14 +249,86 @@ select {
 	z-index: -1;
 	width: 100%;
 	height: 100%;
-	background: hsl(var(--clr-white) / 0.15);
-	border-radius: inherit;
+	background: hsl(var(--clr-white) / 0.1);
+	border-radius: 50%;
 	opacity: 0;
-	transition: opacity 0.5s linear, transform 0.75s ease-in-out;
+	transition: opacity 500ms linear, transform 750ms ease-in-out;
 }
 
 .large-button:hover::after,
 .large-button:focus::after {
 	opacity: 1;
 	transform: scale(1.5);
+}
+
+.primary-navigation {
+	--gap: 8rem;
+	--underline-gap: 2rem;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.primary-navigation a {
+	text-decoration: none;
+}
+
+.primary-navigation a > span {
+	font-weight: 700;
+	margin-right: 0.5em;
+}
+
+.underline-indicators > * {
+	cursor: pointer;
+	padding: var(--underline-gap, 1rem) 0;
+	border: 0;
+	border-bottom: 0.2rem solid hsl(var(--clr-white) / 0);
+}
+
+.underline-indicators > *:hover,
+.underline-indicators > *:focus {
+	border-color: hsl(var(--clr-white) / 0.5);
+}
+
+.underline-indicators > .active,
+.underline-indicators > [aria-selected="true"] {
+	color: hsl(var(--clr-white) / 1);
+	border-color: hsl(var(--clr-white) / 1);
+}
+
+.tab-list {
+	--gap: 2rem;
+}
+
+.dot-indicators > * {
+	cursor: pointer;
+	border: 0;
+	border-radius: 50%;
+	padding: 0.5em;
+	background-color: hsl(var(--clr-white) / 0.25);
+}
+
+.dot-indicators > *:hover,
+.dot-indicators > *:focus {
+	background-color: hsl(var(--clr-white) / 0.5);
+}
+
+.dot-indicators > [aria-selected="true"] {
+	background-color: hsl(var(--clr-white) / 1);
+}
+
+.number-indicators > * {
+	cursor: pointer;
+	border: 1px solid hsl(var(--clr-white) / 0.15);
+	border-radius: 50%;
+	padding: 0.5em;
+	aspect-ratio: 1;
+	background-color: hsl(var(--clr-dark));
+	color: hsl(var(--clr-white) / 1)
+
+}
+
+.number-indicators > [aria-selected="true"] {
+	color: hsl(var(--clr-dark));
+	background-color: hsl(var(--clr-white) / 1);
 }
