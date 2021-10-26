@@ -321,14 +321,17 @@ select {
 	cursor: pointer;
 	border: 1px solid hsl(var(--clr-white) / 0.15);
 	border-radius: 50%;
-	padding: 0.5em;
-	aspect-ratio: 1;
+	padding: 1em 1.5em;
 	background-color: hsl(var(--clr-dark));
-	color: hsl(var(--clr-white) / 1)
-
+	color: hsl(var(--clr-white) / 1);
 }
 
 .number-indicators > [aria-selected="true"] {
 	color: hsl(var(--clr-dark));
 	background-color: hsl(var(--clr-white) / 1);
+}
+
+.number-indicators > *:hover,
+.number-indicators > *:focus {
+	border: 1px solid hsl(var(--clr-white) / 0.15);
 }
