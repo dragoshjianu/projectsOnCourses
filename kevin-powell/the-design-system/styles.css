@@ -123,6 +123,11 @@ select {
 	max-width: 80rem;
 }
 
+.grid-container {
+	display: grid;
+	grid-template-columns: 2em 1fr 2em;
+}
+
 .sr-only {
 	position: absolute;
 	width: 1px;
@@ -235,7 +240,7 @@ select {
 .large-button {
 	position: relative;
 	z-index: 1;
-	display: grid;
+	display: inline-grid;
 	place-items: center;
 	padding: 0 2em;
 	border-radius: 50%;
@@ -317,11 +322,15 @@ select {
 	background-color: hsl(var(--clr-white) / 1);
 }
 
+.number-indicators {
+	flex-direction: column;
+}
 .number-indicators > * {
 	cursor: pointer;
 	border: 1px solid hsl(var(--clr-white) / 0.15);
 	border-radius: 50%;
-	padding: 1em 1.5em;
+	aspect-ratio: 1;
+	padding: 5em;
 	background-color: hsl(var(--clr-dark));
 	color: hsl(var(--clr-white) / 1);
 }
