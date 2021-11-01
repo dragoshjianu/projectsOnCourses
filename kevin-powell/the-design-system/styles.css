@@ -108,6 +108,10 @@ select {
 	gap: var(--gap, 1rem);
 }
 
+.flex-col{
+	flex-direction: column;
+}
+
 .grid {
 	display: grid;
 	gap: var(--gap, 1rem);
@@ -319,7 +323,7 @@ select {
 
 .number-indicators > * {
 	cursor: pointer;
-	border: 1px solid hsl(var(--clr-white) / 0.15);
+	border: 1px solid hsl(var(--clr-white) / 0.25);
 	border-radius: 50%;
 	padding: 1em 1.5em;
 	background-color: hsl(var(--clr-dark));
@@ -333,5 +337,5 @@ select {
 
 .number-indicators > *:hover,
 .number-indicators > *:focus {
-	border: 1px solid hsl(var(--clr-white) / 0.15);
+	border: 1px solid hsl(var(--clr-white) / 0.5);
 }
