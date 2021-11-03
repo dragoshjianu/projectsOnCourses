@@ -24,7 +24,9 @@
 		<title>Frontend Mentor | Space tourism website</title>
 	</head>
 	<body class="home">
+		<a class="skip-to-content" href="#main"> Skip to main</a>
 		<header class="primary-header flex">
+			<!-- before is here -->
 			<div>
 				<img
 					src="./assets/shared/logo.svg"
@@ -36,40 +38,41 @@
 				<span class="sr-only" aria-expanded="false">Menu</span>
 			</button>
 			<nav>
-				<ul class="primary-navigation underline-indicators flex">
+				<ul id="primary-navigation" data-visible="false" class="primary-navigation underline-indicators flex">
 					<li class="active">
 						<a
 							class="ff-sans-cond uppercase text-white letter-spacing-2"
 							href="index.html"
-							><span>00</span>Home</a
+							><span aria-hidden="true">00</span>Home</a
 						>
 					</li>
 					<li>
 						<a
 							class="ff-sans-cond uppercase text-white letter-spacing-2"
 							href="destination.html"
-							><span>01</span>Destination</a
+							><span aria-hidden="true">01</span>Destination</a
 						>
 					</li>
 					<li>
 						<a
 							class="ff-sans-cond uppercase text-white letter-spacing-2"
 							href="#"
-							><span>02</span>Crew</a
+							><span aria-hidden="true">02</span>Crew</a
 						>
 					</li>
 					<li>
 						<a
 							class="ff-sans-cond uppercase text-white letter-spacing-2"
 							href="#"
-							><span>03</span>Technology</a
+							><span aria-hidden="true">03</span>Technology</a
 						>
 					</li>
 				</ul>
 			</nav>
+			<!-- after is here -->
 		</header>
 
-		<div class="grid-container grid-container--home">
+		<main class="grid-container grid-container--home">
 			<div>
 				<h1 class="text-accent fs-500 ff-sans-cond uppercase letter-spacing-1">
 					So, you want to travel to
@@ -87,6 +90,8 @@
 					>Explore</a
 				>
 			</div>
-		</div>
+		</main>
+		
+		<script src="app.js"></script>
 	</body>
 </html>
