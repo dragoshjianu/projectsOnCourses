@@ -2,6 +2,8 @@
 const toggleBtn = document.querySelector(".mobile-nav-toggle");
 const nav = document.querySelector(".primary-navigation");
 
+let activePage = "home";
+
 toggleBtn.addEventListener("click", () => {
 	const visible = nav.getAttribute("data-visible");
 	if (visible === "false") {
@@ -45,8 +47,6 @@ const renderMenu = (data) => {
 };
 
 const activePageHandler = () => {
-	let activePage = "";
-
 	const menuItems = document.querySelectorAll(".primary-navigation li");
 	const menuLinks = document.querySelectorAll(".primary-navigation a");
 	console.log(menuLinks);
@@ -63,21 +63,19 @@ const activePageHandler = () => {
 			console.log(menuItems);
 		});
 	});
-
-	return activePage;
 };
 
-const renderContent = (data) => {
+const renderContent = (data, active) => {
 	console.log(data);
+	console.log(active);
 };
 
 fetch("./data.json")
 	.then((res) => res.json())
 	.then((data) => {
 		renderMenu(data);
-		renderContent(data);
-		const activePage = activePageHandler();
-		console.log(activePage, "Activa");
+		renderContent(data, activePage);
+		// console.log(activePage, "Activa");
 	})
 	.catch((err) => {
 		console.log("ERROR!", err);
