@@ -4,11 +4,12 @@ class DOMHelper {
 		element.replaceWith(clonedElement);
 		return clonedElement;
 	}
+
 	static moveElement(elementId, newDestinationSelector) {
 		const element = document.getElementById(elementId);
-		const destinationEleent = document.querySelector(newDestinationSelector);
+		const destinationElement = document.querySelector(newDestinationSelector);
 
-		destinationEleent.append(element);
+		destinationElement.append(element);
 	}
 }
 
@@ -21,6 +22,7 @@ class Component {
 		}
 		this.insertBefore = insertBefore;
 	}
+
 	detach = () => {
 		if (this.element) {
 			this.element.remove();
@@ -34,9 +36,10 @@ class Component {
 }
 
 class Tooltip extends Component {
-	constructor(closeNotifierFuction) {
-		super();
-		this.closeNotifier = closeNotifierFuction;
+	constructor(closeNotifierFunction, text, hostElementId) {
+		super(hostElementId);
+		this.closeNotifier = closeNotifierFunction;
+		this.text = text;
 		this.create();
 	}
 
@@ -46,11 +49,28 @@ class Tooltip extends Component {
 	};
 
 	create() {
-		const toolTipElement = document.createElement("div");
-		toolTipElement.className = "card";
-		toolTipElement.textContent = "Toolip DUMMY Text";
-		toolTipElement.addEventListener("click", this.closeTooltip);
-		this.element = toolTipElement;
+		const tooltipElement = document.createElement("div");
+		tooltipElement.className = "card";
+		const tooltipTemplate = document.getElementById("tooltip");
+		const tooltipBody = document.importNode(tooltipTemplate.content, true);
+		tooltipBody.querySelector("p").textContent = this.text;
+
+		tooltipElement.append(tooltipBody);
+
+		const hostElPosLeft = this.hostElement.offsetLeft;
+		const hostElPosTop = this.hostElement.offsetTop;
+		const hostElHeight = this.hostElement.clientHeight;
+		const parentElScrolling = this.hostElement.parentElement.scrollTop;
+
+		const x = hostElPosLeft + 20;
+		const y = hostElPosTop + hostElHeight - parentElScrolling - 10;
+
+		tooltipElement.style.position = "absolute";
+		tooltipElement.style.left = x + "px";
+		tooltipElement.style.top = y + "px";
+
+		tooltipElement.addEventListener("click", this.closeTooltip);
+		this.element = tooltipElement;
 	}
 }
 
@@ -60,6 +80,7 @@ class ProjectItem {
 	constructor(id, updateProjectListsFunction, type) {
 		this.id = id;
 		this.updateProjectListsHandler = updateProjectListsFunction;
+
 		this.connectSwitchButton(type);
 		this.connetMoreInfoButton();
 	}
@@ -77,17 +98,31 @@ class ProjectItem {
 			return;
 		}
 		const projectElement = document.getElementById(this.id);
-		const tooltip = new Tooltip(() => {
-			this.hasActiveTooltip = false;
-		});
+
+		const tooltopText = projectElement.dataset.extraInfo;
+		const tooltip = new Tooltip(
+			() => {
+				this.hasActiveTooltip = false;
+			},
+			tooltopText,
+			this.id
+		);
 		tooltip.attach();
 		this.hasActiveTooltip = true;
 	}
 
-	connetMoreInfoButton() {
+	connectMoreInfoButton() {
 		const projectItemElement = document.getElementById(this.id);
-		let moreInfoBtn = projectItemElement.querySelector("button:first-of-type");
-		moreInfoBtn.addEventListener("click", this.showMoreInfoHandler);
+		const moreInfoBtn = projectItemElement.querySelector("button:first-of-type");
+		moreInfoBtn.addEventListener("click", this.showMoreInfoHandler.bind(this));
+	}
+
+	connectSwitchButton(type) {
+		const projectItemElement = document.getElementById(this.id);
+		let switchBtn = projectItemElement.querySelector("button:last-of-type");
+		switchBtn = DOMHelper.clearEventListeners(switchBtn);
+		switchBtn.textContent = type === "active" ? "Finish" : "Activate";
+		switchBtn.addEventListener("click", this.updateProjectListsHandler.bind(null, this.id));
 	}
 
 	update(updateProjectListsFn, type) {
@@ -101,10 +136,10 @@ class ProjectList {
 
 	constructor(type) {
 		this.type = type;
-		//Extrage din DOM sectiunile cu ID in functie de tipul proiectelor
+
 		const prjItems = document.querySelectorAll(`#${type}-projects li`);
 		for (const prjItem of prjItems) {
-			this.projects.push(new ProjectItem(prjItem.id, this.switchProject.bind(this), type));
+			this.projects.push(new ProjectItem(prjItem.id, this.switchProject.bind(this), this.type));
 		}
 		console.log(this.projects);
 	}
@@ -120,14 +155,10 @@ class ProjectList {
 	}
 
 	switchProject(projectId) {
-		// gaseste index-ul elementului dupa ID si apoi scoate-l din array
-		// const projectIndex = this.projects.findIndex((project) => project.id === projectId);
+		// const projectIndex = this.projects.findIndex(p => p.id === projectId);
 		// this.projects.splice(projectIndex, 1);
-
-		//cauta elementul in functie de ID
-		this.switchHandler(this.projects.find((project) => project.id === projectId));
-		//filtreaza eleentele ce nu au ID-ul specificat
-		this.projects = this.projects.filter((project) => project.id !== projectId);
+		this.switchHandler(this.projects.find((p) => p.id === projectId));
+		this.projects = this.projects.filter((p) => p.id !== projectId);
 	}
 }
 
@@ -138,6 +169,10 @@ class App {
 
 		activeProjectsList.setSwitchHandlerFunction(finishedProjectsList.addProject.bind(finishedProjectsList));
 		finishedProjectsList.setSwitchHandlerFunction(activeProjectsList.addProject.bind(activeProjectsList));
+
+		const someScript = document.createElement("script");
+		someScript.textContent = 'alert("Hello!");';
+		document.head.append(someScript);
 	}
 }
 
