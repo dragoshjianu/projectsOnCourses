@@ -9,6 +9,7 @@ class DOMHelper {
 		const element = document.getElementById(elementId);
 		const destinationElement = document.querySelector(newDestinationSelector);
 		destinationElement.append(element);
+		element.scrollIntoView({ behavior: "smooth" });
 	}
 }
 
@@ -50,7 +51,11 @@ class Tooltip extends Component {
 	create() {
 		const tooltipElement = document.createElement("div");
 		tooltipElement.className = "card";
-		tooltipElement.textContent = this.text;
+		const tooltipTemplate = document.getElementById("tooltip");
+		const tooltipBody = document.importNode(tooltipTemplate.content, true);
+		tooltipBody.querySelector("p").textContent = this.text;
+
+		tooltipElement.append(tooltipBody);
 
 		const hostElPosLeft = this.hostElement.offsetLeft;
 		const hostElPosTop = this.hostElement.offsetTop;
@@ -152,6 +157,10 @@ class App {
 		const finishedProjectsList = new ProjectList("finished");
 		activeProjectsList.setSwitchHandlerFunction(finishedProjectsList.addProject.bind(finishedProjectsList));
 		finishedProjectsList.setSwitchHandlerFunction(activeProjectsList.addProject.bind(activeProjectsList));
+
+		const someScript = document.createElement("script");
+		someScript.textContent = 'alert("Hello!");';
+		document.head.append(someScript);
 	}
 }
 
