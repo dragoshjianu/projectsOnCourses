@@ -35,8 +35,8 @@ async function trackUserHandler() {
 	} catch (err) {
 		console.log(err);
 	}
-
 	console.log(timerData, posData);
+
 	// .then((posData) => {
 	// 	positionData = posData;
 	// 	return setTimer(2000);
