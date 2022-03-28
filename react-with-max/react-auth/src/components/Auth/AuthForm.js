@@ -5,7 +5,9 @@ import classes from './AuthForm.module.css';
 const AuthForm = () => {
 	const emailInputRef = useRef();
 	const passwordInputRef = useRef();
+
 	const [isLogin, setIsLogin] = useState(true);
+	const [isLoading, setIsLoading] = useState(false);
 
 	const switchAuthModeHandler = () => {
 		setIsLogin((prevState) => !prevState);
@@ -14,10 +16,12 @@ const AuthForm = () => {
 	const submitHandler = (event) => {
 		event.preventDefault();
 
-		const enteredEmail = emailInputRef.curent.value;
-		const enteredPassword = passwordInputRef.curent.value;
+		const enteredEmail = emailInputRef.current.value;
+		const enteredPassword = passwordInputRef.current.value;
 
 		//optional: Add validation errors
+
+		setIsLoading(true);
 		if (isLogin) {
 		} else {
 			fetch(
@@ -34,12 +38,18 @@ const AuthForm = () => {
 					},
 				}
 			).then((res) => {
+				setIsLoading(false);
 				if (res.ok) {
 					// ...
 				} else {
 					return res.json().then((data) => {
 						//show error modal
 						console.log(data);
+						let errorMessage = 'Authentication Failed';
+						if (data && data.error && data.error.message) {
+							errorMessage = data.error.message;
+						}
+						alert(errorMessage);
 					});
 				}
 			});
@@ -49,7 +59,7 @@ const AuthForm = () => {
 	return (
 		<section className={classes.auth}>
 			<h1>{isLogin ? 'Login' : 'Sign Up'}</h1>
-			<form>
+			<form onSubmit={submitHandler}>
 				<div className={classes.control}>
 					<label htmlFor='email'>Your Email</label>
 					<input type='email' id='email' required ref={emailInputRef} />
@@ -59,7 +69,8 @@ const AuthForm = () => {
 					<input type='password' id='password' required ref={passwordInputRef} />
 				</div>
 				<div className={classes.actions}>
-					<button>{isLogin ? 'Login' : 'Create Account'}</button>
+					{!isLoading && <button>{isLogin ? 'Login' : 'Create Account'}</button>}
+					{isLoading && <p>Sending Request...</p>}
 					<button
 						type='button'
 						className={classes.toggle}
