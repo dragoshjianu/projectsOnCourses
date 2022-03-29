@@ -1,10 +1,15 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+import AuthContext from '../../store/auth-context';
 
 import classes from './AuthForm.module.css';
 
 const AuthForm = () => {
+	const histroy = useHistory();
 	const emailInputRef = useRef();
 	const passwordInputRef = useRef();
+
+	const authCtx = useContext(AuthContext);
 
 	const [isLogin, setIsLogin] = useState(true);
 	const [isLoading, setIsLoading] = useState(false);
@@ -22,25 +27,30 @@ const AuthForm = () => {
 		//optional: Add validation errors
 
 		setIsLoading(true);
+		let url;
 		if (isLogin) {
+			url =
+				'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCcQ3o9XpR9Fzk3ftfAklXMULYRtTY2pnQ';
 		} else {
-			fetch(
-				'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCcQ3o9XpR9Fzk3ftfAklXMULYRtTY2pnQ',
-				{
-					method: 'POST',
-					body: JSON.stringify({
-						email: enteredEmail,
-						password: enteredPassword,
-						returnTokenKey: true,
-					}),
-					headers: {
-						'Content-Type': 'application/json',
-					},
-				}
-			).then((res) => {
+			url =
+				'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCcQ3o9XpR9Fzk3ftfAklXMULYRtTY2pnQ';
+		}
+
+		fetch(url, {
+			method: 'POST',
+			body: JSON.stringify({
+				email: enteredEmail,
+				password: enteredPassword,
+				returnTokenKey: true,
+			}),
+			headers: {
+				'Content-Type': 'application/json',
+			},
+		})
+			.then((res) => {
 				setIsLoading(false);
 				if (res.ok) {
-					// ...
+					return res.json();
 				} else {
 					return res.json().then((data) => {
 						//show error modal
@@ -49,11 +59,17 @@ const AuthForm = () => {
 						if (data && data.error && data.error.message) {
 							errorMessage = data.error.message;
 						}
-						alert(errorMessage);
+						throw new Error(errorMessage);
 					});
 				}
+			})
+			.then((data) => {
+				authCtx.login(data.idToken);
+				histroy.replace('/');
+			})
+			.catch((err) => {
+				alert(err.message);
 			});
-		}
 	};
 
 	return (
