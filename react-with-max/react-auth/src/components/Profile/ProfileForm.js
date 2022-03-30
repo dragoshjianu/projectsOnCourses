@@ -1,8 +1,12 @@
 import { useRef, useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+
 import AuthContext from '../../store/auth-context';
 import classes from './ProfileForm.module.css';
 
 const ProfileForm = () => {
+	const history = useHistory();
+
 	const newPasswordInputRef = useRef();
 	const authCtx = useContext(AuthContext);
 
@@ -11,7 +15,7 @@ const ProfileForm = () => {
 
 		const enteredNewPassword = newPasswordInputRef.current.value;
 
-		//Validations for
+		// add validation
 
 		fetch(
 			'https://identitytoolkit.googleapis.com/v1/accounts:update?key=AIzaSyCcQ3o9XpR9Fzk3ftfAklXMULYRtTY2pnQ',
@@ -19,20 +23,22 @@ const ProfileForm = () => {
 				method: 'POST',
 				body: JSON.stringify({
 					idToken: authCtx.token,
-					passowrd: enteredNewPassword,
-					returnSecureToken: true,
+					password: enteredNewPassword,
+					returnSecureToken: false,
 				}),
 				headers: {
 					'Content-Type': 'application/json',
 				},
 			}
 		).then((res) => {
-			//Always succeeds
-			console.log(enteredNewPassword);
+			// assumption: Always succeeds!
+
+			history.replace('/');
 		});
 	};
+
 	return (
-		<form className={classes.form}>
+		<form className={classes.form} onSubmit={submitHandler}>
 			<div className={classes.control}>
 				<label htmlFor='new-password'>New Password</label>
 				<input
@@ -43,7 +49,7 @@ const ProfileForm = () => {
 				/>
 			</div>
 			<div className={classes.action}>
-				<button onClick={submitHandler}>Change Password</button>
+				<button>Change Password</button>
 			</div>
 		</form>
 	);
