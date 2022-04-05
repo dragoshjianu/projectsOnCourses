@@ -1,0 +1,26 @@
+import MeetupList from '../components/meetups/MeetupList';
+import Layout from '../components/layout/Layout';
+
+const DUMMY_MEETUPS = [
+	{
+		id: 'm1',
+		title: 'Meetup Forst Item',
+		image:
+			'https://upload.wikimedia.org/wikipedia/commons/3/3b/Frauenkirche_and_Neues_Rathaus_Munich_March_2013.JPG',
+		address: 'Some Address 5, 12345 City',
+		description: 'This is a first Meetup',
+	},
+	{
+		id: 'm2',
+		title: 'Meetup Second Item',
+		image:
+			'https://upload.wikimedia.org/wikipedia/commons/3/3b/Frauenkirche_and_Neues_Rathaus_Munich_March_2013.JPG',
+		address: 'Some Address 5, 12345 City',
+		description: 'This is a second Meetup',
+	},
+];
+const HomePage = () => {
+	return <MeetupList meetups={DUMMY_MEETUPS} />;
+};
+
+export default HomePage;
