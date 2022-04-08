@@ -1,27 +1,18 @@
-import { useEffect, useState } from 'react';
-import MeetupList from '../components/meetups/MeetupList';
-import Layout from '../components/layout/Layout';
+import Head from 'next/head';
+import { MongoClient } from 'mongodb';
 
-const DUMMY_MEETUPS = [
-	{
-		id: 'm1',
-		title: 'Meetup Forst Item',
-		image:
-			'https://upload.wikimedia.org/wikipedia/commons/3/3b/Frauenkirche_and_Neues_Rathaus_Munich_March_2013.JPG',
-		address: 'Some Address 5, 12345 City',
-		description: 'This is a first Meetup',
-	},
-	{
-		id: 'm2',
-		title: 'Meetup Second Item',
-		image:
-			'https://upload.wikimedia.org/wikipedia/commons/3/3b/Frauenkirche_and_Neues_Rathaus_Munich_March_2013.JPG',
-		address: 'Some Address 5, 12345 City',
-		description: 'This is a second Meetup',
-	},
-];
+import MeetupList from '../components/meetups/MeetupList';
+
 const HomePage = (props) => {
-	return <MeetupList meetups={props.meetups} />;
+	return (
+		<>
+			<Head>
+				<title>React Meetups</title>
+				<meta name='description' content='Brows a hudge list of meetups' />
+			</Head>
+			<MeetupList meetups={props.meetups} />;
+		</>
+	);
 };
 
 // export async function getServerSideProps(context) {
@@ -38,9 +29,25 @@ const HomePage = (props) => {
 
 export async function getStaticProps() {
 	//fetch data from an API or database
+	const client = await MongoClient.connect(
+		'mongodb+srv://dragoshjianu:dragosh23@cluster0.nna1u.mongodb.net/meetups?retryWrites=true&w=majority'
+	);
+	const db = client.db();
+
+	const meetupsCollection = db.collection('meetups');
+
+	const meetups = await meetupsCollection.find().toArray();
+
+	client.close();
+
 	return {
 		props: {
-			meetups: DUMMY_MEETUPS,
+			meetups: meetups.map((meetup) => ({
+				title: meetup.title,
+				address: meetup.address,
+				image: meetup.image,
+				id: meetup._id.toString(),
+			})),
 		},
 		revalidate: 10,
 	};
