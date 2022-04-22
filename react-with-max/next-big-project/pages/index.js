@@ -10,7 +10,7 @@ const HomePage = (props) => {
 				<title>React Meetups</title>
 				<meta name='description' content='Brows a hudge list of meetups' />
 			</Head>
-			<MeetupList meetups={props.meetups} />;
+			<MeetupList meetups={props.meetups} />
 		</>
 	);
 };
