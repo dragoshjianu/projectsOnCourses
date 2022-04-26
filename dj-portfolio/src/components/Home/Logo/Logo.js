@@ -1,13 +1,57 @@
-<?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
- "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
-<svg version="1.0" xmlns="http://www.w3.org/2000/svg"
- width="559.000000pt" height="897.000000pt" viewBox="0 0 559.000000 897.000000"
- preserveAspectRatio="xMidYMid meet">
+import React, { useEffect, useRef } from 'react';
+import LogoS from '../../../assets/images/logo-s.png';
+import gsap from 'gsap-trial';
+import DrawSVGPlugin from 'gsap-trial/DrawSVGPlugin';
 
-<g transform="translate(0.000000,897.000000) scale(0.100000,-0.100000)"
-fill="#000000" stroke="none">
-<path d="M2930 8959 c-344 -16 -623 -85 -915 -228 -231 -114 -406 -241 -600
+import './Logo.scss';
+
+const Logo = () => {
+	const bgRef = useRef();
+	const outlineLogoRef = useRef();
+	const solidLogoRef = useRef();
+
+	useEffect(() => {
+		gsap.registerPlugin(DrawSVGPlugin);
+
+		gsap
+			.timeline()
+			.to(bgRef.current, {
+				duration: 1,
+				opacity: 1,
+			})
+			.from(outlineLogoRef.current, {
+				drawSVG: 0,
+				duration: 20,
+			});
+
+		gsap.fromTo(
+			solidLogoRef.current,
+			{
+				opacity: 0,
+			},
+			{ opacity: 1, delay: 4, duration: 4 }
+		);
+	}, []);
+
+	return (
+		<div className='logo-container' ref={bgRef}>
+			<img className='solid-logo' src={LogoS} alt='S' ref={solidLogoRef} />
+			<svg
+				version='1.0'
+				xmlns='http://www.w3.org/2000/svg'
+				width='559pt'
+				height='897pt'
+				viewBox='0 0 559 897'
+				preserveAspectRatio='xMidYMid meet'
+			>
+				<g
+					className='svg-container'
+					transform='translate(0, 897) scale(0.1,-0.1)'
+					fill='none'
+				>
+					<path
+						ref={outlineLogoRef}
+						d='M2930 8959 c-344 -16 -623 -85 -915 -228 -231 -114 -406 -241 -600
 -436 -61 -60 -145 -137 -188 -169 -432 -325 -715 -757 -806 -1230 -109 -564
 21 -1117 384 -1641 250 -360 780 -877 1547 -1511 451 -373 600 -505 803 -708
 215 -216 275 -293 350 -448 55 -114 75 -188 82 -298 6 -96 -6 -173 -39 -257
@@ -67,6 +111,12 @@ m2095 -529 c212 -43 445 -176 659 -378 129 -121 368 -406 360 -429 -2 -6 -95
 3 666 43 255 46 474 119 698 233 l117 60 -75 -71 c-377 -356 -881 -572 -1471
 -628 -188 -18 -606 -8 -779 19 -465 72 -868 244 -1222 521 -180 141 -402 382
 -575 625 -130 183 -342 550 -326 566 11 11 446 277 454 278 4 1 33 -45 65
--101z"/>
-</g>
-</svg>
+-101z'
+					/>
+				</g>
+			</svg>
+		</div>
+	);
+};
+
+export default Logo;
