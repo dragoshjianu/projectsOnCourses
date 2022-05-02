@@ -1,25 +1,13 @@
-function combine(
-	input1: number | string,
-	input2: number | string,
-	resultType: 'as-number' | 'as-text'
-) {
-	let result;
-	if (
-		(typeof input1 === 'number' && typeof input2 === 'number') ||
-		resultType === 'as-number'
-	) {
-		result = +input1 + +input2;
-	} else {
-		result = input1.toString() + input2.toString();
-	}
-	return result;
+let userInput: unknown;
+let userName: string;
+
+userInput = 5;
+userInput = 'Max';
+
+if (typeof userInput === 'string') userName = userInput;
+
+function generateError(message: string, code: number): never {
+	throw { message: message, errorCode: code };
 }
 
-const combinedAges = combine(26, 30, 'as-number');
-console.log(combinedAges);
-
-const combinedName = combine('Max', 'Anna', 'as-text');
-console.log(combinedName);
-
-const combinedStringNumbe = combine('30', '26', 'as-number');
-console.log(combinedStringNumbe);
+generateError('Error occurred', 500);
