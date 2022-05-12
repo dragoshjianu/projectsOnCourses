@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { gql, GraphQLClient } from 'graphql-request';
+import Link from 'next/link';
 
 export const getServerSideProps = async (pageContext) => {
 	const url = process.env.ENDPOINT;
@@ -45,8 +46,50 @@ export const getServerSideProps = async (pageContext) => {
 };
 
 const Video = ({ video }) => {
-	console.log(video);
-	return <div>VIDEO</div>;
+	const [watching, setWatching] = useState(false);
+	return (
+		<>
+			{!watching && (
+				<img className='video-image' src={video.thumbnail.url} alt={video.title} />
+			)}
+			{!watching && (
+				<div className='video-info'>
+					<p>{video.tags.join(', ')}</p>
+					{/* <p>
+					{video.tags.map((tag) => (
+						<Link key={tag} href={`/tag/${tag}`}>
+							{tag}
+						</Link>
+					))}
+				</p> */}
+					<p>{video.description}</p>
+					<Link href='/'>
+						<p>Go back</p>
+					</Link>
+					<button
+						className='video-overlay'
+						onClick={() => {
+							setWatching((prevState) => !prevState);
+							console.log(watching);
+						}}
+					>
+						PLAY
+					</button>
+				</div>
+			)}
+			{watching && (
+				<video width='100%' controls>
+					<source src={video.mp4.url} type='video/mp4' />
+				</video>
+			)}
+			<div
+				className='info-footer'
+				onClick={() => {
+					watching ? setWatching((prevState) => !prevState) : null;
+				}}
+			></div>
+		</>
+	);
 };
 
 export default Video;

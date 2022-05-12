@@ -1,5 +1,6 @@
 import { gql, GraphQLClient } from 'graphql-request';
 import Image from 'next/image';
+import Navbar from '../components/Navbar';
 import Section from '../components/Section';
 
 export const getStaticProps = async () => {
@@ -11,7 +12,7 @@ export const getStaticProps = async () => {
 		},
 	});
 
-	const query = gql`
+	const getVideosQuery = gql`
 		query {
 			videos {
 				createdAt
@@ -31,17 +32,32 @@ export const getStaticProps = async () => {
 		}
 	`;
 
-	const data = await graphQLClient.request(query);
+	const getAccountQuery = gql`
+		query {
+			account(where: { id: "cl2zshv8nvr2q0cuqiyvn0zv4" }) {
+				username
+				avatar {
+					url
+				}
+			}
+		}
+	`;
+
+	const data = await graphQLClient.request(getVideosQuery);
 	const videos = data.videos;
+
+	const accountData = await graphQLClient.request(getAccountQuery);
+	const account = accountData.account;
 
 	return {
 		props: {
 			videos,
+			account,
 		},
 	};
 };
 
-const Home = ({ videos }) => {
+const Home = ({ videos, account }) => {
 	const randomVideo = (videos) => {
 		return videos[Math.floor(Math.random() * videos.length)];
 	};
@@ -56,6 +72,7 @@ const Home = ({ videos }) => {
 
 	return (
 		<>
+			<Navbar account={account} />
 			<div className='app'>
 				<div className='main-video'>
 					<img src={randomVideo(videos).thumbnail.url} alt={randomVideo(videos).title} />
