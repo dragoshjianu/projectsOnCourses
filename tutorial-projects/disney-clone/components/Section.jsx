@@ -3,7 +3,6 @@ import React from 'react';
 import Card from './Card';
 
 const Section = (props) => {
-	console.log('Din section ', props.videos);
 	return (
 		<section className='section'>
 			<h3>{props.genre}</h3>

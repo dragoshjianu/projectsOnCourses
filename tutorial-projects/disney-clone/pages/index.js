@@ -49,6 +49,11 @@ const Home = ({ videos }) => {
 	const filteredVideos = (video, genre) => {
 		return videos.filter((video) => video.tags.includes(genre));
 	};
+
+	const unSeenVideos = (videos) => {
+		return videos.filter((video) => video.seen == false || video.seen == null);
+	};
+
 	return (
 		<>
 			<div className='app'>
@@ -56,14 +61,18 @@ const Home = ({ videos }) => {
 					<img src={randomVideo(videos).thumbnail.url} alt={randomVideo(videos).title} />
 				</div>
 				<div className='video-feedback'>
+					<Section genre={'Recommnded for you'} videos={unSeenVideos(videos)} />
 					<Section genre={'Family'} videos={filteredVideos(videos, 'family')} />
-					<Section genre={'Star Wars'} videos={videos} />
-					<Section genre={'Disney'} videos={videos} />
-					<Section genre={'National Geographic'} videos={videos} />
-					<Section genre={'Marvel'} videos={videos} />
-					<Section genre={'Pixar'} videos={videos} />
-					<Section genre={'Thriller'} videos={videos} />
-					<Section genre={'Classic'} videos={videos} />
+					<Section genre={'Star Wars'} videos={filteredVideos(videos, 'star-wars')} />
+					<Section genre={'Disney'} videos={filteredVideos(videos, 'disney')} />
+					<Section
+						genre={'National Geographic'}
+						videos={filteredVideos(videos, 'national-geographic')}
+					/>
+					<Section genre={'Marvel'} videos={filteredVideos(videos, 'marvel')} />
+					<Section genre={'Pixar'} videos={filteredVideos(videos, 'pixar')} />
+					<Section genre={'Thriller'} videos={filteredVideos(videos, 'thriller')} />
+					<Section genre={'Classic'} videos={filteredVideos(videos, 'classic')} />
 				</div>
 			</div>
 		</>
