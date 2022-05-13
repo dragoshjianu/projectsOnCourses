@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react'
 import { getCategories } from '../services'
 
-import Link from 'next/Link'
+import Link from 'next/link'
 
 const Header = () => {
   const [categories, setCategories] = useState([])
@@ -27,6 +27,7 @@ const Header = () => {
               </span>
             </Link>
           ))}
+          <Link href="https://app.graphcms.com/">Login</Link>
         </div>
       </div>
     </div>
