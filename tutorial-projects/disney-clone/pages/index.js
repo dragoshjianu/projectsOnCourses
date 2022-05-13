@@ -1,5 +1,6 @@
 import { gql, GraphQLClient } from 'graphql-request';
 import Image from 'next/image';
+import Link from 'next/link';
 import Navbar from '../components/Navbar';
 import Section from '../components/Section';
 
@@ -77,20 +78,64 @@ const Home = ({ videos, account }) => {
 				<div className='main-video'>
 					<img src={randomVideo(videos).thumbnail.url} alt={randomVideo(videos).title} />
 				</div>
-				<div className='video-feedback'>
-					<Section genre={'Recommnded for you'} videos={unSeenVideos(videos)} />
-					<Section genre={'Family'} videos={filteredVideos(videos, 'family')} />
-					<Section genre={'Star Wars'} videos={filteredVideos(videos, 'star-wars')} />
-					<Section genre={'Disney'} videos={filteredVideos(videos, 'disney')} />
-					<Section
-						genre={'National Geographic'}
-						videos={filteredVideos(videos, 'national-geographic')}
-					/>
-					<Section genre={'Marvel'} videos={filteredVideos(videos, 'marvel')} />
-					<Section genre={'Pixar'} videos={filteredVideos(videos, 'pixar')} />
-					<Section genre={'Thriller'} videos={filteredVideos(videos, 'thriller')} />
-					<Section genre={'Classic'} videos={filteredVideos(videos, 'classic')} />
+				<div className='video-feed'>
+					<Link href='#disney'>
+						<div className='franchise'>Disney</div>
+					</Link>
+					<Link href='#marvel'>
+						<div className='franchise'>Marvel</div>
+					</Link>
+					<Link href='#star-wars'>
+						<div className='franchise'>Star Wars</div>
+					</Link>
+					<Link href='#family'>
+						<div className='franchise'>Family</div>
+					</Link>
+					<Link href='#classic'>
+						<div className='franchise'>Classic</div>
+					</Link>
+					<Link href='#thriller'>
+						<div className='franchise'>Thriller</div>
+					</Link>
 				</div>
+
+				<Section genre={'Recommnded for you'} videos={unSeenVideos(videos)} />
+				<Section
+					genre={'Family'}
+					videos={filteredVideos(videos, 'family')}
+					id={'family'}
+				/>
+				<Section
+					genre={'Star Wars'}
+					videos={filteredVideos(videos, 'star-wars')}
+					id={'star-wars'}
+				/>
+				<Section
+					genre={'Disney'}
+					videos={filteredVideos(videos, 'disney')}
+					id={'disney'}
+				/>
+				<Section
+					genre={'National Geographic'}
+					videos={filteredVideos(videos, 'national-geographic')}
+					id={'national-geographic'}
+				/>
+				<Section
+					genre={'Marvel'}
+					videos={filteredVideos(videos, 'marvel')}
+					id={'marvel'}
+				/>
+				<Section genre={'Pixar'} videos={filteredVideos(videos, 'pixar')} id='pixar' />
+				<Section
+					genre={'Thriller'}
+					videos={filteredVideos(videos, 'thriller')}
+					id={'thriller'}
+				/>
+				<Section
+					genre={'Classic'}
+					videos={filteredVideos(videos, 'classic')}
+					id={'classic'}
+				/>
 			</div>
 		</>
 	);

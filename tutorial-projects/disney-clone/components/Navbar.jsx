@@ -6,9 +6,11 @@ import React from 'react';
 const Navbar = ({ account }) => {
 	return (
 		<nav className='navbar'>
-			<Link href='./'>
-				<Image src={logo} alt='Disney Logo' width={90} height={50} />
-			</Link>
+			<div className='logo-wrapper'>
+				<Link href='./'>
+					<Image src={logo} alt='Disney Logo' width={90} height={50} />
+				</Link>
+			</div>
 			<div className='account-info'>
 				<p>
 					Welcome {account.username.charAt(0).toUpperCase() + account.username.slice(1)}!

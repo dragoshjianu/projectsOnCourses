@@ -46,7 +46,7 @@ export const getServerSideProps = async (pageContext) => {
 };
 
 const changeToSeen = async (slug) => {
-	await fetch('api/changeToSeen', {
+	await fetch('/api/changeToSeen', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
