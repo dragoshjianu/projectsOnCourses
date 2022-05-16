@@ -31,11 +31,11 @@
 
 		<!-- Design -->
 		<link rel="stylesheet" href="assets/css/styles.min.css" />
-		<link rel="icon" href="./assets/img/favicon-32x32.png" type="image/png" />
-		<link rel="icon" href="./assets/img/favicon-64x64.png" type="image/png" />
-		<link rel="icon" href="./assets/img/favicon.ico" type="image/x-icon" />
-		<link rel="icon" href="./assets/img/favicon.svg" type="image/svg+xml" />
-		<link rel="apple-touch-icon" href="./assets/img/apple-touch-icon.png" />
+		<link rel="icon" href="./assets/images/favicon-32x32.png" type="image/png" />
+		<link rel="icon" href="./assets/images/favicon-64x64.png" type="image/png" />
+		<link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon" />
+		<link rel="icon" href="./assets/images/favicon.svg" type="image/svg+xml" />
+		<link rel="apple-touch-icon" href="./assets/images/apple-touch-icon.png" />
 
 		<!-- import fonts -->
 		<link
@@ -54,26 +54,305 @@
 	<body>
 		<!-- HEADER -->
 		<header class="mainHeader container">
-			<div class="imageWrapper">
-				<picture>
-					<!-- Mobile-->
-					<source media="(max-width:)" srcset="" type="image/webp" />
+			<picture>
+				<!-- Tablet-->
+				<source
+					media="(min-width:600px)"
+					srcset="./assets/images/logo-mobile-webp.webp"
+					type="image/webp"
+				/>
 
-					<!-- Tablet-->
-					<source media="(min-width:)" srcset="" type="image/webp" />
+				<!-- Large Desktop -->
+				<source
+					media="(min-width:960px)"
+					srcset="./assets/images/logo-dektop-webp.webp"
+					type="image/webp"
+				/>
 
-					<!-- Default Mobile png-->
-					<img src="" alt="Logo-ul Gradiniței cu Program Prelungit Nr. 38 Ploiești" />
-				</picture>
-			</div>
+				<!-- Default Mobile png-->
+				<img
+					src="./assets/images/logo-mobile-png.png"
+					alt="Logo-ul Gradiniței cu Program Prelungit Nr. 38 Ploiești"
+					width="auto"
+					height="100px"
+				/>
+			</picture>
+			<nav class="mainNavigation">
+				<div class="mobileMenu">
+					<input class="checkbox" type="checkbox" name="" id="" />
+					<div class="menuIcon">
+						<span class="line"></span>
+					</div>
+				</div>
+
+				<ul class="mainNavigation-list">
+					<li class="mainNavigation-item">
+						<a class="mainNavigation-link" href="#">Acasa</a>
+					</li>
+					<li class="mainNavigation-item">
+						<a class="mainNavigation-link" href="#">Prezentare</a>
+					</li>
+					<li class="mainNavigation-item">
+						<a class="mainNavigation-link" href="#">Transparență Instituțională</a>
+					</li>
+					<li class="mainNavigation-item">
+						<a class="mainNavigation-link" href="#">Proiecte și Activități</a>
+					</li>
+					<li class="mainNavigation-item">
+						<a class="mainNavigation-link" href="#">Noutăți</a>
+					</li>
+					<li class="mainNavigation-item">
+						<a class="mainNavigation-link" href="#">Contact</a>
+					</li>
+				</ul>
+			</nav>
 		</header>
-		<!-- HERO -->
-		<!-- CONTACT CTA - mobile hidden-->
-		<!-- PREZENTARE -->
-		<!-- NOUTATI -->
-		<!-- PROIECTE SI ACTIVITATI -->
-		<!-- HARTA - mobile hidden -->
-		<!-- PREFOOTER -->
+		<main>
+			<!-- HERO -->
+			<section class="hero-section container">
+				<div class="hero-description">
+					<h1 class="hero-description-title">
+						Gradinița cu Program Prelungit Nr. 38 Ploiești
+					</h1>
+					<p class="hero-description-text">Programul grădiniței: 07:30 - 17:30</p>
+				</div>
+			</section>
+
+			<!-- CONTACT CTA - mobile hidden-->
+			<section class="contact-cta container">
+				<div class="contact-cta-description">
+					<p class="contact-cta-text">
+						Pentru informatii sunați la: <a href="tel:0040244514266">0244 541 266</a>
+					</p>
+					<button class="btn btn-primary contactCta-btn">Contact</button>
+				</div>
+			</section>
+
+			<!-- NOUTATI -->
+			<section class="nouitati-section container">
+				<div class="section-header"><h2>Noutati</h2></div>
+				<div class="noutati-list">
+					<article class="noutati-item">
+						<picture class="noutati-thumbnail">
+							<source srcset="./assets/images/webp/litere-lemn.webp" type="image/webp" />
+							<img
+								class="noutati-image"
+								src="./assets/images/litere-lemn.jpg"
+								alt="Imaginea preprezentativa a articolului: NUME_ARTICOL ce preprezinta...."
+							/>
+						</picture>
+
+						<div class="noutati-detalii">
+							<div class="noutati-data">
+								<span class="data-zi">6</span>
+								<span class="data-luna">Ian</span>
+							</div>
+							<div class="noutati-description">
+								<h4 class="noutati-article-title">Lorem Ipsum Title</h4>
+								<p class="noutati-info">
+									<span class="noutati-info-autor">De: Autor Anonim</span> /
+									<span class="noutati-info-categorii">Categorie, Categorie-2</span>
+								</p>
+							</div>
+						</div>
+					</article>
+					<article class="noutati-item">
+						<picture class="noutati-thumbnail">
+							<source
+								srcset="./assets/images/webp/copii-cu-trenulet.webp"
+								type="image/webp"
+							/>
+							<img
+								class="noutati-image"
+								src="./assets/images/copii-cu-trenulet.jpg"
+								alt="Imaginea preprezentativa a articolului: NUME_ARTICOL ce preprezinta...."
+							/>
+						</picture>
+						<div class="noutati-detalii">
+							<div class="noutati-data">
+								<span class="data-zi">6</span>
+								<span class="data-luna">Ian</span>
+							</div>
+							<div class="noutati-description">
+								<h4 class="noutati-article-title">Lorem Ipsum Title</h4>
+								<p class="noutati-info">
+									<span class="noutati-info-autor">De: Autor Anonim</span> /
+									<span class="noutati-info-categorii">Categorie, Categorie-2</span>
+								</p>
+							</div>
+						</div>
+					</article>
+				</div>
+			</section>
+
+			<!-- PREZENTARE -->
+			<section class="prezentare-section container">
+				<div class="section-header">
+					<h2>Prezentare</h2>
+				</div>
+				<div class="prezentare-content">
+					<img
+						class="prezentare-image"
+						src="./assets/images/kid-paperplane.png"
+						alt="Copil desenat in avion de hartie ce semnifica joaca si starea de spirit a copiilor din gradinita. "
+					/>
+					<div class="prezentare-columns">
+						<div class="prezentare-column">
+							<img
+								class="prezentare-col-img"
+								src="#"
+								alt="Detalii despre misiunea gradinitei"
+							/>
+							<div class="prezentare-right-description">
+								<h3 class="prezentare-col-head">Misiune</h3>
+								<p class="prezentare-col-head">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, voluptas
+									dolorem eum, vel voluptatibus recusandae laboriosam, Provident, autem
+									maxime.
+								</p>
+							</div>
+						</div>
+						<div class="prezentare-column">
+							<img
+								class="prezentare-col-img"
+								src="#"
+								alt="Detalii despre viziunea gradinitei"
+							/>
+							<div class="prezentare-right-description">
+								<h3 class="prezentare-col-head">Viziune</h3>
+								<p class="prezentare-col-head">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, voluptas
+									dolorem eum, vel voluptatibus recusandae laboriosam, Provident, autem
+									maxime.
+								</p>
+							</div>
+						</div>
+						<div class="prezentare-column">
+							<img
+								class="prezentare-col-img"
+								src="#"
+								alt="Detalii despre oferta educationala a gradinitei"
+							/>
+							<div class="prezentare-right-description">
+								<h3 class="prezentare-col-head">Oferta Educationala</h3>
+								<p class="prezentare-col-head">
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo, voluptas
+									dolorem eum, vel voluptatibus recusandae laboriosam, Provident, autem
+									maxime.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- PROIECTE SI ACTIVITATI -->
+			<section class="proiecte-section container">
+				<div class="section-header">
+					<h2>Proiectge și Activități</h2>
+				</div>
+				<div class="proiecte-content">
+					<div class="proiect card">
+						<img
+							src="#"
+							alt="Detalii despre proiectul NUMELE desfasurat in perioada [PERIOADA]"
+							class="proiect-image"
+						/>
+						<h4 class="proiect-title">Nume Proiect</h4>
+						<p class="proiect-text">
+							Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia deleniti
+							accusamus totam nobis, provident molestiae?
+						</p>
+						<span class="proiect-perioada">15-01-2021 - 14-05-2021</span>
+					</div>
+				</div>
+			</section>
+
+			<!-- HARTA - mobile hidden -->
+			<section class="map-section container">
+				<div class="mapouter">
+					<div class="gmap_canvas">
+						<iframe
+							width="100%"
+							height="200"
+							id="gmap_canvas"
+							src="https://maps.google.com/maps?q=Strada%20Po%C8%99tei%2023,%20Ploie%C8%99ti%20123455,%20Rom%C3%A2nia&t=&z=19&ie=UTF8&iwloc=&output=embed"
+							frameborder="0"
+							scrolling="no"
+							marginheight="0"
+							marginwidth="0"
+						></iframe
+						><style>
+							.mapouter {
+								position: relative;
+								text-align: right;
+								height: 200px;
+								width: 100vw;
+							}
+						</style>
+					</div>
+				</div>
+			</section>
+			<!-- PREFOOTER -->
+			<section class="prefooter-section">
+				<div class="prefooter-column">
+					<p class="prefooter-text">
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem saepe
+						porro veritatis voluptatibus illum odio, corrupti esse assumenda? Earum,
+						blanditiis!
+					</p>
+					<p class="prefooter-address">
+						<em class="address-icon">Icon</em> Strada Poștei 23, Ploiești, Prahova
+					</p>
+					<p class="prefooter-telefon">
+						<em class="phone-icon">Icon</em> <a href="tel://0040244514266">0244541266</a>
+					</p>
+					<p class="prefooter-fax"><em class="fax-icon">Icon</em> 0244541266</p>
+					<p class="prefooter-email">
+						<em class="email-icon">Icon</em>
+						<a href="mailto://gradinita38ploiesti@gmail.com"
+							>gradinita38ploiesti@gmail.com</a
+						>
+					</p>
+					<div class="prefooter-social-media">
+						<em class="facebook-icon">ICON</em>
+					</div>
+				</div>
+				<div class="prefooter-column">
+					<img
+						class="prefooter-logo-image"
+						src="./assets/images/webp/logo-dektop-webp.webp"
+						alt="Logo al gradinitei pentru footer"
+					/>
+					<p class="sublogo-text">Gradinita cu Program Prelungit Nr. 38 Ploiești</p>
+				</div>
+				<div class="prefooter-column">
+					<ul class="noutati-list">
+						<li class="noutati-item">
+							<a href="#" class="noutati-link">
+								Titlu articol / <em class="noutati-data">6 ianuarie 2021</em>
+							</a>
+						</li>
+						<li class="noutati-item">
+							<a href="#" class="noutati-link">
+								Titlu articol / <em class="noutati-data">6 ianuarie 2021</em>
+							</a>
+						</li>
+						<li class="noutati-item">
+							<a href="#" class="noutati-link">
+								Titlu articol / <em class="noutati-data">6 ianuarie 2021</em>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</section>
+		</main>
 		<!-- FOOTER -->
+		<footer class="page-footer">
+			<p classs="footer-text">
+				Gradinita cu Program Prelungit Nr. 38 Ploiești &copy; 2022. Toate drepturile
+				rezervate.
+			</p>
+		</footer>
 	</body>
 </html>
