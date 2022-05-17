@@ -1,0 +1,59 @@
+@use '../variables/' as *;
+
+.hero-section {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	width: 100%;
+	align-items: center;
+	text-align: center;
+	background: linear-gradient(
+			hsla($color-accent, $color-sat, $color-dark, 0.6),
+			hsla($color-accent, $color-sat, $color-dark, 0.6)
+		),
+		url('../../../assets/images/background-pattern.jpg') left top repeat;
+
+	.hero-description {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		width: 100%;
+		height: clamp(250px, 50vh, 400px);
+		background: url('../../../assets/images/clond.png');
+		background-position-x: center;
+		background-position-y: -10px;
+		background-repeat: no-repeat;
+		background-size: contain;
+
+		@media screen and (min-width: 370px) {
+			font-size: 0.75em;
+			background-position-y: -30px;
+		}
+		@media screen and (min-width: 420px) {
+			font-size: 0.9em;
+			background-position-y: -60px;
+		}
+		@media screen and (min-width: $break-tablet) {
+			font-size: 1em;
+			background-size: contain;
+		}
+
+		&-title {
+			margin-top: 10%;
+			& span {
+				display: block;
+				font-family: 'Diosis', Helvetica, Arial, sans-serif;
+			}
+
+			.hero-title-first-line {
+				font-weight: 200;
+				color: hsla($color-primary, $color-sat, $color-neutral);
+			}
+
+			.hero-title-second-line {
+				font-weight: 400;
+				color: hsla($color-tertiary, $color-sat, $color-neutral);
+			}
+		}
+	}
+}

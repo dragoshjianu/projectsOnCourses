@@ -1,0 +1,113 @@
+@use './variables/' as *;
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-family: 'Archivo', Helvetica, Arial, sans-serif;
+	font-size: 16px;
+	line-height: 1.5em;
+}
+
+body {
+	display: block;
+	min-height: 100vh;
+	margin: 0;
+	text-rendering: optimizeSpeed;
+}
+
+img,
+picture {
+	display: block;
+	max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+strong {
+	font-weight: 700;
+}
+
+a {
+	color: hsl($color-primary, $color-sat, $color-neutral);
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.hidden,
+.screen-readers {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+
+.btn {
+	display: inline-block;
+	padding: 0.25em 1.5em;
+	background-color: hsl($color-secondary, $color-sat, $color-neutral);
+	color: $color-white;
+	font-family: 'Dosis', Helvetica, Arial, sans-serif;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-decoration: none;
+	text-align: center;
+	border: 1px solid hsl($color-secondary, $color-sat, $color-neutral);
+	border-radius: 2em;
+	box-shadow: 0 0.25em 0.25em $color-shadow;
+	cursor: pointer;
+
+	&:hover {
+		color: hsl($color-secondary, $color-sat, $color-neutral);
+		background-color: transparent;
+		border: 1px solid hsl($color-secondary, $color-sat, $color-neutral);
+		box-shadow: 0 0.333em 0.333em $color-shadow;
+	}
+	&:active {
+		box-shadow: inset 0 0.1em 0.1em $color-shadow;
+	}
+}
+
+.highlight {
+	font-size: 1.2em;
+	font-weight: bold;
+	color: hsl($color-accent, $color-sat, $color-dark);
+}
+
+.large-only {
+	display: none;
+
+	@media screen and(min-width: $break-small-desktop) {
+		display: inline-block;
+	}
+}
+
+.container {
+	padding-block: 0;
+	padding-inline: clamp(2vw, 5%, 10vw);
+	font-size: clamp(1rem, 2vw, 1.5rem);
+	line-height: 1.5em;
+
+	@media screen and (min-width: 750px) {
+	}
+	@media screen and (min-width: 1000px) {
+	}
+	@media screen and (min-width: 1200px) {
+	}
+}

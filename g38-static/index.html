@@ -30,7 +30,7 @@
 		<meta property="og:image:height" content="@TODO" />
 
 		<!-- Design -->
-		<link rel="stylesheet" href="assets/css/styles.min.css" />
+		<link rel="stylesheet" href="styles/css/styles.css" />
 		<link rel="icon" href="./assets/images/favicon-32x32.png" type="image/png" />
 		<link rel="icon" href="./assets/images/favicon-64x64.png" type="image/png" />
 		<link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon" />
@@ -38,8 +38,10 @@
 		<link rel="apple-touch-icon" href="./assets/images/apple-touch-icon.png" />
 
 		<!-- import fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;900&family=Source+Sans+Pro:wght@300;900&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap"
 			rel="stylesheet"
 		/>
 
@@ -58,14 +60,14 @@
 				<!-- Tablet-->
 				<source
 					media="(min-width:600px)"
-					srcset="./assets/images/logo-mobile-webp.webp"
+					srcset="./assets/images/webp/logo-mobile-webp.webp"
 					type="image/webp"
 				/>
 
 				<!-- Large Desktop -->
 				<source
 					media="(min-width:960px)"
-					srcset="./assets/images/logo-dektop-webp.webp"
+					srcset="./assets/images/webp/logo-dektop-webp.webp"
 					type="image/webp"
 				/>
 
@@ -112,7 +114,8 @@
 			<section class="hero-section container">
 				<div class="hero-description">
 					<h1 class="hero-description-title">
-						Gradinița cu Program Prelungit Nr. 38 Ploiești
+						<span class="hero-title-first-line">Gradinița cu Program Prelungit</span>
+						<span class="hero-title-second-line">Nr. 38 Ploiești</span>
 					</h1>
 					<p class="hero-description-text">Programul grădiniței: 07:30 - 17:30</p>
 				</div>
@@ -122,9 +125,10 @@
 			<section class="contact-cta container">
 				<div class="contact-cta-description">
 					<p class="contact-cta-text">
-						Pentru informatii sunați la: <a href="tel:0040244514266">0244 541 266</a>
+						Pentru informatii sunați la:
+						<a href="tel:0040244514266" class="highlight">0244 541 266</a>
 					</p>
-					<button class="btn btn-primary contactCta-btn">Contact</button>
+					<a hreh="#" class="btn btn-primary contactCta-btn">Contact</a>
 				</div>
 			</section>
 
@@ -269,7 +273,7 @@
 			</section>
 
 			<!-- HARTA - mobile hidden -->
-			<section class="map-section container">
+			<section class="map-section container large-only">
 				<div class="mapouter">
 					<div class="gmap_canvas">
 						<iframe
@@ -294,7 +298,7 @@
 				</div>
 			</section>
 			<!-- PREFOOTER -->
-			<section class="prefooter-section">
+			<section class="prefooter-section container">
 				<div class="prefooter-column">
 					<p class="prefooter-text">
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem saepe
