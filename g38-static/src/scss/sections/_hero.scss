@@ -3,75 +3,88 @@
 .hero-section {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
-	position: relative;
-	padding-bottom: 0;
-	padding-top: 3em;
-	width: 100%;
-	height: max(30vh, 650px);
-	text-align: center;
+	padding-block: 1em;
+	min-width: 90%;
+	min-height: 250px;
+	max-height: max-content;
 	background: linear-gradient(
 			hsla($color-accent, $color-sat, $color-dark, 0.6),
 			hsla($color-accent, $color-sat, $color-dark, 0.6)
 		),
 		url('../../../assets/images/background-pattern.jpg') left top repeat;
 
-	.hero-kids {
-		align-self: flex-end;
-		margin-bottom: -30px;
+	@media screen and (min-width: $break-tablet) {
+		min-height: 350px;
 	}
-	.hero-content {
-		position: relative;
-		.hero-cloud {
-			position: relative;
-			z-index: 0;
-			width: min(90%, 550px);
+
+	.hero-kids {
+	}
+
+	.hero-description {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		width: 100%;
+		text-align: left;
+		font-size: 0.7em;
+		font-weight: 200;
+		background: url('../../../assets/images/cloud.png') center center no-repeat;
+		background-size: contain;
+
+		@media screen and (min-width: 370px) {
+			font-size: 0.7em;
 		}
-
-		.hero-description {
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			position: relative;
-			z-index: 1;
-			width: 100%;
-			font-size: 0.6em;
-
-			@media screen and (min-width: 370px) {
-				font-size: 0.75em;
-				background-position-y: -30px;
-			}
-			@media screen and (min-width: 420px) {
-				font-size: 0.9em;
-				background-position-y: -60px;
-			}
+		@media screen and (min-width: 420px) {
+			font-size: 0.9em;
+		}
+		@media screen and (min-width: $break-tablet) {
+			font-size: 1em;
+			line-height: 1.5;
+		}
+		&::after {
 			@media screen and (min-width: $break-tablet) {
-				font-size: 1em;
-				background-size: contain;
-			}
-
-			&-title {
-				margin-top: 10%;
-
-				& span {
-					display: block;
-					font-family: 'Diosis', Helvetica, Arial, sans-serif;
-				}
-
-				.hero-title-first-line {
-					font-weight: 700;
-					color: hsla($color-primary, $color-sat, $color-neutral);
-				}
-
-				.hero-title-second-line {
-					font-weight: 700;
-					color: hsla($color-tertiary, $color-sat, $color-neutral);
-				}
-			}
-			.hero-text {
-				font-size: 1.25em;
-				font-weight: bold;
+				content: url(../../../../../assets/images/sun.png);
+				position: absolute;
+				top: -100px;
+				right: 100px;
+				width: 100px;
+				height: auto;
+				transform-origin: 50% 0;
+				animation: pendulare 4s ease-in-out alternate infinite;
 			}
 		}
+
+		&-title {
+			margin-block-start: 1em;
+			font-weight: 200;
+			& span {
+				display: block;
+				font-family: 'Dosis', Helvetica, Arial, sans-serif;
+			}
+
+			.hero-title-first-line {
+				color: hsla($color-primary, $color-sat, $color-neutral);
+			}
+
+			.hero-title-second-line {
+				color: hsla($color-tertiary, $color-sat, $color-neutral);
+			}
+		}
+		.hero-text {
+			margin: 0;
+			font-size: 1.25em;
+		}
+	}
+}
+
+@keyframes pendulare {
+	0%,
+	100% {
+		transform: rotate(10deg);
+	}
+	50% {
+		transform: rotate(-10deg);
 	}
 }

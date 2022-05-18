@@ -1,0 +1,41 @@
+@use '../variables/' as *;
+
+.contact-cta {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-block: 2em;
+	background: url('../../../assets/images/white-texture.jpg') top center repeat;
+
+	&-description {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+		font-size: 1em;
+		text-align: center;
+
+		@media screen and (min-width: 450px) {
+			font-size: 1.3em;
+		}
+		@media screen and (min-width: 520px) {
+			font-size: 1.5em;
+		}
+		@media screen and (min-width: $break-tablet) {
+			flex-direction: row;
+			justify-content: space-between;
+			padding-inline: 3em;
+			font-size: 1.3em;
+		}
+		@media screen and (min-width: $break-large-desktop) {
+			$font-size: 2em;
+		}
+
+		a {
+			display: block;
+			@media screen and (min-width: 400px) {
+				display: inline;
+			}
+		}
+	}
+}
