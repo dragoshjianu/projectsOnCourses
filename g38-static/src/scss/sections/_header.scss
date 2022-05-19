@@ -1,0 +1,80 @@
+@use '../variables/' as *;
+.main-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.header-logo {
+	}
+
+	.main-navigation {
+		display: block;
+		flex: 1;
+		position: relative;
+		width: 100%;
+		height: 100%;
+		padding-block: 0.2em;
+		background-color: hsl($color-primary, $color-sat, $color-neutral);
+		.mobile-menu {
+			position: relative;
+			#menu-toggle {
+				opacity: 0;
+			}
+			#menu__toggle:checked + .menu-icon > span {
+				transform: rotate(45deg);
+			}
+			#menu__toggle:checked + .menu-icon > span::before {
+				top: 0;
+				transform: rotate(0deg);
+			}
+			#menu__toggle:checked + .menu-icon > span::after {
+				top: 0;
+				transform: rotate(90deg);
+			}
+			#menu__toggle:checked ~ .menu__box {
+				left: 0 !important;
+			}
+			.menu-icon {
+				position: absolute;
+				top: 15px;
+				left: 20px;
+				width: 26px;
+				height: 26px;
+				cursor: pointer;
+				z-index: 1;
+			}
+			.menu-icon > span,
+			.menu-icon > span::before,
+			.menu-icon > span::after {
+				display: block;
+				position: absolute;
+				width: 100%;
+				height: 3px;
+				background-color: $color-white;
+				transition-duration: 0.25s;
+			}
+			.menu-icon > span::before {
+				content: '';
+				top: -8px;
+			}
+			.menu-icon > span::after {
+				content: '';
+				top: 8px;
+			}
+		}
+		.main-navigation-list {
+			display: block;
+			position: fixed;
+			top: 0;
+			left: -100%;
+			width: 300px;
+			height: 100%;
+			margin: 0;
+			padding: 80px 0;
+			list-style: none;
+			background-color: #eceff1;
+			box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+			transition-duration: 0.25s;
+		}
+	}
+}

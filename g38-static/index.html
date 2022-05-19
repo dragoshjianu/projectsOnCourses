@@ -55,56 +55,63 @@
 	</head>
 	<body>
 		<!-- HEADER -->
-		<header class="mainHeader container">
-			<picture>
-				<!-- Tablet-->
-				<source
-					media="(min-width:600px)"
-					srcset="./assets/images/webp/logo-mobile-webp.webp"
-					type="image/webp"
-				/>
+		<header class="main-header">
+			<a
+				href="#"
+				class="header-logo"
+				title="Revino pe prima pagina a site-ului Gradinita38Ploiesti.ro"
+			>
+				<picture class="header-picture">
+					<!-- Mobile-->
+					<source
+						media="(min-width:100px)"
+						srcset="./assets/images/webp/logo-mobile-webp.webp"
+						type="image/webp"
+					/>
 
-				<!-- Large Desktop -->
-				<source
-					media="(min-width:960px)"
-					srcset="./assets/images/webp/logo-dektop-webp.webp"
-					type="image/webp"
-				/>
+					<!-- Large Desktop -->
+					<source
+						media="(min-width:960px)"
+						srcset="./assets/images/webp/logo-dektop-webp.webp"
+						type="image/webp"
+					/>
 
-				<!-- Default Mobile png-->
-				<img
-					src="./assets/images/logo-mobile-png.png"
-					alt="Logo-ul Gradiniței cu Program Prelungit Nr. 38 Ploiești"
-					width="auto"
-					height="100px"
-				/>
-			</picture>
-			<nav class="mainNavigation">
-				<div class="mobileMenu">
-					<input class="checkbox" type="checkbox" name="" id="" />
-					<div class="menuIcon">
-						<span class="line"></span>
-					</div>
+					<!-- Default Mobile png-->
+					<img
+						src="./assets/images/logo-mobile-png.png"
+						alt="Logo-ul Gradiniței cu Program Prelungit Nr. 38 Ploiești"
+						width="auto"
+						height="100px"
+					/>
+				</picture>
+			</a>
+
+			<nav class="main-navigation">
+				<div class="mobile-menu">
+					<input class="checkbox" type="checkbox" name="" id="menu-toggle" />
+					<label for="menu-toggle" class="menu-icon">
+						<span></span>
+					</label>
 				</div>
 
-				<ul class="mainNavigation-list">
-					<li class="mainNavigation-item">
-						<a class="mainNavigation-link" href="#">Acasa</a>
+				<ul class="main-navigation-list">
+					<li class="main-navigation-item">
+						<a class="main-navigation-link" href="#">Acasa</a>
 					</li>
-					<li class="mainNavigation-item">
-						<a class="mainNavigation-link" href="#">Prezentare</a>
+					<li class="main-navigation-item">
+						<a class="main-navigation-link" href="#">Prezentare</a>
 					</li>
-					<li class="mainNavigation-item">
-						<a class="mainNavigation-link" href="#">Transparență Instituțională</a>
+					<li class="main-navigation-item">
+						<a class="main-navigation-link" href="#">Transparență Instituțională</a>
 					</li>
-					<li class="mainNavigation-item">
-						<a class="mainNavigation-link" href="#">Proiecte și Activități</a>
+					<li class="main-navigation-item">
+						<a class="main-navigation-link" href="#">Proiecte și Activități</a>
 					</li>
-					<li class="mainNavigation-item">
-						<a class="mainNavigation-link" href="#">Noutăți</a>
+					<li class="main-navigation-item">
+						<a class="main-navigation-link" href="#">Noutăți</a>
 					</li>
-					<li class="mainNavigation-item">
-						<a class="mainNavigation-link" href="#">Contact</a>
+					<li class="main-navigation-item">
+						<a class="main-navigation-link" href="#">Contact</a>
 					</li>
 				</ul>
 			</nav>

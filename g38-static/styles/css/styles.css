@@ -211,6 +211,82 @@ a:hover {
   }
 }
 
+.main-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main-header .main-navigation {
+  display: block;
+  flex: 1;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding-block: 0.2em;
+  background-color: hsl(199deg, 100%, 50%);
+}
+.main-header .main-navigation .mobile-menu {
+  position: relative;
+}
+.main-header .main-navigation .mobile-menu #menu-toggle {
+  opacity: 0;
+}
+.main-header .main-navigation .mobile-menu #menu__toggle:checked + .menu-icon > span {
+  transform: rotate(45deg);
+}
+.main-header .main-navigation .mobile-menu #menu__toggle:checked + .menu-icon > span::before {
+  top: 0;
+  transform: rotate(0deg);
+}
+.main-header .main-navigation .mobile-menu #menu__toggle:checked + .menu-icon > span::after {
+  top: 0;
+  transform: rotate(90deg);
+}
+.main-header .main-navigation .mobile-menu #menu__toggle:checked ~ .menu__box {
+  left: 0 !important;
+}
+.main-header .main-navigation .mobile-menu .menu-icon {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  z-index: 1;
+}
+.main-header .main-navigation .mobile-menu .menu-icon > span,
+.main-header .main-navigation .mobile-menu .menu-icon > span::before,
+.main-header .main-navigation .mobile-menu .menu-icon > span::after {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  background-color: hsl(0deg, 0%, 100%);
+  transition-duration: 0.25s;
+}
+.main-header .main-navigation .mobile-menu .menu-icon > span::before {
+  content: "";
+  top: -8px;
+}
+.main-header .main-navigation .mobile-menu .menu-icon > span::after {
+  content: "";
+  top: 8px;
+}
+.main-header .main-navigation .main-navigation-list {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 300px;
+  height: 100%;
+  margin: 0;
+  padding: 80px 0;
+  list-style: none;
+  background-color: #eceff1;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  transition-duration: 0.25s;
+}
+
 .hero-section {
   display: flex;
   flex-direction: row;
