@@ -87,13 +87,10 @@
 			</a>
 
 			<nav class="main-navigation">
-				<div class="mobile-menu">
-					<input class="checkbox" type="checkbox" name="" id="menu-toggle" />
-					<label for="menu-toggle" class="menu-icon">
-						<span></span>
-					</label>
-				</div>
-
+				<input class="checkbox" type="checkbox" name="" id="menu-toggle" />
+				<label for="menu-toggle" class="menu-icon">
+					<span></span>
+				</label>
 				<ul class="main-navigation-list">
 					<li class="main-navigation-item">
 						<a class="main-navigation-link" href="#">Acasa</a>
@@ -102,7 +99,18 @@
 						<a class="main-navigation-link" href="#">Prezentare</a>
 					</li>
 					<li class="main-navigation-item">
-						<a class="main-navigation-link" href="#">Transparență Instituțională</a>
+						<a class="main-navigation-link" href="#">Transparență</a>
+						<ul class="main-subnav-list">
+							<li class="main-subnav-item">
+								<a href="#" class="main-subnav-link">Transparență Instituțională</a>
+							</li>
+							<li class="main-subnav-item">
+								<a href="#" class="main-subnav-link">Legislație</a>
+							</li>
+							<li class="main-subnav-item">
+								<a href="#" class="main-subnav-link">CEAC</a>
+							</li>
+						</ul>
 					</li>
 					<li class="main-navigation-item">
 						<a class="main-navigation-link" href="#">Proiecte și Activități</a>
@@ -415,5 +423,30 @@
 				rezervate.
 			</p>
 		</footer>
+		<script>
+			const menuElements = document.querySelectorAll('.main-navigation-item');
+
+			menuElements.forEach((element) => {
+				const children = element.children;
+				for (child of children) {
+					if (child.tagName === 'UL') {
+						child.parentElement.classList.add('has-childern');
+					}
+				}
+			});
+
+			const parentLi = document.querySelectorAll('.has-childern');
+			console.log(parentLi);
+
+			parentLi.forEach((li) => {
+				const dropIcon = document.createElement('span');
+				const link = li.querySelector('.main-navigation-link');
+				dropIcon.classList.add('drop-icon');
+
+				link.insertAdjacentElement('afterend', dropIcon);
+
+				dropIcon.textContent = '+';
+			});
+		</script>
 	</body>
 </html>
