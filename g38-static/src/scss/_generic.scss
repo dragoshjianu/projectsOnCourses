@@ -6,7 +6,7 @@
 }
 
 html {
-	font-family: 'Archivo', Helvetica, Arial, sans-serif;
+	font-family: $font-primary;
 	font-size: 16px;
 	line-height: 1.5em;
 }
@@ -61,7 +61,7 @@ a {
 	padding: 0.25em 1.5em;
 	background-color: hsl($color-secondary, $color-sat, $color-neutral);
 	color: $color-white;
-	font-family: 'Dosis', Helvetica, Arial, sans-serif;
+	font-family: $font-secondary;
 	font-weight: bold;
 	text-transform: uppercase;
 	text-decoration: none;
@@ -118,7 +118,7 @@ a {
 	justify-content: center;
 	align-items: center;
 	margin-block: 2em;
-	font-family: 'Dosis', Helvetica, Arial, sans-serif;
+	font-family: $font-secondary;
 	font-size: 2em;
 	line-height: 1.5em;
 

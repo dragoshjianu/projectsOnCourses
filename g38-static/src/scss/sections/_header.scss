@@ -87,7 +87,7 @@
 		}
 
 		#menu-toggle:checked ~ .main-navigation-list {
-			font-family: 'Dosis', Helvetica, Arial, sans-serif;
+			font-family: $font-secondary;
 			left: 0;
 
 			.main-navigation-item {
@@ -117,7 +117,6 @@
 					border-left: 1px solid $color-grey-light;
 					border-bottom: 1px solid $color-grey-light;
 					border-right: none;
-					// border: 2px solid green;
 				}
 
 				.main-subnav-list {
