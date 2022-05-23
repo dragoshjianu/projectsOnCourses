@@ -134,14 +134,7 @@
 				care citesc o carte"
 					width="70%"
 				/>
-				<!-- <div class="hero-content">
-					<img
-						class="hero-cloud"
-						src="./assets/images/cloud.png"
-						width="100%"
-						height="auto"
-						alt="Norisor in sectiunea hero"
-					/> -->
+
 				<div class="hero-description">
 					<h1 class="hero-description-title">
 						<span class="hero-title-first-line">Gradinița cu Program Prelungit</span>
@@ -444,8 +437,12 @@
 				dropIcon.classList.add('drop-icon');
 
 				link.insertAdjacentElement('afterend', dropIcon);
-
 				dropIcon.textContent = '+';
+
+				dropIcon.addEventListener('click', () => {
+					const submenu = document.querySelector('.main-subnav-list');
+					submenu.classList.toggle('opened');
+				});
 			});
 		</script>
 	</body>

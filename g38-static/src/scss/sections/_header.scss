@@ -11,11 +11,10 @@
 		display: flex;
 		align-items: center;
 		justify-content: flex-start;
-		position: -webkit-sticky;
-		position: sticky;
-		top: 0;
+		position: relative;
 		padding-block: 0.3em;
 		width: 100%;
+		z-index: 1;
 		background-color: hsl($color-primary, $color-sat, $color-neutral);
 
 		#menu-toggle {
@@ -122,8 +121,15 @@
 				}
 
 				.main-subnav-list {
-					display: block;
-					list-style: none;
+					width: 100%;
+					height: 0;
+					background-image: none;
+					overflow: hidden;
+					transition: all 0.4s linear;
+
+					&.opened {
+						height: initial;
+					}
 				}
 			}
 		}
