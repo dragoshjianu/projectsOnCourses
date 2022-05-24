@@ -86,40 +86,40 @@
 				</picture>
 			</a>
 
-			<nav class="main-navigation">
+			<nav class="navigation">
 				<input class="checkbox" type="checkbox" name="" id="menu-toggle" />
 				<label for="menu-toggle" class="menu-icon">
 					<span></span>
 				</label>
-				<ul class="main-navigation-list">
-					<li class="main-navigation-item">
-						<a class="main-navigation-link" href="#">Acasa</a>
+				<ul class="main-nav menu-list">
+					<li class="menu-item">
+						<a class="menu-link" href="#">Acasa</a>
 					</li>
-					<li class="main-navigation-item">
-						<a class="main-navigation-link" href="#">Prezentare</a>
+					<li class="menu-item">
+						<a class="menu-link" href="#">Prezentare</a>
 					</li>
-					<li class="main-navigation-item">
-						<a class="main-navigation-link" href="#">Transparență</a>
-						<ul class="main-subnav-list">
-							<li class="main-subnav-item">
-								<a href="#" class="main-subnav-link">Transparență Instituțională</a>
+					<li class="menu-item">
+						<a class="menu-link" href="#">Transparență</a>
+						<ul class="subnav menu-list">
+							<li class="menu-item">
+								<a href="#" class="menu-link">Transparență Instituțională</a>
 							</li>
-							<li class="main-subnav-item">
-								<a href="#" class="main-subnav-link">Legislație</a>
+							<li class="menu-item">
+								<a href="#" class="menu-link">Legislație</a>
 							</li>
-							<li class="main-subnav-item">
-								<a href="#" class="main-subnav-link">CEAC</a>
+							<li class="menu-item">
+								<a href="#" class="menu-link">CEAC</a>
 							</li>
 						</ul>
 					</li>
-					<li class="main-navigation-item">
-						<a class="main-navigation-link" href="#">Proiecte și Activități</a>
+					<li class="menu-item">
+						<a class="menu-link" href="#">Proiecte și Activități</a>
 					</li>
-					<li class="main-navigation-item">
-						<a class="main-navigation-link" href="#">Noutăți</a>
+					<li class="menu-item">
+						<a class="menu-link" href="#">Noutăți</a>
 					</li>
-					<li class="main-navigation-item">
-						<a class="main-navigation-link" href="#">Contact</a>
+					<li class="menu-item">
+						<a class="menu-link" href="#">Contact</a>
 					</li>
 				</ul>
 			</nav>
@@ -188,7 +188,7 @@
 						</picture>
 
 						<div class="noutati-detalii">
-							<div class="noutati-data">
+							<div class="noutati-date">
 								<span class="data-zi">6</span>
 								<span class="data-luna">Ian</span>
 							</div>
@@ -214,7 +214,7 @@
 							/>
 						</picture>
 						<div class="noutati-detalii">
-							<div class="noutati-data">
+							<div class="noutati-date">
 								<span class="data-zi">6</span>
 								<span class="data-luna">Ian</span>
 							</div>
@@ -417,7 +417,7 @@
 			</p>
 		</footer>
 		<script>
-			const menuElements = document.querySelectorAll('.main-navigation-item');
+			const menuElements = document.querySelectorAll('.menu-item');
 
 			menuElements.forEach((element) => {
 				const children = element.children;
@@ -433,28 +433,27 @@
 
 			parentLi.forEach((li) => {
 				const dropIcon = document.createElement('span');
-				const link = li.querySelector('.main-navigation-link');
 				dropIcon.classList.add('drop-icon');
 
-				link.insertAdjacentElement('afterend', dropIcon);
+				li.insertAdjacentElement('beforeend', dropIcon);
 				dropIcon.innerHTML = `
 				<img src="./assets/images/Arrow-down.svg" width=24px height=24px />
 				`;
 
 				dropIcon.addEventListener('click', () => {
-					const submenu = document.querySelector('.main-subnav-list');
+					const submenu = document.querySelector('.subnav');
 					submenu.classList.toggle('opened');
 
-					if (submenu.classList.contains('opened')) {
-						console.log('inJos');
-						dropIcon.innerHTML = `
-						<img src="./assets/images/Arrow-up.svg" width=24px height=24px />
-						`;
-					} else {
-						dropIcon.innerHTML = `
-				<img src="./assets/images/Arrow-down.svg" width=24px height=24px />
-				`;
-					}
+					// 	if (submenu.classList.contains('opened')) {
+					// 		console.log('inJos');
+					// 		dropIcon.innerHTML = `
+					// 		<img src="./assets/images/Arrow-up.svg" width=24px height=24px />
+					// 		`;
+					// 	} else {
+					// 		dropIcon.innerHTML = `
+					// <img src="./assets/images/Arrow-down.svg" width=24px height=24px />
+					// `;
+					// 	}
 				});
 			});
 		</script>

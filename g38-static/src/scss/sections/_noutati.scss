@@ -1,18 +1,58 @@
+@use '../variables/' as *;
 .noutati {
 	&-section {
 	}
 
 	&-list {
 		.noutati-item {
+			display: flex;
+			flex-direction: column;
+			gap: 0.5em;
 			.noutati-thumbnail {
 				.noutati-image {
 				}
 			}
 			.noutati-detalii {
-				.noutati-data {
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-start;
+				gap: 0.5em;
+
+				.noutati-date {
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					width: 2.5em;
+					height: 2.5em;
+					padding: 0.5em;
+					background-color: hsl($color-secondary, $color-sat, $color-neutral);
+					color: $color-white;
+					font-weight: bold;
+
+					.data-zi,
+					.data-luna {
+						text-align: center;
+					}
 				}
 				.noutati-description {
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					& > * {
+						margin: 0;
+					}
 					.noutati-article-title {
+						justify-content: flex-start;
+					}
+					.noutati-info {
+						justify-content: flex-end;
+						font-size: 0.8em;
+
+						&-autor {
+						}
+						&-categorii {
+						}
 					}
 				}
 			}
