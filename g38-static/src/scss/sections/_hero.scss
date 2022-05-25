@@ -5,7 +5,8 @@
 	flex-direction: row;
 	padding-block: 1em;
 	min-width: 90%;
-	min-height: 250px;
+	min-height: 450px;
+	padding-top: 150px;
 	max-height: max-content;
 	background: linear-gradient(
 			hsla($color-accent, $color-sat, $color-dark, 0.6),
@@ -15,6 +16,9 @@
 
 	@media screen and (min-width: $break-tablet) {
 		min-height: 350px;
+	}
+	@media screen and (min-width: $break-small-desktop) {
+		min-height: 80vh;
 	}
 
 	.hero-kids {
