@@ -265,6 +265,16 @@ a:hover {
   opacity: 1;
   transition: opacity 0.25s ease-in-out 0.25s;
 }
+.main-header .menu-toggle:checked + .menu-icon span {
+  transform: translateX(-50px);
+  background: transparent;
+}
+.main-header .menu-toggle:checked + .menu-icon span::before {
+  transform: rotate(45deg) translate(40px, -40px);
+}
+.main-header .menu-toggle:checked + .menu-icon span::after {
+  transform: rotate(-45deg) translate(40px, 40px);
+}
 .main-header .menu-icon {
   position: absolute;
   top: 0;
@@ -273,6 +283,8 @@ a:hover {
   height: 100%;
   display: flex;
   align-items: center;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
 }
 .main-header .menu-icon span,
 .main-header .menu-icon span::before,
@@ -283,6 +295,7 @@ a:hover {
   width: 2em;
   border-radius: 2px;
   position: relative;
+  transition: all 0.5s ease-in-out;
 }
 @media screen and (min-width: 1023px) {
   .main-header .menu-icon span,
@@ -297,10 +310,10 @@ a:hover {
   position: absolute;
 }
 .main-header .menu-icon span::before {
-  bottom: 7px;
+  transform: translateY(-8px);
 }
 .main-header .menu-icon span::after {
-  top: 7px;
+  transform: translateY(8px);
 }
 .main-header .navigation {
   position: absolute;
@@ -346,6 +359,8 @@ a:hover {
   }
 }
 .main-header .navigation .menu-list .menu-item {
+  display: flex;
+  flex-wrap: wrap;
   position: relative;
   margin-bottom: 1em;
   margin-left: 1em;
@@ -361,6 +376,8 @@ a:hover {
   }
 }
 .main-header .navigation .menu-list .menu-item .menu-link {
+  flex: 1;
+  order: 0;
   color: hsl(0deg, 0%, 30%);
   font-weight: 400;
   font-size: 1.5em;
@@ -388,12 +405,33 @@ a:hover {
 .main-header .navigation .menu-list .menu-item .subnav {
   display: flex;
   flex-direction: column;
-  position: absolute;
+  position: relative;
+  order: 2;
   margin: 0;
+  margin-left: 2em;
   padding: 0;
-  width: fit-content;
+  width: 100%;
+  max-height: 0px;
   background-color: hsl(0deg, 0%, 100%);
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  transition-delay: 0;
+}
+@media screen and (min-width: 1023px) {
+  .main-header .navigation .menu-list .menu-item .subnav {
+    position: absolute;
+    flex-direction: row;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    margin: 0;
+  }
+}
+.main-header .navigation .menu-list .menu-item .subnav.opened {
+  max-height: 180px;
+}
+.main-header .navigation .menu-list .menu-item .subnav.opened + .drop-icon img {
+  transform: rotate(180deg);
 }
 .main-header .navigation .menu-list .menu-item .subnav .menu-item {
   margin: 0;
