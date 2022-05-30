@@ -105,6 +105,16 @@ strong {
 .container .header .logo {
   grid-area: logo;
 }
+.container .header .trigger-button {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: none;
+  appearance: none;
+}
 .container .header .trigger-button.search-trigger {
   grid-area: cautare;
 }
