@@ -61,99 +61,109 @@
 						height="100"
 					/>
 				</a>
-				<button class="trigger-button search-trigger">
-					<svg
-						version="1.1"
-						xmlns="http://www.w3.org/2000/svg"
-						xmlns:xlink="http://www.w3.org/1999/xlink"
-						x="0px"
-						y="0px"
-						viewBox="0 0 212.8 212.8"
-						style="enable-background: new 0 0 212.8 212.8"
-						xml:space="preserve"
-						alt="Cauta pe site"
-						class="trigger-image search-trigger-image"
-					>
-						<g>
-							<path
-								d="M209.5,193.7c4.4,4.4,4.4,11.5,0,15.8c-4.4,4.4-11.5,4.4-15.8,0l-54.8-54.8c-2.2-2.2-6-2.5-8.5-0.8c0,0-1.5,1.2-4.8,3
+
+				<div class="main-menu-container">
+					<input type="checkbox" id="menu-toggle" class="menu-toggle" />
+					<label for="menu-toggle" class="trigger-button menu-trigger">
+						<span></span>
+					</label>
+					<nav class="main-menu">
+						<ul class="main-menu-list">
+							<li class="main-menu-item">
+								<a href="#" class="main-menu-link">Acasa</a>
+							</li>
+							<li class="main-menu-item">
+								<a href="#" class="main-menu-link">Prezentare</a>
+							</li>
+							<li class="main-menu-item">
+								<a href="#" class="main-menu-link">Transparenta</a>
+								<ul class="main-menu-sublist">
+									<li class="main-menu-subitem">
+										<a href="#" class="main-menu-sublink">Transparenta Institutionala</a>
+									</li>
+									<li class="main-menu-subitem">
+										<a href="#" class="main-menu-sublink">Legislatie</a>
+									</li>
+									<li class="main-menu-subitem">
+										<a href="#" class="main-menu-sublink">CEAC</a>
+									</li>
+								</ul>
+							</li>
+							<li class="main-menu-item">
+								<a href="#" class="main-menu-link">Proiecte</a>
+							</li>
+							<li class="main-menu-item">
+								<a href="#" class="main-menu-link">Noutati</a>
+							</li>
+							<li class="main-menu-item">
+								<a href="#" class="main-menu-link">Contact</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+
+				<div class="search-container">
+					<input type="checkbox" id="search-toggle" class="search-toggle" />
+					<label for="search-toggle" class="trigger-button search-trigger">
+						<svg
+							version="1.1"
+							id="Layer_1"
+							xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink"
+							x="0px"
+							y="0px"
+							viewBox="0 0 212.8 212.8"
+							style="enable-background: new 0 0 212.8 212.8"
+							xml:space="preserve"
+							class="search-trigger-image"
+						>
+							<g>
+								<path
+									d="M209.5,193.7c4.4,4.4,4.4,11.5,0,15.8c-4.4,4.4-11.5,4.4-15.8,0l-54.8-54.8c-2.2-2.2-6-2.5-8.5-0.8c0,0-1.5,1.2-4.8,3
 		c-12.3,7-26.5,11-41.6,11c-46.4,0-84-37.6-84-84C0,37.6,37.6,0,84,0c46.4,0,84,37.6,84,84c0,15.2-4.1,29.5-11.2,41.9
 		c-1.8,3.2-2.8,4.4-2.8,4.4c-1.8,2.6-1.4,6.4,0.7,8.6L209.5,193.7z M84,145.6c34,0,61.6-27.6,61.6-61.6c0-34-27.6-61.6-61.6-61.6
 		C50,22.4,22.4,50,22.4,84C22.4,118,50,145.6,84,145.6z"
-							/>
-						</g>
-					</svg>
-				</button>
-				<form class="search-form" id="searchForm" action="#" method="GET">
-					<fieldset class="'fieldset">
-						<legend class="legend">Cauta pe site:</legend>
-						<label class="label search=label">
-							<span class="search-label-text">Introdu textul aici</span>
-							<input class="search-input" type="search" maxlength="200" />
-						</label>
-					</fieldset>
-				</form>
-				<button class="trigger-button menu-trigger">
-					<svg
-						version="1.1"
-						xmlns="http://www.w3.org/2000/svg"
-						xmlns:xlink="http://www.w3.org/1999/xlink"
-						x="0px"
-						y="0px"
-						viewBox="0 0 560 326.7"
-						style="enable-background: new 0 0 560 326.7"
-						xml:space="preserve"
-						alt="Deschide meniul principal al site-ului Gradinita Nr. 38 Ploiesti"
-						class="trigger-image menu-trigger-image"
-					>
-						<g>
-							<path
-								d="M0,23.3C0,10.4,10.4,0,23.3,0h513.3C549.6,0,560,10.4,560,23.3s-10.4,23.3-23.3,23.3H23.3C10.4,46.7,0,36.2,0,23.3L0,23.3z
-		"
-							/>
-							<path
-								d="M0,163.3C0,150.4,10.4,140,23.3,140h513.3c12.9,0,23.3,10.4,23.3,23.3s-10.4,23.3-23.3,23.3H23.3
-		C10.4,186.7,0,176.2,0,163.3L0,163.3z"
-							/>
-							<path
-								d="M23.3,280C10.4,280,0,290.4,0,303.3s10.4,23.3,23.3,23.3h513.3c12.9,0,23.3-10.4,23.3-23.3S549.6,280,536.7,280H23.3z"
-							/>
-						</g>
-					</svg>
-				</button>
-				<nav class="main-menu">
-					<ul class="main-menu-list">
-						<li class="main-menu-item">
-							<a href="#" class="main-menu-link">Acasa</a>
-						</li>
-						<li class="main-menu-item">
-							<a href="#" class="main-menu-link">Prezentare</a>
-						</li>
-						<li class="main-menu-item">
-							<a href="#" class="main-menu-link">Transparenta</a>
-							<ul class="main-menu-sublist">
-								<li class="main-menu-subitem">
-									<a href="#" class="main-menu-sublink">Transparenta Institutionala</a>
-								</li>
-								<li class="main-menu-subitem">
-									<a href="#" class="main-menu-sublink">Legislatie</a>
-								</li>
-								<li class="main-menu-subitem">
-									<a href="#" class="main-menu-sublink">CEAC</a>
-								</li>
-							</ul>
-						</li>
-						<li class="main-menu-item">
-							<a href="#" class="main-menu-link">Proiecte</a>
-						</li>
-						<li class="main-menu-item">
-							<a href="#" class="main-menu-link">Noutati</a>
-						</li>
-						<li class="main-menu-item">
-							<a href="#" class="main-menu-link">Contact</a>
-						</li>
-					</ul>
-				</nav>
+								/>
+							</g>
+						</svg>
+					</label>
+					<form class="search-form" id="searchForm" action="#" method="GET">
+						<fieldset class="fieldset">
+							<legend class="legend screen-readers">Cauta pe site:</legend>
+							<label class="label search-label">
+								<span class="search-label-text screen-readers">Introdu textul aici</span>
+								<input
+									class="input search-input"
+									placeholder="Cauta in site..."
+									type="search"
+									maxlength="200"
+								/>
+							</label>
+							<button class="submit-button search-submit">
+								<svg
+									version="1.1"
+									xmlns="http://www.w3.org/2000/svg"
+									xmlns:xlink="http://www.w3.org/1999/xlink"
+									x="0px"
+									y="0px"
+									viewBox="0 0 212.8 212.8"
+									style="enable-background: new 0 0 212.8 212.8"
+									xml:space="preserve"
+									class="search-submit-image"
+								>
+									<g>
+										<path
+											d="M209.5,193.7c4.4,4.4,4.4,11.5,0,15.8c-4.4,4.4-11.5,4.4-15.8,0l-54.8-54.8c-2.2-2.2-6-2.5-8.5-0.8c0,0-1.5,1.2-4.8,3
+		c-12.3,7-26.5,11-41.6,11c-46.4,0-84-37.6-84-84C0,37.6,37.6,0,84,0c46.4,0,84,37.6,84,84c0,15.2-4.1,29.5-11.2,41.9
+		c-1.8,3.2-2.8,4.4-2.8,4.4c-1.8,2.6-1.4,6.4,0.7,8.6L209.5,193.7z M84,145.6c34,0,61.6-27.6,61.6-61.6c0-34-27.6-61.6-61.6-61.6
+		C50,22.4,22.4,50,22.4,84C22.4,118,50,145.6,84,145.6z"
+										/>
+									</g>
+								</svg>
+							</button>
+						</fieldset>
+					</form>
+				</div>
 			</header>
 			<main class="main"></main>
 			<footer class="footer"></footer>

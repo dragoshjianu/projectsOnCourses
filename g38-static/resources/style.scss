@@ -1,63 +1,5 @@
-@font-face {
-	font-family: 'Archivo';
-	font-style: normal;
-	font-weight: 200;
-	font-stretch: 100%;
-	font-display: swap;
-	font-named-instance: 'Thin';
-	src: url('../../../assets/fonts/archivo.woff2') format('woff2');
-	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
-		U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-	font-family: 'Archivo';
-	font-style: normal;
-	font-weight: 400;
-	font-stretch: 100%;
-	font-display: swap;
-	font-named-instance: 'Regular';
-	src: url('../../../assets/fonts/archivo.woff2') format('woff2');
-	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
-		U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-	font-family: 'Archivo';
-	font-style: normal;
-	font-weight: 700;
-	font-stretch: 100%;
-	font-display: swap;
-	font-named-instance: 'Bold';
-	src: url('../../../assets/fonts/archivo.woff2') format('woff2');
-	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
-		U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-	font-family: 'Oswald';
-	font-style: normal;
-	font-weight: 200;
-	font-display: swap;
-	src: url('../../../assets/fonts/Oswald.woff2') format('woff2');
-	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
-		U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-	font-family: 'Oswald';
-	font-style: normal;
-	font-weight: 400;
-	font-display: swap;
-	src: url('../../../assets/fonts/Oswald.woff2') format('woff2');
-	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
-		U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-	font-family: 'Oswald';
-	font-style: normal;
-	font-weight: 700;
-	font-display: swap;
-	src: url('../../../assets/fonts/Oswald.woff2') format('woff2');
-	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
-		U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
+@use '../src/scss/variables/' as *;
+
 *,
 *::after,
 *::before {
@@ -95,6 +37,18 @@ strong {
 	font-weight: 900;
 }
 
+.screen-readers {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+
 /* =================================================================  */
 .container {
 	background: #ccc;
@@ -102,20 +56,32 @@ strong {
 	.header {
 		display: grid;
 		grid-template-areas:
-			'logo logo logo'
-			'meniu . cautare';
+			'logo  logo'
+			'meniu  cautare';
 		position: sticky;
 		top: 0;
-		background: white;
-		box-shadow: 0 1em 1em rgba(0, 0, 0, 0.1);
+		min-height: calc(100px + 3em);
+		background: hsl($color-primary, $color-sat, $color-neutral);
+		box-shadow: 0 1em 1em $color-shadow;
+
 		.logo {
 			grid-area: logo;
+			align-self: start;
+			justify-self: center;
+			display: flex;
+			justify-content: center;
+			background: $color-white;
+			width: 100%;
+			padding-block: 1em;
+			padding-inline: 2em;
 			.logo-image {
 			}
 		}
 
 		.trigger-button {
-			display: block;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 			width: 1.5rem;
 			height: 1.5rem;
 			padding: 0;
@@ -123,30 +89,125 @@ strong {
 			background: transparent;
 			border: none;
 			appearance: none;
-			&.search-trigger {
-				grid-area: cautare;
-				.search-trigger-image {
-				}
-			}
-			&.menu-trigger {
-				grid-area: meniu;
-				.menu-trigger-image {
-				}
-			}
+
 			.trigger-image {
+				display: block;
+				width: 2rem;
+				height: 2rem;
 			}
 		}
 
-		.search-form {
-			display: none;
-			.fieldset {
-				legend {
-					.label {
-						.search-label {
-							.search-label-text {
+		.main-menu-container {
+			grid-area: meniu;
+			padding-block: 1rem;
+
+			.menu-toggle {
+				display: none;
+
+				&:checked ~ .main-menu {
+					transform: scale(1, 1);
+				}
+				&:checked ~ .main-menu .main-menu-list .main-menu-item .main-menu-link {
+					opacity: 1;
+					transition: opacity 0.25s ease-in-out 0.25s;
+				}
+				&:checked + .menu-trigger span {
+					transform: translateX(-50px);
+					background: transparent;
+				}
+				&:checked + .menu-trigger span::before {
+					transform: rotate(45deg) translate(40px, -40px);
+				}
+				&:checked + .menu-trigger span::after {
+					transform: rotate(-45deg) translate(40px, 40px);
+				}
+			}
+
+			.menu-trigger {
+				justify-self: start;
+				margin-left: 1em;
+				height: 100%;
+				display: flex;
+				align-items: center;
+				transition: all 0.5s ease-in-out;
+				cursor: pointer;
+
+				span,
+				span::before,
+				span::after {
+					display: block;
+					background-color: $color-white;
+					height: 2px;
+					width: 2em;
+					border-radius: 2px;
+					position: relative;
+					transition: all 0.5s ease-in-out;
+
+					@media screen and (min-width: $break-small-desktop) {
+						display: none;
+					}
+				}
+				span::before,
+				span::after {
+					content: '';
+					position: absolute;
+				}
+
+				span::before {
+					transform: translateY(-8px);
+				}
+				span::after {
+					transform: translateY(8px);
+				}
+			}
+
+			.main-menu {
+				position: absolute;
+				text-align: left;
+				top: 100%;
+				left: 0;
+				padding-right: 1em;
+				background-color: $color-white;
+				transform: scale(0, 1);
+				transform-origin: left;
+				transition: transform 0.4s ease-in-out;
+				font-family: $font-secondary;
+				background-color: $color-white;
+				box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+				.main-menu-list {
+					margin: 0;
+					padding: 0;
+					list-style: none;
+
+					.main-menu-item {
+						flex-wrap: wrap;
+						position: relative;
+						margin-bottom: 1em;
+						margin-left: 1em;
+						padding: 0.5em 0;
+
+						&:not(:last-of-type) {
+							border-bottom: 1px solid $color-grey-light;
+						}
+
+						.main-menu-link {
+							flex: 1;
+							color: $color-grey-dark;
+							font-weight: 400;
+							font-size: 1.5em;
+							opacity: 0;
+							transition: opacity 0.15s ease-in-out;
+
+							&:hover {
+								color: hsl($color-secondary, $color-sat, $color-neutral);
+								text-decoration: none;
+								text-shadow: 2px 2px 1px $color-shadow;
+								outline: none;
 							}
-							.input {
-								&.seach-input {
+						}
+						.main-menu-sublist {
+							.main-menu-subitem {
+								.main-menu-sublik {
 								}
 							}
 						}
@@ -155,15 +216,62 @@ strong {
 			}
 		}
 
-		.main-menu {
-			display: none;
-			.main-menu-list {
-				.main-menu-item {
-					.main-menu-link {
+		.search-container {
+			grid-area: cautare;
+			justify-self: end;
+			align-self: center;
+			margin-right: 1em;
+
+			.search-toggle {
+				display: none;
+				&:checked ~ .search-form {
+					transform: scale(1, 1);
+				}
+			}
+
+			.search-trigger {
+				.search-trigger-image {
+					path {
+						fill: $color-white;
 					}
-					.main-menu-sublist {
-						.main-menu-subitem {
-							.main-menu-sublik {
+				}
+			}
+
+			.search-form {
+				position: absolute;
+				right: 0;
+				top: 100%;
+				transform: scale(1, 0);
+				transform-origin: top;
+				transition: transform 0.4s ease-in-out;
+				font-family: $font-secondary;
+				background-color: $color-white;
+				box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+
+				.fieldset {
+					display: block;
+					position: relative;
+					padding: 0;
+					border: none;
+
+					legend {
+					}
+					.label {
+						&.search-label {
+							.search-label-text {
+							}
+							.input {
+								&.seach-input {
+								}
+							}
+						}
+					}
+					.submit-button {
+						&.search-submit {
+							.search-submit-image {
+								display: block;
+								width: 2rem;
+								height: 2rem;
 							}
 						}
 					}

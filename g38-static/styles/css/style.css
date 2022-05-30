@@ -89,6 +89,18 @@ strong {
   font-weight: 900;
 }
 
+.screen-readers {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 /* =================================================================  */
 .container {
   background: #ccc;
@@ -96,17 +108,28 @@ strong {
 }
 .container .header {
   display: grid;
-  grid-template-areas: "logo logo logo" "meniu . cautare";
+  grid-template-areas: "logo  logo" "meniu  cautare";
   position: sticky;
   top: 0;
-  background: white;
-  box-shadow: 0 1em 1em rgba(0, 0, 0, 0.1);
+  min-height: calc(100px + 3em);
+  background: hsl(199deg, 100%, 50%);
+  box-shadow: 0 1em 1em hsla(0deg, 0%, 0%, 0.3);
 }
 .container .header .logo {
   grid-area: logo;
+  align-self: start;
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  background: hsl(0deg, 0%, 100%);
+  width: 100%;
+  padding-block: 1em;
+  padding-inline: 2em;
 }
 .container .header .trigger-button {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 1.5rem;
   height: 1.5rem;
   padding: 0;
@@ -115,17 +138,152 @@ strong {
   border: none;
   appearance: none;
 }
-.container .header .trigger-button.search-trigger {
-  grid-area: cautare;
+.container .header .trigger-button .trigger-image {
+  display: block;
+  width: 2rem;
+  height: 2rem;
 }
-.container .header .trigger-button.menu-trigger {
+.container .header .main-menu-container {
   grid-area: meniu;
+  padding-block: 1rem;
 }
-.container .header .search-form {
+.container .header .main-menu-container .menu-toggle {
   display: none;
 }
-.container .header .main-menu {
+.container .header .main-menu-container .menu-toggle:checked ~ .main-menu {
+  transform: scale(1, 1);
+}
+.container .header .main-menu-container .menu-toggle:checked ~ .main-menu .main-menu-list .main-menu-item .main-menu-link {
+  opacity: 1;
+  transition: opacity 0.25s ease-in-out 0.25s;
+}
+.container .header .main-menu-container .menu-toggle:checked + .menu-trigger span {
+  transform: translateX(-50px);
+  background: transparent;
+}
+.container .header .main-menu-container .menu-toggle:checked + .menu-trigger span::before {
+  transform: rotate(45deg) translate(40px, -40px);
+}
+.container .header .main-menu-container .menu-toggle:checked + .menu-trigger span::after {
+  transform: rotate(-45deg) translate(40px, 40px);
+}
+.container .header .main-menu-container .menu-trigger {
+  justify-self: start;
+  margin-left: 1em;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+}
+.container .header .main-menu-container .menu-trigger span,
+.container .header .main-menu-container .menu-trigger span::before,
+.container .header .main-menu-container .menu-trigger span::after {
+  display: block;
+  background-color: hsl(0deg, 0%, 100%);
+  height: 2px;
+  width: 2em;
+  border-radius: 2px;
+  position: relative;
+  transition: all 0.5s ease-in-out;
+}
+@media screen and (min-width: 1023px) {
+  .container .header .main-menu-container .menu-trigger span,
+.container .header .main-menu-container .menu-trigger span::before,
+.container .header .main-menu-container .menu-trigger span::after {
+    display: none;
+  }
+}
+.container .header .main-menu-container .menu-trigger span::before,
+.container .header .main-menu-container .menu-trigger span::after {
+  content: "";
+  position: absolute;
+}
+.container .header .main-menu-container .menu-trigger span::before {
+  transform: translateY(-8px);
+}
+.container .header .main-menu-container .menu-trigger span::after {
+  transform: translateY(8px);
+}
+.container .header .main-menu-container .main-menu {
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  left: 0;
+  padding-right: 1em;
+  background-color: hsl(0deg, 0%, 100%);
+  transform: scale(0, 1);
+  transform-origin: left;
+  transition: transform 0.4s ease-in-out;
+  font-family: "Oswald", Helvetica, Arial, sans-serif;
+  background-color: hsl(0deg, 0%, 100%);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+.container .header .main-menu-container .main-menu .main-menu-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.container .header .main-menu-container .main-menu .main-menu-list .main-menu-item {
+  flex-wrap: wrap;
+  position: relative;
+  margin-bottom: 1em;
+  margin-left: 1em;
+  padding: 0.5em 0;
+}
+.container .header .main-menu-container .main-menu .main-menu-list .main-menu-item:not(:last-of-type) {
+  border-bottom: 1px solid hsl(0deg, 0%, 80%);
+}
+.container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-link {
+  flex: 1;
+  color: hsl(0deg, 0%, 30%);
+  font-weight: 400;
+  font-size: 1.5em;
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+}
+.container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-link:hover {
+  color: hsl(48deg, 100%, 50%);
+  text-decoration: none;
+  text-shadow: 2px 2px 1px hsla(0deg, 0%, 0%, 0.3);
+  outline: none;
+}
+.container .header .search-container {
+  grid-area: cautare;
+  justify-self: end;
+  align-self: center;
+  margin-right: 1em;
+}
+.container .header .search-container .search-toggle {
   display: none;
+}
+.container .header .search-container .search-toggle:checked ~ .search-form {
+  transform: scale(1, 1);
+}
+.container .header .search-container .search-trigger .search-trigger-image path {
+  fill: hsl(0deg, 0%, 100%);
+}
+.container .header .search-container .search-form {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: transform 0.4s ease-in-out;
+  font-family: "Oswald", Helvetica, Arial, sans-serif;
+  background-color: hsl(0deg, 0%, 100%);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+}
+.container .header .search-container .search-form .fieldset {
+  display: block;
+  position: relative;
+  padding: 0;
+  border: none;
+}
+.container .header .search-container .search-form .fieldset .submit-button.search-submit .search-submit-image {
+  display: block;
+  width: 2rem;
+  height: 2rem;
 }
 /* =================================================================  */
 @media (prefers-reduced-motion: reduce) {
