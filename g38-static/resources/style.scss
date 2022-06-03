@@ -51,8 +51,6 @@ strong {
 
 /* =================================================================  */
 .container {
-	background: #ccc;
-	height: 200vh;
 	.header {
 		display: grid;
 		grid-template-areas:
@@ -174,6 +172,8 @@ strong {
 				font-family: $font-secondary;
 				background-color: $color-white;
 				box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+				overflow-y: auto;
+
 				.main-menu-list {
 					margin: 0;
 					padding: 0;
@@ -195,7 +195,7 @@ strong {
 							color: $color-grey-dark;
 							font-weight: 400;
 							font-size: 1.5em;
-							opacity: 0;
+							text-decoration: none;
 							transition: opacity 0.15s ease-in-out;
 
 							&:hover {
@@ -206,8 +206,15 @@ strong {
 							}
 						}
 						.main-menu-sublist {
+							display: block;
 							.main-menu-subitem {
-								.main-menu-sublik {
+								display: block;
+								.main-menu-sublink {
+									display: block;
+									padding: 0.5em 1em;
+									color: $color-grey-dark;
+									background: transparent;
+									text-decoration: none;
 								}
 							}
 						}
@@ -241,26 +248,39 @@ strong {
 				position: absolute;
 				right: 0;
 				top: 100%;
+				width: clamp(14rem, 50vw, 20rem);
 				transform: scale(1, 0);
 				transform-origin: top;
 				transition: transform 0.4s ease-in-out;
 				font-family: $font-secondary;
-				background-color: $color-white;
-				box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+				background-color: transparent;
+				// box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
 
 				.fieldset {
 					display: block;
 					position: relative;
 					padding: 0;
 					border: none;
+					background: transparent;
 
 					legend {
 					}
 					.label {
+						display: block;
+
 						&.search-label {
 							.search-label-text {
 							}
+
 							.input {
+								display: block;
+								padding: 0.25rem 0.5rem;
+								padding-right: 3.5em;
+								height: 2.375rem;
+								width: 100%;
+								line-height: 2.375rem;
+								border-radius: 1em;
+								border: 1px solid $color-grey-light;
 								&.seach-input {
 								}
 							}
@@ -268,10 +288,21 @@ strong {
 					}
 					.submit-button {
 						&.search-submit {
+							display: block;
+							position: absolute;
+							right: 0;
+							top: 0;
+							bottom: 0;
+							padding-right: 1em;
+							border-top-right-radius: 1em;
+							border-bottom-right-radius: 1em;
+							border: none;
+							background: transparent;
+
 							.search-submit-image {
 								display: block;
-								width: 2rem;
-								height: 2rem;
+								width: 1.75rem;
+								height: 1.75rem;
 							}
 						}
 					}

@@ -102,10 +102,6 @@ strong {
 }
 
 /* =================================================================  */
-.container {
-  background: #ccc;
-  height: 200vh;
-}
 .container .header {
   display: grid;
   grid-template-areas: "logo  logo" "meniu  cautare";
@@ -218,6 +214,7 @@ strong {
   font-family: "Oswald", Helvetica, Arial, sans-serif;
   background-color: hsl(0deg, 0%, 100%);
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  overflow-y: auto;
 }
 .container .header .main-menu-container .main-menu .main-menu-list {
   margin: 0;
@@ -239,7 +236,7 @@ strong {
   color: hsl(0deg, 0%, 30%);
   font-weight: 400;
   font-size: 1.5em;
-  opacity: 0;
+  text-decoration: none;
   transition: opacity 0.15s ease-in-out;
 }
 .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-link:hover {
@@ -247,6 +244,19 @@ strong {
   text-decoration: none;
   text-shadow: 2px 2px 1px hsla(0deg, 0%, 0%, 0.3);
   outline: none;
+}
+.container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-sublist {
+  display: block;
+}
+.container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-sublist .main-menu-subitem {
+  display: block;
+}
+.container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-sublist .main-menu-subitem .main-menu-sublink {
+  display: block;
+  padding: 0.5em 1em;
+  color: hsl(0deg, 0%, 30%);
+  background: transparent;
+  text-decoration: none;
 }
 .container .header .search-container {
   grid-area: cautare;
@@ -267,23 +277,49 @@ strong {
   position: absolute;
   right: 0;
   top: 100%;
+  width: clamp(14rem, 50vw, 20rem);
   transform: scale(1, 0);
   transform-origin: top;
   transition: transform 0.4s ease-in-out;
   font-family: "Oswald", Helvetica, Arial, sans-serif;
-  background-color: hsl(0deg, 0%, 100%);
-  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  background-color: transparent;
 }
 .container .header .search-container .search-form .fieldset {
   display: block;
   position: relative;
   padding: 0;
   border: none;
+  background: transparent;
+}
+.container .header .search-container .search-form .fieldset .label {
+  display: block;
+}
+.container .header .search-container .search-form .fieldset .label.search-label .input {
+  display: block;
+  padding: 0.25rem 0.5rem;
+  padding-right: 3.5em;
+  height: 2.375rem;
+  width: 100%;
+  line-height: 2.375rem;
+  border-radius: 1em;
+  border: 1px solid hsl(0deg, 0%, 80%);
+}
+.container .header .search-container .search-form .fieldset .submit-button.search-submit {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding-right: 1em;
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
+  border: none;
+  background: transparent;
 }
 .container .header .search-container .search-form .fieldset .submit-button.search-submit .search-submit-image {
   display: block;
-  width: 2rem;
-  height: 2rem;
+  width: 1.75rem;
+  height: 1.75rem;
 }
 /* =================================================================  */
 @media (prefers-reduced-motion: reduce) {

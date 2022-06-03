@@ -37,3 +37,15 @@ parentLi.forEach((li) => {
 		}
 	});
 });
+
+const menuTriggerBtn = document.getElementById('menuTrigger');
+const menuToggleCheck = document.getElementById('menuToggle');
+const mainMenuContainer = document.getElementById('mainMenu');
+
+menuTriggerBtn.addEventListener('click', (e) => {
+	console.log(e.target);
+	menuToggleCheck.checked = !menuToggleCheck.checked;
+	// if (menuToggleCheck.checked && e.target.id != 'mainMenu') {
+	// 	menuToggleCheck.checked = !menuToggleCheck.checked;
+	// }
+});
