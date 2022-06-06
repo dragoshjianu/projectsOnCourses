@@ -10,31 +10,20 @@ menuElements.forEach((element) => {
 });
 
 const parentLi = document.querySelectorAll('.has-childern');
-console.log(parentLi);
+
+const addFaIconToMenu = (icon, parent, location) => {
+	const element = document.createElement('i');
+	element.classList.add('fa-solid', `fa-${icon}`, 'expand');
+	const linkItem = parent.querySelector('a');
+
+	linkItem.insertAdjacentElement(location, element);
+};
 
 parentLi.forEach((li) => {
-	const dropIcon = document.createElement('span');
-	dropIcon.classList.add('drop-icon');
-
-	li.insertAdjacentElement('beforeend', dropIcon);
-	dropIcon.innerHTML = `
-				<img src="./assets/images/Arrow-down.svg" width=24px height=24px />
-				`;
-
-	dropIcon.addEventListener('click', () => {
+	addFaIconToMenu('plus', li, 'afterEnd');
+	li.addEventListener('click', () => {
 		const submenu = document.querySelector('.main-menu-sublist');
 		submenu.classList.toggle('opened');
-
-		if (submenu.classList.contains('opened')) {
-			console.log('inJos');
-			dropIcon.innerHTML = `
-				<img src="./assets/images/Arrow-up.svg" width=24px height=24px />
-				`;
-		} else {
-			dropIcon.innerHTML = `
-		<img src="./assets/images/Arrow-down.svg" width=24px height=24px />
-		`;
-		}
 	});
 });
 
@@ -43,9 +32,5 @@ const menuToggleCheck = document.getElementById('menuToggle');
 const mainMenuContainer = document.getElementById('mainMenu');
 
 menuTriggerBtn.addEventListener('click', (e) => {
-	console.log(e.target);
 	menuToggleCheck.checked = !menuToggleCheck.checked;
-	// if (menuToggleCheck.checked && e.target.id != 'mainMenu') {
-	// 	menuToggleCheck.checked = !menuToggleCheck.checked;
-	// }
 });

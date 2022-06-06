@@ -111,6 +111,17 @@ strong {
   background: hsl(199deg, 100%, 50%);
   box-shadow: 0 1em 1em hsla(0deg, 0%, 0%, 0.3);
 }
+@media screen and (min-width: 1023px) {
+  .container .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: hsl(0deg, 0%, 100%);
+    padding-inline: 2rem;
+    min-height: 100%;
+  }
+}
 .container .header .logo {
   grid-area: logo;
   align-self: start;
@@ -121,6 +132,17 @@ strong {
   width: 100%;
   padding-block: 1em;
   padding-inline: 2em;
+}
+@media screen and (min-width: 1023px) {
+  .container .header .logo {
+    display: block;
+    align-self: center;
+  }
+}
+@media screen and (min-width: 1023px) {
+  .container .header .logo .logo-image {
+    max-width: 220px;
+  }
 }
 .container .header .trigger-button {
   display: flex;
@@ -142,6 +164,11 @@ strong {
 .container .header .main-menu-container {
   grid-area: meniu;
   padding-block: 1rem;
+}
+@media screen and (min-width: 1023px) {
+  .container .header .main-menu-container {
+    grid-column: 4/5;
+  }
 }
 .container .header .main-menu-container .menu-toggle {
   display: none;
@@ -171,6 +198,11 @@ strong {
   align-items: center;
   transition: all 0.5s ease-in-out;
   cursor: pointer;
+}
+@media screen and (min-width: 1023px) {
+  .container .header .main-menu-container .menu-trigger {
+    display: none;
+  }
 }
 .container .header .main-menu-container .menu-trigger span,
 .container .header .main-menu-container .menu-trigger span::before,
@@ -216,28 +248,61 @@ strong {
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
   overflow-y: auto;
 }
+@media screen and (min-width: 1023px) {
+  .container .header .main-menu-container .main-menu {
+    all: unset;
+    display: block;
+    top: 0;
+  }
+}
 .container .header .main-menu-container .main-menu .main-menu-list {
   margin: 0;
   padding: 0;
   list-style: none;
 }
+@media screen and (min-width: 1023px) {
+  .container .header .main-menu-container .main-menu .main-menu-list {
+    display: flex;
+  }
+}
 .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item {
   flex-wrap: wrap;
   position: relative;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
   margin-left: 1em;
   padding: 0.5em 0;
 }
+@media screen and (min-width: 1023px) {
+  .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item {
+    margin-left: 0.5em;
+    padding-right: 1.25em;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item {
+    margin-left: 2em;
+  }
+}
 .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item:not(:last-of-type) {
   border-bottom: 1px solid hsl(0deg, 0%, 80%);
+}
+@media screen and (min-width: 1023px) {
+  .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item:not(:last-of-type) {
+    border-bottom: none;
+  }
 }
 .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-link {
   flex: 1;
   color: hsl(0deg, 0%, 30%);
   font-weight: 400;
-  font-size: 1.5em;
+  font-size: 1.2em;
   text-decoration: none;
   transition: opacity 0.15s ease-in-out;
+}
+@media screen and (min-width: 1023px) {
+  .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-link {
+    font-weight: 700;
+  }
 }
 .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-link:hover {
   color: hsl(48deg, 100%, 50%);
@@ -245,8 +310,27 @@ strong {
   text-shadow: 2px 2px 1px hsla(0deg, 0%, 0%, 0.3);
   outline: none;
 }
+.container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .expand {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0.75em;
+  right: 0;
+  transition: rotate 0.3s ease-in-out;
+}
 .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-sublist {
   display: block;
+  height: 0;
+  overflow: hidden;
+}
+@media screen and (min-width: 1023px) {
+  .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-sublist {
+    position: absolute;
+    top: 100%;
+  }
+}
+.container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-sublist.opened {
+  height: 100%;
 }
 .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-sublist .main-menu-subitem {
   display: block;
