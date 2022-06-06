@@ -102,14 +102,17 @@ strong {
 }
 
 /* =================================================================  */
+.container {
+  /* ========================HEADER STYLES=========================  */
+  /* ========================MAIN STYLES============================ */
+}
 .container .header {
   display: grid;
   grid-template-areas: "logo  logo" "meniu  cautare";
   position: sticky;
   top: 0;
-  min-height: calc(100px + 3em);
   background: hsl(199deg, 100%, 50%);
-  box-shadow: 0 1em 1em hsla(0deg, 0%, 0%, 0.3);
+  box-shadow: 0 1px 1em hsla(0deg, 0%, 0%, 0.3);
 }
 @media screen and (min-width: 1023px) {
   .container .header {
@@ -119,14 +122,13 @@ strong {
     justify-content: space-between;
     background: hsl(0deg, 0%, 100%);
     padding-inline: 2rem;
-    min-height: 100%;
   }
 }
 .container .header .logo {
   grid-area: logo;
+  display: flex;
   align-self: start;
   justify-self: center;
-  display: flex;
   justify-content: center;
   background: hsl(0deg, 0%, 100%);
   width: 100%;
@@ -136,7 +138,6 @@ strong {
 @media screen and (min-width: 1023px) {
   .container .header .logo {
     display: block;
-    align-self: center;
   }
 }
 @media screen and (min-width: 1023px) {
@@ -163,11 +164,14 @@ strong {
 }
 .container .header .main-menu-container {
   grid-area: meniu;
-  padding-block: 1rem;
+  padding-block: 1em;
 }
 @media screen and (min-width: 1023px) {
   .container .header .main-menu-container {
-    grid-column: 4/5;
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    padding: 0;
   }
 }
 .container .header .main-menu-container .menu-toggle {
@@ -251,8 +255,9 @@ strong {
 @media screen and (min-width: 1023px) {
   .container .header .main-menu-container .main-menu {
     all: unset;
-    display: block;
-    top: 0;
+    display: flex;
+    align-items: center;
+    height: 100%;
   }
 }
 .container .header .main-menu-container .main-menu .main-menu-list {
@@ -263,10 +268,13 @@ strong {
 @media screen and (min-width: 1023px) {
   .container .header .main-menu-container .main-menu .main-menu-list {
     display: flex;
+    align-items: center;
+    height: 100%;
   }
 }
 .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item {
-  flex-wrap: wrap;
+  justify-self: flex-start;
+  flex-wrap: nowrap;
   position: relative;
   margin-bottom: 0.5em;
   margin-left: 1em;
@@ -274,13 +282,29 @@ strong {
 }
 @media screen and (min-width: 1023px) {
   .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item {
+    display: flex;
+    align-items: center;
     margin-left: 0.5em;
     padding-right: 1.25em;
+    height: 100%;
   }
 }
 @media screen and (min-width: 1440px) {
   .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item {
     margin-left: 2em;
+  }
+}
+.container .header .main-menu-container .main-menu .main-menu-list .main-menu-item.has-children .expand {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  font-size: 1.25rem;
+  color: currentColor;
+}
+@media screen and (min-width: 1023px) {
+  .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item.has-children .expand {
+    bottom: 1.5rem;
   }
 }
 .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item:not(:last-of-type) {
@@ -292,8 +316,8 @@ strong {
   }
 }
 .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-link {
-  flex: 1;
-  color: hsl(0deg, 0%, 30%);
+  display: flex;
+  flex-direction: column;
   font-weight: 400;
   font-size: 1.2em;
   text-decoration: none;
@@ -301,22 +325,63 @@ strong {
 }
 @media screen and (min-width: 1023px) {
   .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-link {
+    align-items: center;
+    justify-content: space-evenly;
     font-weight: 700;
   }
 }
-.container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-link:hover {
+@media screen and (min-width: 1023px) {
+  .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0%;
+    width: 100%;
+    height: 2px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.25s ease-in;
+  }
+}
+@media screen and (min-width: 1023px) {
+  .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-link:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+.container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-link.acasa {
+  color: hsl(199deg, 100%, 50%);
+}
+.container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-link.prezentare {
   color: hsl(48deg, 100%, 50%);
+}
+.container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-link.transparenta, .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-link.transparenta + * {
+  color: hsl(19deg, 100%, 50%);
+}
+.container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-link.proiecte {
+  color: hsl(75deg, 50%, 50%);
+}
+.container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-link.noutati {
+  color: hsl(317deg, 50%, 50%);
+}
+.container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-link.contact {
+  color: hsl(184deg, 44%, 50%);
+}
+.container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-link .up-icon {
+  display: none;
+}
+@media screen and (min-width: 1023px) {
+  .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-link .up-icon {
+    display: block;
+  }
+}
+.container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-link:hover {
   text-decoration: none;
-  text-shadow: 2px 2px 1px hsla(0deg, 0%, 0%, 0.3);
   outline: none;
 }
-.container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .expand {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  top: 0.75em;
-  right: 0;
-  transition: rotate 0.3s ease-in-out;
+.container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-link i {
+  font-size: 1.5em;
 }
 .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-sublist {
   display: block;
@@ -326,11 +391,31 @@ strong {
 @media screen and (min-width: 1023px) {
   .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-sublist {
     position: absolute;
+    left: 0;
     top: 100%;
   }
 }
 .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-sublist.opened {
   height: 100%;
+  color: currentColor;
+}
+@media screen and (min-width: 1023px) {
+  .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-sublist.opened {
+    position: absolute;
+    left: 0;
+    top: 105%;
+    padding-block: 2em;
+    padding-right: 3em;
+    padding-left: 0;
+    margin-left: -1em;
+    width: max-content;
+    height: fit-content;
+    overflow-y: auto;
+    border-radius: 0.5em;
+    border-width: 2px;
+    border-style: solid;
+    border-color: currentColor;
+  }
 }
 .container .header .main-menu-container .main-menu .main-menu-list .main-menu-item .main-menu-sublist .main-menu-subitem {
   display: block;
@@ -404,6 +489,19 @@ strong {
   display: block;
   width: 1.75rem;
   height: 1.75rem;
+}
+.container .main .hero {
+  display: grid;
+  min-height: 75vh;
+  background: linear-gradient(hsla(75deg, 100%, 30%, 0.6), hsla(75deg, 100%, 30%, 0.6)), url("../../../assets/images/background-pattern.jpg") left top repeat;
+}
+.container .main .hero .hero-floating {
+  display: none;
+}
+@media screen and (min-width: 750px) {
+  .container .main .hero .hero-floating {
+    display: block;
+  }
 }
 /* =================================================================  */
 @media (prefers-reduced-motion: reduce) {

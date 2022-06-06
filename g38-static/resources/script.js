@@ -4,12 +4,12 @@ menuElements.forEach((element) => {
 	const children = element.children;
 	for (child of children) {
 		if (child.tagName === 'UL') {
-			child.parentElement.classList.add('has-childern');
+			child.parentElement.classList.add('has-children');
 		}
 	}
 });
 
-const parentLi = document.querySelectorAll('.has-childern');
+const parentLi = document.querySelectorAll('.has-children');
 
 const addFaIconToMenu = (icon, parent, location) => {
 	const element = document.createElement('i');
@@ -20,7 +20,7 @@ const addFaIconToMenu = (icon, parent, location) => {
 };
 
 parentLi.forEach((li) => {
-	addFaIconToMenu('plus', li, 'afterEnd');
+	addFaIconToMenu('caret-down', li, 'beforeEnd');
 	li.addEventListener('click', () => {
 		const submenu = document.querySelector('.main-menu-sublist');
 		submenu.classList.toggle('opened');
