@@ -1,4 +1,5 @@
 @use '../src/scss/variables/' as *;
+@use '../src/scss/components/' as *;
 
 *,
 *::after,
@@ -49,8 +50,100 @@ strong {
 	border-width: 0;
 }
 
+.btn {
+	display: inline-block;
+	padding: 0.25em 1.5em;
+	background-color: hsl($color-secondary, $color-sat, $color-neutral);
+	color: $color-white;
+	font-family: $font-secondary;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-decoration: none;
+	text-align: center;
+	border: 1px solid hsl($color-secondary, $color-sat, $color-neutral);
+	border-radius: 2em;
+	box-shadow: 0 0.25em 0.25em $color-shadow;
+	cursor: pointer;
+
+	&:hover {
+		color: hsl($color-secondary, $color-sat, $color-neutral);
+		background-color: transparent;
+		border: 1px solid hsl($color-secondary, $color-sat, $color-neutral);
+		box-shadow: 0 0.333em 0.333em $color-shadow;
+	}
+	&:active {
+		box-shadow: inset 0 0.1em 0.1em $color-shadow;
+	}
+}
+
+.highlight {
+	font-size: 1.2em;
+	font-weight: bold;
+	color: hsl($color-accent, $color-sat, $color-dark);
+}
+
+.section-header {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-block: 2em;
+	font-family: $font-secondary;
+	font-size: 2em;
+	line-height: 1.5em;
+
+	h2 {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-block: 0.2em;
+	}
+
+	.heading-cap {
+		width: 130px;
+		height: 30px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		&::before,
+		&::after {
+			content: '';
+			vertical-align: middle;
+			height: 4px;
+			border-top: 1px solid hsl($color-secondary, $color-sat, $color-neutral);
+			border-bottom: 1px solid hsl($color-secondary, $color-sat, $color-neutral);
+			width: 40px;
+			display: inline-block;
+		}
+		svg {
+			width: 30px;
+
+			g {
+				fill: hsl($color-secondary, $color-sat, $color-neutral);
+			}
+		}
+	}
+}
+
+.card-list {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2em;
+
+	@media screen and (min-width: $break-tablet) {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+	}
+}
+
 /* =================================================================  */
 .container {
+	section {
+		margin-block: 1rem;
+	}
 	/* ========================HEADER STYLES=========================  */
 	.header {
 		display: grid;
@@ -58,6 +151,7 @@ strong {
 			'logo  logo'
 			'meniu  cautare';
 		position: sticky;
+		z-index: 999;
 		top: 0;
 		background: hsl($color-primary, $color-sat, $color-neutral);
 		box-shadow: 0 1px 1em $color-shadow;
@@ -479,31 +573,221 @@ strong {
 	.main {
 		.hero {
 			display: grid;
-			min-height: 75vh;
+			place-items: center;
+			position: relative;
+			min-height: 65vh;
+
+			margin-block: 0;
 			background: linear-gradient(
 					hsla($color-accent, $color-sat, $color-dark, 0.6),
 					hsla($color-accent, $color-sat, $color-dark, 0.6)
 				),
 				url('../../../assets/images/background-pattern.jpg') left top repeat;
+
+			@media screen and (min-width: $break-small-desktop) {
+				display: block;
+				// grid-template-columns: 54% 45%;
+				// gap: 1%;
+			}
+
 			.hero-floating {
 				display: none;
-				@media screen and (min-width: $break-tablet) {
+
+				@media screen and (min-width: $break-small-desktop) {
 					display: block;
+					position: absolute;
+					left: 2%;
+					bottom: -5%;
+					// place-sel: flex-end;
 				}
+
 				.hero-floating-image {
 				}
 			}
 
 			.hero-content {
+				display: grid;
+				place-items: center;
+				position: relative;
+				background: url('../../../assets/images/cloud.png') center center no-repeat;
+				background-size: contain;
+				padding: 5em 3em;
+				text-align: center;
+
+				@media screen and (min-width: $break-tablet) {
+					text-align: left;
+				}
+
+				@media screen and (min-width: $break-small-desktop) {
+					position: absolute;
+					top: 2%;
+					right: 5%;
+					margin-top: 3rem;
+					padding: 3rem 2rem;
+					width: clamp(30rem, 50vw, 50rem);
+					z-index: 10;
+				}
+				.oscillation {
+					display: none;
+
+					@media screen and (min-width: $break-small-desktop) {
+						display: block;
+						position: absolute;
+						top: -30%;
+						right: 10%;
+						transform-origin: 50% 0;
+						animation: oscillation 4s ease-in-out alternate infinite;
+					}
+
+					.oscillation-image {
+					}
+				}
+
 				.hero-title {
+					margin-top: 2em;
+					margin-bottom: 0;
+					font-size: clamp(1rem, -0.875rem + 8.333333vw, 2.5rem);
+					font-family: $font-primary;
+					line-height: 1.5em;
+
+					@media screen and (min-width: $break-small-desktop) {
+						font-size: 1.5rem;
+					}
+
+					span {
+						display: block;
+					}
 					.hero-title-first-line {
+						color: hsl($color-primary, $color-sat, $color-neutral);
 					}
 					.hero-title-second-line {
+						color: hsl($color-tertiary, $color-sat, $color-neutral);
 					}
 				}
 				.hero-text {
+					font-size: clamp(1rem, -0.875rem + 4.333333vw, 1.5rem);
+					font-weight: bold;
+
+					@media screen and (min-width: $break-small-desktop) {
+						font-size: 1.2em;
+					}
 				}
 			}
+		}
+
+		.contact-cta {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: relative;
+			margin-block: 0;
+			padding-block: 2em;
+			background: url('../../../assets/images/white-texture.jpg') top center repeat;
+			z-index: 100;
+
+			&-content {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				width: 100%;
+				font-size: 1em;
+				text-align: center;
+
+				.contactCta-btn:hover {
+					background-color: $color-white;
+				}
+
+				@media screen and (min-width: 450px) {
+					font-size: 1.3em;
+				}
+				@media screen and (min-width: 520px) {
+					font-size: 1.5em;
+				}
+				@media screen and (min-width: $break-tablet) {
+					flex-direction: row;
+					justify-content: space-evenly;
+					padding-inline: 3em;
+					font-size: 1.3em;
+				}
+				@media screen and (min-width: $break-large-desktop) {
+					$font-size: 2em;
+				}
+
+				a {
+					display: block;
+
+					@media screen and (min-width: 400px) {
+						display: inline;
+					}
+				}
+			}
+		}
+
+		.noutati {
+			&-list {
+				.noutati-item {
+					display: flex;
+					flex-direction: column;
+					gap: 0.5em;
+					.noutati-thumbnail {
+						border-radius: 1em;
+						overflow: hidden;
+						box-shadow: 0 0.1em 0.5em $color-shadow;
+						.noutati-image {
+						}
+					}
+					.noutati-detalii {
+						display: flex;
+						flex-direction: row;
+						justify-content: flex-start;
+						gap: 0.5em;
+
+						.noutati-date {
+							display: flex;
+							flex-direction: column;
+							justify-content: center;
+							align-items: center;
+							width: 2.5em;
+							height: 2.5em;
+							padding: 0.5em;
+							background-color: hsl($color-secondary, $color-sat, $color-neutral);
+							color: $color-white;
+							font-weight: bold;
+
+							.data-zi,
+							.data-luna {
+								text-align: center;
+							}
+						}
+						.noutati-description {
+							display: flex;
+							flex-direction: column;
+							justify-content: space-between;
+							& > * {
+								margin: 0;
+							}
+							.noutati-article-title {
+								justify-content: flex-start;
+							}
+							.noutati-info {
+								justify-content: flex-end;
+								font-size: 0.8em;
+
+								&-autor {
+								}
+								&-categorii {
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.prezentare {
+			background: url('../../../assets/images/webp/sky.webp') top left no-repeat;
+			background-size: cover;
+			padding-top: 1rem;
 		}
 	}
 	.footer {
