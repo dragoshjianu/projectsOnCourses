@@ -1,4 +1,5 @@
 @use '../src/scss/variables/' as *;
+@use '../src/scss/components/' as *;
 
 *,
 *::after,
@@ -49,18 +50,111 @@ strong {
 	border-width: 0;
 }
 
+.btn {
+	display: inline-block;
+	padding: 0.25em 1.5em;
+	background-color: hsl($color-secondary, $color-sat, $color-neutral);
+	color: $color-white;
+	font-family: $font-secondary;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-decoration: none;
+	text-align: center;
+	border: 1px solid hsl($color-secondary, $color-sat, $color-neutral);
+	border-radius: 2em;
+	box-shadow: 0 0.25em 0.25em $color-shadow;
+	cursor: pointer;
+
+	&:hover {
+		color: hsl($color-secondary, $color-sat, $color-neutral);
+		background-color: transparent;
+		border: 1px solid hsl($color-secondary, $color-sat, $color-neutral);
+		box-shadow: 0 0.333em 0.333em $color-shadow;
+	}
+	&:active {
+		box-shadow: inset 0 0.1em 0.1em $color-shadow;
+	}
+}
+
+.highlight {
+	font-size: 1.2em;
+	font-weight: bold;
+	color: hsl($color-accent, $color-sat, $color-dark);
+}
+
+.section-header {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-block: 2rem;
+	font-family: $font-secondary;
+	font-size: 2em;
+	line-height: 1.5em;
+
+	h2 {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-block: 0.2em;
+	}
+
+	.heading-cap {
+		width: 130px;
+		height: 30px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		&::before,
+		&::after {
+			content: '';
+			vertical-align: middle;
+			height: 4px;
+			border-top: 1px solid hsl($color-secondary, $color-sat, $color-neutral);
+			border-bottom: 1px solid hsl($color-secondary, $color-sat, $color-neutral);
+			width: 40px;
+			display: inline-block;
+		}
+		svg {
+			width: 30px;
+
+			g {
+				fill: hsl($color-secondary, $color-sat, $color-neutral);
+			}
+		}
+	}
+}
+
+.card-list {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2em;
+
+	@media screen and (min-width: $break-tablet) {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+	}
+}
+
 /* =================================================================  */
 .container {
+	section {
+		margin-block: 2rem;
+	}
+	/* ========================HEADER STYLES=========================  */
 	.header {
 		display: grid;
 		grid-template-areas:
 			'logo  logo'
 			'meniu  cautare';
 		position: sticky;
+		z-index: 999;
 		top: 0;
-		min-height: calc(100px + 3em);
 		background: hsl($color-primary, $color-sat, $color-neutral);
-		box-shadow: 0 1em 1em $color-shadow;
+		box-shadow: 0 1px 1em $color-shadow;
 
 		@media screen and (min-width: $break-small-desktop) {
 			display: flex;
@@ -69,14 +163,13 @@ strong {
 			justify-content: space-between;
 			background: $color-white;
 			padding-inline: 2rem;
-			min-height: 100%;
 		}
 
 		.logo {
 			grid-area: logo;
+			display: flex;
 			align-self: start;
 			justify-self: center;
-			display: flex;
 			justify-content: center;
 			background: $color-white;
 			width: 100%;
@@ -85,7 +178,6 @@ strong {
 
 			@media screen and (min-width: $break-small-desktop) {
 				display: block;
-				align-self: center;
 			}
 
 			.logo-image {
@@ -116,10 +208,13 @@ strong {
 
 		.main-menu-container {
 			grid-area: meniu;
-			padding-block: 1rem;
+			padding-block: 1em;
 
 			@media screen and (min-width: $break-small-desktop) {
-				grid-column: 4/5;
+				display: flex;
+				align-items: center;
+				align-self: stretch;
+				padding: 0;
 			}
 
 			.menu-toggle {
@@ -203,8 +298,9 @@ strong {
 
 				@media screen and (min-width: $break-small-desktop) {
 					all: unset;
-					display: block;
-					top: 0;
+					display: flex;
+					align-items: center;
+					height: 100%;
 				}
 
 				.main-menu-list {
@@ -214,21 +310,43 @@ strong {
 
 					@media screen and (min-width: $break-small-desktop) {
 						display: flex;
+						align-items: center;
+						height: 100%;
 					}
 
 					.main-menu-item {
-						flex-wrap: wrap;
+						justify-self: flex-start;
+						flex-wrap: nowrap;
 						position: relative;
 						margin-bottom: 0.5em;
 						margin-left: 1em;
 						padding: 0.5em 0;
 
 						@media screen and (min-width: $break-small-desktop) {
+							display: flex;
+							align-items: center;
 							margin-left: 0.5em;
 							padding-right: 1.25em;
+							height: 100%;
 						}
+
 						@media screen and (min-width: $break-large-desktop) {
 							margin-left: 2em;
+						}
+
+						&.has-children {
+							.expand {
+								display: flex;
+								align-items: center;
+								position: absolute;
+								right: 0;
+								font-size: 1.25rem;
+								color: currentColor;
+
+								@media screen and (min-width: $break-small-desktop) {
+									bottom: 1.5rem;
+								}
+							}
 						}
 
 						&:not(:last-of-type) {
@@ -240,32 +358,78 @@ strong {
 						}
 
 						.main-menu-link {
-							flex: 1;
-							color: $color-grey-dark;
+							display: flex;
+							flex-direction: column;
 							font-weight: 400;
 							font-size: 1.2em;
 							text-decoration: none;
 							transition: opacity 0.15s ease-in-out;
 
 							@media screen and (min-width: $break-small-desktop) {
+								align-items: center;
+								justify-content: space-evenly;
 								font-weight: 700;
 							}
 
-							&:hover {
+							&::after {
+								@media screen and (min-width: $break-small-desktop) {
+									content: '';
+									position: absolute;
+									left: 0;
+									bottom: 0%;
+									width: 100%;
+									height: 2px;
+									background: currentColor;
+
+									transform: scaleX(0);
+									transform-origin: right;
+									transition: transform 0.25s ease-in;
+								}
+							}
+
+							&:hover::after {
+								@media screen and (min-width: $break-small-desktop) {
+									transform: scaleX(1);
+									transform-origin: left;
+								}
+							}
+
+							&.acasa {
+								color: hsl($color-primary, $color-sat, $color-neutral);
+							}
+							&.prezentare {
 								color: hsl($color-secondary, $color-sat, $color-neutral);
+							}
+							&.transparenta,
+							&.transparenta + * {
+								color: hsl($color-tertiary, $color-sat, $color-neutral);
+							}
+							&.proiecte {
+								color: hsl($color-accent, 50%, $color-neutral);
+							}
+							&.noutati {
+								color: hsl(317, 50%, $color-neutral);
+							}
+							&.contact {
+								color: hsl(184, 44%, $color-neutral);
+							}
+
+							.up-icon {
+								display: none;
+
+								@media screen and (min-width: $break-small-desktop) {
+									display: block;
+								}
+							}
+
+							&:hover {
 								text-decoration: none;
-								text-shadow: 2px 2px 1px $color-shadow;
 								outline: none;
 							}
-						}
 
-						.expand {
-							display: flex;
-							align-items: center;
-							position: absolute;
-							top: 0.75em;
-							right: 0;
-							transition: rotate 0.3s ease-in-out;
+							i {
+								font-size: 1.5em;
+							}
 						}
 
 						.main-menu-sublist {
@@ -275,11 +439,31 @@ strong {
 
 							@media screen and (min-width: $break-small-desktop) {
 								position: absolute;
+								left: 0;
 								top: 100%;
 							}
 
 							&.opened {
 								height: 100%;
+								color: currentColor;
+
+								@media screen and (min-width: $break-small-desktop) {
+									position: absolute;
+									left: 0;
+									top: 105%;
+									padding-block: 2em;
+									padding-right: 3em;
+									padding-left: 0;
+									margin-left: -1em;
+									width: max-content;
+									height: fit-content;
+									overflow-y: auto;
+									border-radius: 0.5em;
+									border-width: 2px;
+									border-style: solid;
+									border-color: currentColor;
+									// border-color: hsl($color-tertiary, $color-sat, $color-neutral);
+								}
 							}
 							.main-menu-subitem {
 								display: block;
@@ -385,7 +569,226 @@ strong {
 			}
 		}
 	}
+	/* ========================MAIN STYLES============================ */
 	.main {
+		.hero {
+			display: grid;
+			place-items: center;
+			position: relative;
+			min-height: 65vh;
+
+			margin-block: 0;
+			background: linear-gradient(
+					hsla($color-accent, $color-sat, $color-dark, 0.6),
+					hsla($color-accent, $color-sat, $color-dark, 0.6)
+				),
+				url('../../../assets/images/background-pattern.jpg') left top repeat;
+
+			@media screen and (min-width: $break-small-desktop) {
+				display: block;
+				// grid-template-columns: 54% 45%;
+				// gap: 1%;
+			}
+
+			.hero-floating {
+				display: none;
+
+				@media screen and (min-width: $break-small-desktop) {
+					display: block;
+					position: absolute;
+					left: 2%;
+					bottom: -5%;
+					// place-sel: flex-end;
+				}
+
+				.hero-floating-image {
+				}
+			}
+
+			.hero-content {
+				display: grid;
+				place-items: center;
+				position: relative;
+				background: url('../../../assets/images/cloud.png') center center no-repeat;
+				background-size: contain;
+				padding: 5em 3em;
+				text-align: center;
+
+				@media screen and (min-width: $break-tablet) {
+					text-align: left;
+				}
+
+				@media screen and (min-width: $break-small-desktop) {
+					position: absolute;
+					top: 2%;
+					right: 5%;
+					margin-top: 3rem;
+					padding: 3rem 2rem;
+					width: clamp(30rem, 50vw, 50rem);
+					z-index: 10;
+				}
+				.oscillation {
+					display: none;
+
+					@media screen and (min-width: $break-small-desktop) {
+						display: block;
+						position: absolute;
+						top: -30%;
+						right: 10%;
+						transform-origin: 50% 0;
+						animation: oscillation 4s ease-in-out alternate infinite;
+					}
+
+					.oscillation-image {
+					}
+				}
+
+				.hero-title {
+					margin-top: 2em;
+					margin-bottom: 0;
+					font-size: clamp(1rem, -0.875rem + 8.333333vw, 2.5rem);
+					font-family: $font-primary;
+					line-height: 1.5em;
+
+					@media screen and (min-width: $break-small-desktop) {
+						font-size: 1.5rem;
+					}
+
+					span {
+						display: block;
+					}
+					.hero-title-first-line {
+						color: hsl($color-primary, $color-sat, $color-neutral);
+					}
+					.hero-title-second-line {
+						color: hsl($color-tertiary, $color-sat, $color-neutral);
+					}
+				}
+				.hero-text {
+					font-size: clamp(1rem, -0.875rem + 4.333333vw, 1.5rem);
+					font-weight: bold;
+
+					@media screen and (min-width: $break-small-desktop) {
+						font-size: 1.2em;
+					}
+				}
+			}
+		}
+
+		.contact-cta {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: relative;
+			margin-block: 0;
+			padding-block: 2em;
+			background: url('../../../assets/images/white-texture.jpg') top center repeat;
+			z-index: 100;
+
+			&-content {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				width: 100%;
+				font-size: 1em;
+				text-align: center;
+
+				.contactCta-btn:hover {
+					background-color: $color-white;
+				}
+
+				@media screen and (min-width: 450px) {
+					font-size: 1.3em;
+				}
+				@media screen and (min-width: 520px) {
+					font-size: 1.5em;
+				}
+				@media screen and (min-width: $break-tablet) {
+					flex-direction: row;
+					justify-content: space-evenly;
+					padding-inline: 3em;
+					font-size: 1.3em;
+				}
+				@media screen and (min-width: $break-large-desktop) {
+					$font-size: 2em;
+				}
+
+				a {
+					display: block;
+
+					@media screen and (min-width: 400px) {
+						display: inline;
+					}
+				}
+			}
+		}
+
+		.noutati {
+			&-list {
+				.noutati-item {
+					display: flex;
+					flex-direction: column;
+					gap: 0.5em;
+					.noutati-thumbnail {
+						border-radius: 1em;
+						overflow: hidden;
+						box-shadow: 0 0.1em 0.5em $color-shadow;
+						.noutati-image {
+						}
+					}
+					.noutati-detalii {
+						display: flex;
+						flex-direction: row;
+						justify-content: flex-start;
+						gap: 0.5em;
+
+						.noutati-date {
+							display: flex;
+							flex-direction: column;
+							justify-content: center;
+							align-items: center;
+							width: 2.5em;
+							height: 2.5em;
+							padding: 0.5em;
+							background-color: hsl($color-secondary, $color-sat, $color-neutral);
+							color: $color-white;
+							font-weight: bold;
+
+							.data-zi,
+							.data-luna {
+								text-align: center;
+							}
+						}
+						.noutati-description {
+							display: flex;
+							flex-direction: column;
+							justify-content: space-between;
+							& > * {
+								margin: 0;
+							}
+							.noutati-article-title {
+								justify-content: flex-start;
+							}
+							.noutati-info {
+								justify-content: flex-end;
+								font-size: 0.8em;
+
+								&-autor {
+								}
+								&-categorii {
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.prezentare {
+			background: url('../../../assets/images/webp/sky.webp') top left no-repeat;
+			background-size: cover;
+			padding-top: 1rem;
+		}
 	}
 	.footer {
 	}
