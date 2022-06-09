@@ -576,7 +576,7 @@ strong {
 			place-items: center;
 			position: relative;
 			min-height: 65vh;
-
+			padding-inline: 2rem;
 			margin-block: 0;
 			background: linear-gradient(
 					hsla($color-accent, $color-sat, $color-dark, 0.6),
@@ -644,7 +644,7 @@ strong {
 				}
 
 				.hero-title {
-					margin-top: 2em;
+					margin-top: 1em;
 					margin-bottom: 0;
 					font-size: clamp(1rem, -0.875rem + 8.333333vw, 2.5rem);
 					font-family: $font-primary;
@@ -790,23 +790,38 @@ strong {
 			background: url('../../../assets/images/webp/sky.webp') top left no-repeat;
 			background-size: cover;
 			padding-top: 1rem;
+			padding-inline: 2rem;
 
 			.prezentare-content {
-				display: grid;
-				grid-template-columns: 1fr 40% 40% 1fr;
-				gap: 1rem;
-				place-self: center;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
 
 				.prezentare-image {
-					grid-column: 2/3;
+					// grid-column: 2/3;
 				}
 				.prezentare-columns {
-					grid-column: 3/4;
+					// grid-column: 3/4;
+					display: flex;
+					flex-direction: column;
+					gap: 3rem;
+
 					.prezentare-column {
-						display: flex;
-						flex-direction: row;
+						display: grid;
+						grid-template-columns: 2fr 3fr;
 						gap: 2em;
+
 						.prezentare-icon {
+							border-radius: 50%;
+							padding: 1rem;
+							align-self: center;
+							justify-self: center;
+							background-color: $color-white;
+							border: 2px solid currentColor;
+							box-shadow: 0px 0px 0px 1rem hsl(0, 100%, 100%, 0.5);
+
+							.prezentare-icon-image {
+							}
 						}
 						.prezentare-description {
 							.prezentare-head {
