@@ -591,6 +591,7 @@ strong {
   place-items: center;
   position: relative;
   min-height: 65vh;
+  padding-inline: 2rem;
   margin-block: 0;
   background: linear-gradient(hsla(75deg, 100%, 30%, 0.6), hsla(75deg, 100%, 30%, 0.6)), url("../../../assets/images/background-pattern.jpg") left top repeat;
 }
@@ -649,7 +650,7 @@ strong {
   }
 }
 .container .main .hero .hero-content .hero-title {
-  margin-top: 2em;
+  margin-top: 1em;
   margin-bottom: 0;
   font-size: clamp(1rem, -0.875rem + 8.333333vw, 2.5rem);
   font-family: "Archivo", Helvetica, Arial, sans-serif;
@@ -778,12 +779,12 @@ strong {
   background: url("../../../assets/images/webp/sky.webp") top left no-repeat;
   background-size: cover;
   padding-top: 1rem;
+  padding-inline: 2rem;
 }
 .container .main .prezentare .prezentare-content {
-  display: grid;
-  grid-template-columns: 1fr 40% 40% 1fr;
-  gap: 1rem;
-  place-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .container .main .prezentare .prezentare-content .prezentare-image {
   grid-column: 2/3;
