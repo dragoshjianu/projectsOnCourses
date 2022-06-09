@@ -773,9 +773,28 @@ strong {
   font-size: 0.8em;
 }
 .container .main .prezentare {
+  display: grid;
+  grid-template-rows: 1fr auto;
   background: url("../../../assets/images/webp/sky.webp") top left no-repeat;
   background-size: cover;
   padding-top: 1rem;
+}
+.container .main .prezentare .prezentare-content {
+  display: grid;
+  grid-template-columns: 1fr 40% 40% 1fr;
+  gap: 1rem;
+  place-self: center;
+}
+.container .main .prezentare .prezentare-content .prezentare-image {
+  grid-column: 2/3;
+}
+.container .main .prezentare .prezentare-content .prezentare-columns {
+  grid-column: 3/4;
+}
+.container .main .prezentare .prezentare-content .prezentare-columns .prezentare-column {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
 }
 /* =================================================================  */
 @media (prefers-reduced-motion: reduce) {

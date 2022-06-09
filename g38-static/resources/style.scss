@@ -785,9 +785,38 @@ strong {
 		}
 
 		.prezentare {
+			display: grid;
+			grid-template-rows: 1fr auto;
 			background: url('../../../assets/images/webp/sky.webp') top left no-repeat;
 			background-size: cover;
 			padding-top: 1rem;
+
+			.prezentare-content {
+				display: grid;
+				grid-template-columns: 1fr 40% 40% 1fr;
+				gap: 1rem;
+				place-self: center;
+
+				.prezentare-image {
+					grid-column: 2/3;
+				}
+				.prezentare-columns {
+					grid-column: 3/4;
+					.prezentare-column {
+						display: flex;
+						flex-direction: row;
+						gap: 2em;
+						.prezentare-icon {
+						}
+						.prezentare-description {
+							.prezentare-head {
+							}
+							.prezentare-text {
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 	.footer {
