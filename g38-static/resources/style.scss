@@ -820,31 +820,49 @@ strong {
 
 						&:nth-of-type(n + 1) > .prezentare-icon {
 							color: hsl($color-primary, $color-sat, $color-dark);
+							transition: all 0.3s ease-in-out;
 							svg {
 								fill: currentColor;
 							}
 						}
 						&:hover:nth-of-type(n + 1) > .prezentare-icon {
-							box-shadow: 0px 0px 0px 0.75rem
-								hsla($color-primary, $color-sat, $color-dark, 0.5);
+							box-shadow: 0px 0px 0.75rem 0.5rem
+								hsl($color-primary, $color-sat, $color-dark, 0.5);
 						}
+
 						&:nth-of-type(n + 2) > .prezentare-icon {
 							color: hsl($color-secondary, $color-sat, $color-neutral);
+
 							svg {
 								fill: currentColor;
 							}
 						}
+						&:hover:nth-of-type(n + 2) > .prezentare-icon {
+							box-shadow: 0px 0px 0.75rem 0.5rem
+								hsl($color-secondary, $color-sat, $color-neutral, 0.5);
+						}
+
 						&:nth-of-type(n + 3) > .prezentare-icon {
 							color: hsl($color-tertiary, $color-sat, $color-neutral);
+
 							svg {
 								fill: currentColor;
 							}
 						}
+						&:hover:nth-of-type(n + 3) > .prezentare-icon {
+							box-shadow: 0px 0px 0.75rem 0.5rem
+								hsl($color-tertiary, $color-sat, $color-dark, 0.5);
+						}
+
 						&:nth-of-type(n + 4) > .prezentare-icon {
 							color: hsl($color-accent, $color-sat, $color-dark);
 							svg {
 								fill: currentColor;
 							}
+						}
+						&:hover:nth-of-type(n + 4) > .prezentare-icon {
+							box-shadow: 0px 0px 0.75rem 0.5rem
+								hsl($color-accent, $color-sat, $color-dark, 0.5);
 						}
 
 						.prezentare-icon {

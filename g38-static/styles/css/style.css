@@ -804,12 +804,13 @@ strong {
 }
 .container .main .prezentare .prezentare-content .prezentare-columns .prezentare-column:nth-of-type(n + 1) > .prezentare-icon {
   color: hsl(199deg, 100%, 30%);
+  transition: all 0.3s ease-in-out;
 }
 .container .main .prezentare .prezentare-content .prezentare-columns .prezentare-column:nth-of-type(n + 1) > .prezentare-icon svg {
   fill: currentColor;
 }
 .container .main .prezentare .prezentare-content .prezentare-columns .prezentare-column:hover:nth-of-type(n + 1) > .prezentare-icon {
-  box-shadow: 0px 0px 0px 0.75rem hsla(199deg, 100%, 30%, 0.5);
+  box-shadow: 0px 0px 0.75rem 0.5rem hsla(199deg, 100%, 30%, 0.5);
 }
 .container .main .prezentare .prezentare-content .prezentare-columns .prezentare-column:nth-of-type(n + 2) > .prezentare-icon {
   color: hsl(48deg, 100%, 50%);
@@ -817,17 +818,26 @@ strong {
 .container .main .prezentare .prezentare-content .prezentare-columns .prezentare-column:nth-of-type(n + 2) > .prezentare-icon svg {
   fill: currentColor;
 }
+.container .main .prezentare .prezentare-content .prezentare-columns .prezentare-column:hover:nth-of-type(n + 2) > .prezentare-icon {
+  box-shadow: 0px 0px 0.75rem 0.5rem hsla(48deg, 100%, 50%, 0.5);
+}
 .container .main .prezentare .prezentare-content .prezentare-columns .prezentare-column:nth-of-type(n + 3) > .prezentare-icon {
   color: hsl(19deg, 100%, 50%);
 }
 .container .main .prezentare .prezentare-content .prezentare-columns .prezentare-column:nth-of-type(n + 3) > .prezentare-icon svg {
   fill: currentColor;
 }
+.container .main .prezentare .prezentare-content .prezentare-columns .prezentare-column:hover:nth-of-type(n + 3) > .prezentare-icon {
+  box-shadow: 0px 0px 0.75rem 0.5rem hsla(19deg, 100%, 30%, 0.5);
+}
 .container .main .prezentare .prezentare-content .prezentare-columns .prezentare-column:nth-of-type(n + 4) > .prezentare-icon {
   color: hsl(75deg, 100%, 30%);
 }
 .container .main .prezentare .prezentare-content .prezentare-columns .prezentare-column:nth-of-type(n + 4) > .prezentare-icon svg {
   fill: currentColor;
+}
+.container .main .prezentare .prezentare-content .prezentare-columns .prezentare-column:hover:nth-of-type(n + 4) > .prezentare-icon {
+  box-shadow: 0px 0px 0.75rem 0.5rem hsla(75deg, 100%, 30%, 0.5);
 }
 .container .main .prezentare .prezentare-content .prezentare-columns .prezentare-column .prezentare-icon {
   display: grid;
