@@ -786,6 +786,11 @@ strong {
   flex-direction: column;
   align-items: center;
 }
+@media screen and (min-width: 1023px) {
+  .container .main .prezentare .prezentare-content {
+    flex-direction: row;
+  }
+}
 .container .main .prezentare .prezentare-content .prezentare-columns {
   display: flex;
   flex-direction: column;

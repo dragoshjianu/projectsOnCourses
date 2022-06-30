@@ -797,6 +797,10 @@ strong {
 				flex-direction: column;
 				align-items: center;
 
+				@media screen and (min-width: $break-small-desktop) {
+					flex-direction: row;
+				}
+
 				.prezentare-image {
 					// grid-column: 2/3;
 				}
