@@ -1,14 +1,14 @@
 import React from 'react';
 import {
 	Header,
-	About,
-	Contact,
-	Experience,
-	Footer,
-	Navigation,
-	Portfolio,
-	Services,
-	Testimonials,
+	// About,
+	// Contact,
+	// Experience,
+	// Footer,
+	// Navigation,
+	// Portfolio,
+	// Services,
+	// Testimonials,
 } from './components/sections';
 
 const App = () => {
@@ -16,7 +16,7 @@ const App = () => {
 		<div>
 			<>
 				<Header />
-				<Navigation />
+				{/* <Navigation /> */}
 			</>
 		</div>
 	);
