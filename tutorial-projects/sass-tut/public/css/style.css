@@ -42,4 +42,22 @@ a:active {
 
 .grid {
   display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  gap: 40px;
+}
+@media (min-width: 50em) {
+  .grid {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto;
+  }
+}
+.grid__main, .grid__sidebar {
+  padding: 30px;
+}
+.grid__main {
+  background-color: hsl(240deg, 99%, 33%);
+}
+.grid__sidebar {
+  background-color: hsl(300deg, 100%, 30%);
 }
