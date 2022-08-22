@@ -1,7 +1,7 @@
 {
-	"name": "Gradinița cu Program Prelungit Nr. 38 Ploiești",
+	"name": "project",
 	"version": "0.1.0",
-	"description": "Site-ul de prezentare al Gradiniței cu Program Prelungit Nr. 38 Ploiești",
+	"description": "SASS compile|autoprefix|minimize and live-reload dev server using Browsersync for static HTML",
 	"main": "public/index.html",
 	"author": "Dragos Jianu",
 	"scripts": {
