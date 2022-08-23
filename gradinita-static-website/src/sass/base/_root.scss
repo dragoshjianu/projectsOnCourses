@@ -1,0 +1,29 @@
+@use '../abstracts/' as *;
+
+:root {
+	// Generate Color Custom Properties
+	@each $color, $shades in $colors {
+		@each $shade, $value in $shades {
+			--clr-#{$color}-#{$shade}: #{$value};
+		}
+	}
+
+	// Font Family Custom Properties
+	--ff-primary: 'Archivo', Helvetica, Arial, sans-serif;
+	--ff-secondary: 'Oswald', Helvetica, Arial, sans-serif;
+
+	// Generate Font Sizes Properties
+	@each $screen-size, $font-size in $type-scale {
+		@if $screen-size == mobile {
+			@each $size, $value in $font-size {
+				--fs-#{$size}: #{$value};
+			}
+		} @else {
+			@include mq(tablet) {
+				@each $size, $value in $font-size {
+					--fs-#{$size}: #{$value};
+				}
+			}
+		}
+	}
+}
