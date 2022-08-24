@@ -8,10 +8,6 @@
 		}
 	}
 
-	// Font Family Custom Properties
-	--ff-primary: 'Archivo', Helvetica, Arial, sans-serif;
-	--ff-secondary: 'Oswald', Helvetica, Arial, sans-serif;
-
 	// Generate Font Sizes Properties
 	@each $screen-size, $font-size in $type-scale {
 		@if $screen-size == mobile {
@@ -26,4 +22,30 @@
 			}
 		}
 	}
+
+	// Generate Sizes
+	@each $size, $value in $sizes {
+		--size-#{$size}: #{$value};
+	}
+
+	--fs-body: var(--fs-400); //400 laptop
+	--fs-primary-heading: var(--fs-800); //700 laptop
+	--fs-secondary-heading: var(--fs-600); //600 laptop
+	--fs-nav: var(--fs-500); //500 laptop
+	--fs-button: var(--fs-300); //400 laptop
+
+	@include mq(tablet) {
+		--fs-primary-heading: var(--fs-700);
+		--fs-button: var(--fs-400);
+	}
+
+	// Font Family Custom Properties
+	--ff-primary: 'Archivo', Helvetica, Arial, sans-serif;
+	--ff-secondary: 'Oswald', Helvetica, Arial, sans-serif;
+	--ff-body: var(--ff-primary);
+	--ff-heading: var(--ff-secondary);
+
+	--fw-regular: 400;
+	--fw-semi-bold: 500;
+	--fw-bold: 700;
 }
