@@ -1,0 +1,17 @@
+@use '../abstracts/' as *;
+.primary-header {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	position: sticky;
+	min-height: 40px;
+	top: 0;
+	z-index: 999;
+	background-color: var(--clr-primary-400);
+	color: var(--clr-neutral-100);
+	@include shadow();
+
+	@include mq(tablet) {
+		background-color: var(--clr-netural-100);
+	}
+}
