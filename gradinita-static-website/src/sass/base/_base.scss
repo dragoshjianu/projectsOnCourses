@@ -5,3 +5,8 @@ body {
 	color: var(--clr-neutral-900);
 	min-height: 100vh;
 }
+
+a {
+	color: currentColor;
+	text-decoration: none;
+}
