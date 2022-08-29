@@ -14,6 +14,8 @@
 
 		@include mq(tablet, max) {
 			display: block;
+			width: 3em;
+			height: 27px;
 			@include btn-reset();
 		}
 		.mobile-menu-trigger {
@@ -57,6 +59,7 @@
 			transition: all 0.4s ease-in-out;
 			font-family: var(--ff-secondary);
 			overflow-y: auto;
+			border-radius: 0 0 0.5em 0;
 			@include shadow;
 
 			&[data-visible] {
@@ -127,13 +130,13 @@
 					}
 				}
 				.main-menu-sublist {
-					position: absolute;
-					opacity: 0;
+					height: 0;
 					transform: scale(1, 0);
 					transform-origin: top;
-					transition: all 0.4s ease-in-out;
+					transition: all 0.2s ease-in-out;
 
 					&[data-visible] {
+						height: auto;
 						transform: scale(1, 1);
 					}
 					.main-menu-sub-item {

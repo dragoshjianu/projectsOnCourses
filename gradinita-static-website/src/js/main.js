@@ -28,8 +28,14 @@ menuElements.forEach((element) => {
 		if (child.tagName === 'UL') {
 			const parentLi = child.parentElement;
 			parentLi.setAttribute('data-parent', '');
-			console.log(parentLi);
 			addFaIconToMenu('caret-down', parentLi, 'beforeEnd');
+
+			const caretDown = parentLi.querySelector('.expand');
+			const subNav = document.querySelector('[aria-label="SubMenu"]');
+
+			caretDown.addEventListener('click', () => {
+				subNav.toggleAttribute('data-visible');
+			});
 		}
 	}
 });
