@@ -6,7 +6,7 @@
 	align-items: center;
 
 	@include mq(tablet, max) {
-		justify-content: space-between;
+		justify-content: space-evenly;
 	}
 
 	.mobile-nav-toggle {
@@ -47,6 +47,8 @@
 	}
 
 	.main-menu {
+		width: 95%;
+
 		@include mq(tablet, max) {
 			position: absolute;
 			text-align: left;
@@ -70,6 +72,7 @@
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
+
 			@include mq(tablet, max) {
 				flex-direction: column;
 				align-items: stretch;
@@ -77,8 +80,12 @@
 			}
 
 			.main-menu-item {
+				padding: var(--size-400) var(--size-200);
+				position: relative;
+
 				@include mq(tablet, max) {
 					padding-block: var(--size-200);
+
 					&:not(:last-of-type) {
 						border-bottom: 1px solid var(--clr-neutral-300);
 					}
@@ -94,14 +101,23 @@
 					}
 				}
 
+				.expand {
+					padding-inline-start: var(--size-300);
+				}
+
 				.main-menu-link {
-					font-size: var(--fs-500);
+					font-size: var(--fs-400);
 					font-weight: var(--fw-semi-bold);
 
 					@include mq(tablet, max) {
+						font-size: var(--fs-500);
 						& i:not(.expand) {
 							display: none;
 						}
+					}
+
+					@include mq(laptop, min) {
+						font-size: var(--fs-500);
 					}
 
 					&.acasa,
@@ -129,18 +145,44 @@
 						color: var(--clr-fifth-300);
 					}
 				}
+
 				.main-menu-sublist {
-					height: 0;
+					position: absolute;
+					top: 100%;
+					left: -50%;
+					// border: 1px solid black;
+
+					overflow: hidden;
+					max-height: 0;
 					transform: scale(1, 0);
 					transform-origin: top;
-					transition: all 0.2s ease-in-out;
+					transition: all 0.5s ease-in-out;
+
+					@include mq(tablet, max) {
+						position: unset;
+						border: none;
+					}
 
 					&[data-visible] {
-						height: auto;
+						display: flex;
+						max-height: 100vh;
 						transform: scale(1, 1);
+						padding: var(--size-800);
+
+						@include mq(tablet, max) {
+							display: block;
+							padding: unset;
+							padding-inline-start: var(--size-500);
+
+							margin-block: var(--size-100);
+						}
 					}
-					.main-menu-sub-item {
-						.main-menu-sub-link {
+
+					.main-menu-subitem {
+						@include mq(tablet, max) {
+							padding-block: var(--size-100);
+						}
+						.main-menu-sublink {
 						}
 					}
 				}
@@ -148,206 +190,3 @@
 		}
 	}
 }
-
-// .main-menu {
-// 	position: relative;
-// 	text-align: left;
-// 	top: 100%;
-// 	left: 0;
-// 	padding-right: 1em;
-// 	background-color: var(--clr-neutral-100);
-// 	transform: scale(0, 1);
-// 	transform-origin: left;
-// 	transition: transform 0.4s ease-in-out;
-// 	font-family: var(--ff-secondary);
-// 	overflow-y: auto;
-// 	@include shadow;
-
-// 	@include mq(tablet) {
-// 		all: unset;
-// 		display: flex;
-// 		align-items: center;
-// 		height: 100%;
-// 	}
-
-// 	.main-menu-list {
-// 		margin: 0;
-// 		padding: 0;
-// 		list-style: none;
-
-// 		@include mq(tablet) {
-// 			display: flex;
-// 			align-items: center;
-// 			height: 100%;
-// 		}
-
-// 		.main-menu-item {
-// 			justify-self: flex-start;
-// 			flex-wrap: nowrap;
-// 			position: relative;
-// 			margin-bottom: 0.5em;
-// 			margin-left: 1em;
-// 			padding: 0.5em 0;
-
-// 			@include mq(tablet) {
-// 				display: flex;
-// 				align-items: center;
-// 				margin-left: 0.5em;
-// 				padding-right: 1.25em;
-// 				height: 100%;
-// 			}
-
-// 			@include mq(laptop) {
-// 				margin-left: 2em;
-// 			}
-
-// 			&.has-children {
-// 				.expand {
-// 					display: flex;
-// 					align-items: center;
-// 					position: absolute;
-// 					right: 0;
-// 					font-size: 1.25rem;
-// 					color: currentColor;
-
-// 					@include mq(tablet) {
-// 						bottom: 1.5rem;
-// 					}
-// 				}
-// 			}
-
-// 			&:not(:last-of-type) {
-// 				border-bottom: 1px solid var(--clr-neutral-200);
-
-// 				@include mq(tablet) {
-// 					border-bottom: none;
-// 				}
-// 			}
-
-// 			.main-menu-link {
-// 				display: flex;
-// 				flex-direction: column;
-// 				font-weight: 400;
-// 				font-size: 1.2em;
-// 				text-decoration: none;
-// 				transition: opacity 0.15s ease-in-out;
-
-// 				@include mq(tablet) {
-// 					align-items: center;
-// 					justify-content: space-evenly;
-// 					font-weight: 700;
-// 				}
-
-// 				&::after {
-// 					@include mq(tablet) {
-// 						content: '';
-// 						position: absolute;
-// 						left: 0;
-// 						bottom: 0%;
-// 						width: 100%;
-// 						height: 2px;
-// 						background: currentColor;
-
-// 						transform: scaleX(0);
-// 						transform-origin: right;
-// 						transition: transform 0.25s ease-in;
-// 					}
-// 				}
-
-// 				&:hover::after {
-// 					@include mq(tablet) {
-// 						transform: scaleX(1);
-// 						transform-origin: left;
-// 					}
-// 				}
-
-// 				&.acasa,
-// 				&.acasa + * {
-// 					color: var(--clr-primary-400);
-// 				}
-// 				&.prezentare,
-// 				&.prezentare + * {
-// 					color: var(--clr-secondary-400);
-// 				}
-// 				&.transparenta,
-// 				&.transparenta + * {
-// 					color: var(--clr-tertiary-400);
-// 				}
-// 				&.proiecte,
-// 				&.prezentare + * {
-// 					color: var(--clr-accent-400);
-// 				}
-// 				&.noutati,
-// 				&.noutati + * {
-// 					color: var(--clr-forth-400);
-// 				}
-// 				&.contact,
-// 				&.contact + * {
-// 					color: var(--clr-fifth-400);
-// 				}
-
-// 				.up-icon {
-// 					display: none;
-
-// 					@include mq(tablet) {
-// 						display: block;
-// 					}
-// 				}
-
-// 				&:hover {
-// 					text-decoration: none;
-// 					outline: none;
-// 				}
-
-// 				i {
-// 					font-size: 1.5em;
-// 				}
-// 			}
-
-// 			.main-menu-sublist {
-// 				display: block;
-// 				height: 0;
-// 				overflow: hidden;
-
-// 				@include mq(tablet) {
-// 					position: absolute;
-// 					left: 0;
-// 					top: 100%;
-// 				}
-
-// 				&.opened {
-// 					height: 100%;
-// 					color: currentColor;
-
-// 					@include mq(tablet) {
-// 						position: absolute;
-// 						left: 0;
-// 						top: 105%;
-// 						padding-block: 2em;
-// 						padding-right: 3em;
-// 						padding-left: 0;
-// 						margin-left: -1em;
-// 						width: max-content;
-// 						height: fit-content;
-// 						overflow-y: auto;
-// 						border-radius: 0.5em;
-// 						border-width: 2px;
-// 						border-style: solid;
-// 						border-color: currentColor;
-// 					}
-// 				}
-// 				.main-menu-subitem {
-// 					display: block;
-
-// 					.main-menu-sublink {
-// 						display: block;
-// 						padding: 0.5em 1em;
-// 						color: var(--clr-neutral-800);
-// 						background: transparent;
-// 						text-decoration: none;
-// 					}
-// 				}
-// 			}
-// 		}
-// 	}
-// }
