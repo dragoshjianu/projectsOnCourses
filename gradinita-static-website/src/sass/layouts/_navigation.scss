@@ -149,8 +149,7 @@
 				.main-menu-sublist {
 					position: absolute;
 					top: 100%;
-					left: -50%;
-					// border: 1px solid black;
+					left: -30%;
 
 					overflow: hidden;
 					max-height: 0;
@@ -165,15 +164,22 @@
 
 					&[data-visible] {
 						display: flex;
+						flex-direction: column;
+						align-items: flex-start;
+						gap: var(--size-600);
 						max-height: 100vh;
 						transform: scale(1, 1);
-						padding: var(--size-800);
+						padding: var(--size-300) var(--size-900) var(--size-300) var(--size-300);
+						width: max-content;
+						border-left: 0.3em solid var(--clr-tertiary-400);
+						background-color: var(--clr-neutral-100);
+						@include shadow;
 
 						@include mq(tablet, max) {
 							display: block;
-							padding: unset;
+							border: none;
+							box-shadow: none;
 							padding-inline-start: var(--size-500);
-
 							margin-block: var(--size-100);
 						}
 					}
