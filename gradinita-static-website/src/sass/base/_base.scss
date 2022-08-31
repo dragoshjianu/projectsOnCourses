@@ -10,3 +10,22 @@ a {
 	color: currentColor;
 	text-decoration: none;
 }
+
+.trigger-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.5rem;
+	height: 1.5rem;
+	padding: 0;
+	margin: 0;
+	background: transparent;
+	border: none;
+	appearance: none;
+
+	.trigger-image {
+		display: block;
+		width: 2rem;
+		height: 2rem;
+	}
+}

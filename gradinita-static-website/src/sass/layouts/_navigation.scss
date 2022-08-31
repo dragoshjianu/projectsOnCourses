@@ -2,11 +2,11 @@
 
 .nav-wrapper {
 	display: flex;
-	justify-content: center;
+	justify-content: space-evenly;
 	align-items: center;
 
 	@include mq(tablet, max) {
-		justify-content: space-evenly;
+		justify-content: space-between;
 	}
 
 	.mobile-nav-toggle {
