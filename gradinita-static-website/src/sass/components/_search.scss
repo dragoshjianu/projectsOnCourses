@@ -1,87 +1,155 @@
 @use '../abstracts/' as *;
 
-.mobile-search-toggle {
-	@include mq(tablet, max) {
-		display: block;
-		width: 2.6em;
-		height: min-content;
-		@include btn-reset();
-	}
-	.mobile-search-trigger {
-		@include mq(tablet, max) {
-			display: block;
-			path {
-				fill: var(--clr-neutral-100);
-			}
-		}
-	}
-}
-
-.search-form {
+.search-bar {
 	display: none;
-
 	@include mq(tablet, max) {
-		display: block;
-		position: absolute;
-		right: 0;
-		top: 100%;
-		width: clamp(14rem, 50vw, 20rem);
-		transform: scale(1, 0);
-		transform-origin: top;
-		transition: transform 0.4s ease-in-out;
-		font-family: var(--ff-secodary);
-		background-color: transparent;
+		--size: var(--size-600);
+		display: flex;
+		position: relative;
+		align-items: center;
+		border-radius: 100vh;
+		height: var(--size);
+		width: var(--size);
+		padding: 3px;
+		border: 1px solid var(--clr-neutral-100);
+		transition: width 300ms cubic-bezier(0.18, 0.89, 0.32, 1.15);
+		overflow: hidden;
 
-		.fieldset {
-			display: block;
-			position: relative;
+		&-input {
+			flex-grow: 1;
+			font-size: var(--fs-500);
+			padding: 0 0.5em;
+			border: 0;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			line-height: var(--size);
+			opacity: 0;
+			cursor: pointer;
+
+			&:focus {
+				outline: 0;
+			}
+		}
+
+		&-submit {
+			@include btn-reset();
 			padding: 0;
-			border: none;
-			background: transparent;
+			font-size: var(--fs-400);
+			border-radius: 100vh;
+			width: calc(var(--size) - 5px);
+			height: calc(var(--size) - 5px);
+			margin-left: auto;
+			color: var(--clr-neutral-100);
+			transition: background 300ms ease;
+			transition: color 300ms ease;
+		}
 
-			legend {
+		&:focus-within {
+			width: 50%;
+			background-color: var(--clr-neutral-100);
+
+			.search-bar-input {
+				opacity: 1;
+				cursor: initial;
+				width: calc(100% - var(--size));
 			}
-			.label {
-				display: block;
 
-				&.search-label {
-					.search-label-text {
-					}
-
-					.input {
-						display: block;
-						padding: 0.25rem 0.5rem;
-						padding-right: 3.5em;
-						height: 2.375rem;
-						width: 100%;
-						line-height: 2.375rem;
-						border-radius: 1em;
-						border: 1px solid var(--clr-neutral-300);
-						&.seach-input {
-						}
-					}
-				}
-			}
-			.submit-button {
-				&.search-submit {
-					display: block;
-					position: absolute;
-					right: 0;
-					top: 0;
-					bottom: 0;
-					padding-right: 1em;
-					border-top-right-radius: 1em;
-					border-bottom-right-radius: 1em;
-					border: none;
-					background: transparent;
-
-					.search-submit-image {
-						display: block;
-						width: 1.75rem;
-						height: 1.75rem;
-					}
+			.search-bar-submit {
+				color: var(--clr-neutral-800);
+				&:focus,
+				&:hover {
+					outline: 0;
+					@include btn-shadow();
 				}
 			}
 		}
 	}
 }
+
+// .mobile-search-toggle {
+// 	@include mq(tablet, max) {
+// 		display: block;
+// 		width: 2.6em;
+// 		height: min-content;
+// 		@include btn-reset();
+// 	}
+// 	.mobile-search-trigger {
+// 		@include mq(tablet, max) {
+// 			display: block;
+// 			path {
+// 				fill: var(--clr-neutral-100);
+// 			}
+// 		}
+// 	}
+// }
+
+// .search-form {
+// 	display: none;
+
+// 	@include mq(tablet, max) {
+// 		display: block;
+// 		position: absolute;
+// 		right: 0;
+// 		top: 100%;
+// 		width: clamp(14rem, 50vw, 20rem);
+// 		transform: scale(1, 0);
+// 		transform-origin: top;
+// 		transition: transform 0.4s ease-in-out;
+// 		font-family: var(--ff-secodary);
+// 		background-color: transparent;
+
+// 		.fieldset {
+// 			display: block;
+// 			position: relative;
+// 			padding: 0;
+// 			border: none;
+// 			background: transparent;
+
+// 			legend {
+// 			}
+// 			.label {
+// 				display: block;
+
+// 				&.search-label {
+// 					.search-label-text {
+// 					}
+
+// 					.input {
+// 						display: block;
+// 						padding: 0.25rem 0.5rem;
+// 						padding-right: 3.5em;
+// 						height: 2.375rem;
+// 						width: 100%;
+// 						line-height: 2.375rem;
+// 						border-radius: 1em;
+// 						border: 1px solid var(--clr-neutral-300);
+// 						&.seach-input {
+// 						}
+// 					}
+// 				}
+// 			}
+// 			.submit-button {
+// 				&.search-submit {
+// 					display: block;
+// 					position: absolute;
+// 					right: 0;
+// 					top: 0;
+// 					bottom: 0;
+// 					padding-right: 1em;
+// 					border-top-right-radius: 1em;
+// 					border-bottom-right-radius: 1em;
+// 					border: none;
+// 					background: transparent;
+
+// 					.search-submit-image {
+// 						display: block;
+// 						width: 1.75rem;
+// 						height: 1.75rem;
+// 					}
+// 				}
+// 			}
+// 		}
+// 	}
+// }
