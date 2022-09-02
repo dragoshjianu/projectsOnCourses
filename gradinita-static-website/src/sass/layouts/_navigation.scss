@@ -106,8 +106,23 @@
 				}
 
 				.main-menu-link {
+					--clr-avengers: hsl(360, 66%, 53%);
+					--clr-ironman: hsl(50, 97%, 66%);
+					--clr-flash: hsl(5, 65%, 50%);
+					--clr-spiderman: hsl(0, 81%, 38%);
+					--clr-superman: hsl(350, 100%, 44%);
 					font-size: var(--fs-400);
-					font-weight: var(--fw-semi-bold);
+					font-weight: var(--fw-bold);
+					display: flex;
+					align-items: center;
+					&::before {
+						content: '';
+						display: inline-block;
+						margin-right: var(--size-100);
+						width: 1.5rem;
+						height: 1.5rem;
+						background-size: cover;
+					}
 
 					@include mq(tablet, max) {
 						font-size: var(--fs-500);
@@ -120,29 +135,42 @@
 						font-size: var(--fs-500);
 					}
 
-					&.acasa,
-					&.acasa + * {
-						color: var(--clr-primary-400);
+					&.acasa {
+						color: var(--clr-avengers);
+						&::before {
+							background-image: url('../assets/images/svg/avengers/avengers.svg');
+						}
 					}
-					&.prezentare,
-					&.prezentare + * {
-						color: var(--clr-secondary-400);
+
+					&.prezentare {
+						color: var(--clr-ironman);
+						&::before {
+							background-image: url('../assets/images/svg/avengers/ironman.svg');
+						}
 					}
-					&.transparenta,
-					&.transparenta + * {
-						color: var(--clr-tertiary-400);
+					&.transparenta {
+						color: var(--clr-superman);
+						&::before {
+							background-image: url('../assets/images/svg/avengers/superman.svg');
+						}
 					}
-					&.proiecte,
-					&.prezentare + * {
-						color: var(--clr-accent-500);
+					&.proiecte {
+						color: var(--clr-spiderman);
+						&::before {
+							background-image: url('../assets/images/svg/avengers/spiderman.svg');
+						}
 					}
-					&.noutati,
-					&.noutati + * {
-						color: var(--clr-forth-400);
+					&.noutati {
+						color: var(--clr-flash);
+						&::before {
+							background-image: url('../assets/images/svg/avengers/flash.svg');
+						}
 					}
-					&.contact,
-					&.contact + * {
-						color: var(--clr-fifth-300);
+					&.contact {
+						color: var(--clr-neutral-900);
+						&::before {
+							background-image: url('../assets/images/svg/avengers/jl.svg');
+						}
 					}
 				}
 
@@ -150,7 +178,6 @@
 					position: absolute;
 					top: 100%;
 					left: -30%;
-
 					overflow: hidden;
 					max-height: 0;
 					transform: scale(1, 0);
@@ -171,7 +198,8 @@
 						transform: scale(1, 1);
 						padding: var(--size-300) var(--size-900) var(--size-300) var(--size-300);
 						width: max-content;
-						border-left: 0.3em solid var(--clr-tertiary-400);
+						color: inherit;
+						border-left: 0.3em solid currentColor;
 						background-color: var(--clr-neutral-100);
 						@include shadow;
 

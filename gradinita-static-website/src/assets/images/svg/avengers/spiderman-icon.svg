@@ -1,7 +1,0 @@
-<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="460" height="460">
-	<title>spider-mask-svgrepo-com-svg</title>
-	<style>
-		.s0 { fill: #df1f2d;stroke: #000000;paint-order:stroke fill markers;stroke-linejoin: round;stroke-width: 10 } 
-	</style>
-	<path id="Layer" fill-rule="evenodd" class="s0" d="m416 184c0 192-80 304-160 304-80 0-160-112-160-304 0-80 64-160 160-160 96 0 160 80 160 160zm-240 160l48-48c-61-36.1-88.2-96-96-128-16 32-19.7 134.9 48 176zm112-48l48 48c67.7-41.1 64-144 48-176-7.8 32-35 91.9-96 128z"/>
-</svg>

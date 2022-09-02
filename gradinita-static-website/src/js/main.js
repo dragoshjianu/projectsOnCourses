@@ -24,6 +24,10 @@ const menuElements = primaryNav.querySelectorAll('.main-menu-item');
 
 menuElements.forEach((element) => {
 	const children = element.children;
+
+	const link = element.querySelector('.main-menu-link');
+	const linkColor = getComputedStyle(link).color;
+
 	for (child of children) {
 		if (child.tagName === 'UL') {
 			const parentLi = child.parentElement;
@@ -32,6 +36,8 @@ menuElements.forEach((element) => {
 
 			const caretDown = parentLi.querySelector('.expand');
 			const subNav = document.querySelector('[aria-label="SubMenu"]');
+
+			subNav.style.color = linkColor;
 
 			caretDown.addEventListener('click', () => {
 				subNav.toggleAttribute('data-visible');
