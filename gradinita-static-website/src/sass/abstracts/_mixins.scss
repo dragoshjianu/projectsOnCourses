@@ -33,6 +33,7 @@
 
 @mixin bg-with-low-op-overlay($element, $bg-url, $color, $opacity: 0.5) {
 	#{$element} {
+		position: relative;
 		background: url($bg-url);
 		background-position: center;
 		isolation: isolate;
