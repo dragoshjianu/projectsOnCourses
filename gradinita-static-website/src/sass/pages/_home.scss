@@ -8,10 +8,37 @@
 ) {
 	padding-block: var(--size-900);
 }
-.hero > * {
-	display: grid;
-	place-items: center;
-}
+
 .hero-content {
-	max-width: 70vw;
+	position: relative;
+	inset: 0;
+	z-index: 2;
+	width: 70vw;
+}
+.hero-images {
+	position: relative;
+	inset: 0;
+	z-index: 1;
+	width: 100%;
+}
+
+@keyframes fly-around {
+	from {
+		transform: translateX(130vw) scaleX(1);
+	}
+	50% {
+		transform: translateX(-70%) scaleX(1);
+	}
+	70% {
+		transform: translateX(-70%) scaleX(-1);
+	}
+	to {
+		transform: translateX(0%) scaleX(-1);
+	}
+}
+.fly-kid {
+	animation-duration: 5s;
+	animation-name: fly-around;
+	animation-fill-mode: forwards;
+	transform: translateY(-20%);
 }

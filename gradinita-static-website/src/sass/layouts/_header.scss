@@ -12,6 +12,6 @@
 	@include shadow();
 
 	@include mq(tablet) {
-		background-color: var(--clr-netural-100);
+		background-color: var(--clr-neutral-100);
 	}
 }
