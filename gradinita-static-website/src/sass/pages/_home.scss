@@ -1,0 +1,17 @@
+@use '../abstracts/' as *;
+
+@include bg-with-low-op-overlay(
+	'.hero',
+	'../assets/images/background-pattern.png',
+	var(--clr-accent-500),
+	0.6
+) {
+	padding-block: var(--size-900);
+}
+.hero > * {
+	display: grid;
+	place-items: center;
+}
+.hero-content {
+	max-width: 70vw;
+}

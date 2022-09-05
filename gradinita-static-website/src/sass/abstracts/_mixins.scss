@@ -30,3 +30,21 @@
 		box-shadow: inset 0 0.1em 0.1em hsla(0, 0%, 0%, 0.3);
 	}
 }
+
+@mixin bg-with-low-op-overlay($element, $bg-url, $color, $opacity: 0.5) {
+	#{$element} {
+		background: url($bg-url);
+		background-position: center;
+		isolation: isolate;
+		@content;
+
+		&::before {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background-color: $color;
+			z-index: -1;
+			opacity: $opacity;
+		}
+	}
+}
