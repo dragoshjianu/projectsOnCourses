@@ -16,10 +16,18 @@
 	width: 70vw;
 }
 .hero-images {
+	display: flex;
+	justify-content: space-between;
 	position: relative;
 	inset: 0;
 	z-index: 1;
 	width: 100%;
+
+	.superhero-kid {
+		width: 30vw;
+		width: clamp(50px, 30vw, 300px);
+		height: auto;
+	}
 }
 
 @keyframes fly-around {
@@ -36,9 +44,26 @@
 		transform: translateX(0%) scaleX(-1);
 	}
 }
+
+@keyframes fly-up {
+	from {
+		transform: translateY(80%);
+		opacity: 0;
+	}
+	50% {
+		opacity: 1;
+	}
+	to {
+		transform: translateY(0%);
+		opacity: 1;
+	}
+}
 .fly-kid {
 	animation-duration: 5s;
 	animation-name: fly-around;
 	animation-fill-mode: forwards;
-	transform: translateY(-20%);
+}
+.fly-girl {
+	animation: 3s;
+	animation: fly-up 3s forwards;
 }

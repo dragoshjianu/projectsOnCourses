@@ -4,7 +4,6 @@
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
-	background-color: var(--clr-neutral-100);
 
 	@include mq(tablet, max) {
 		justify-content: space-between;
