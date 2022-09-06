@@ -9,61 +9,39 @@
 	padding-block: var(--size-900);
 }
 
+.hero {
+	& > * {
+		display: grid;
+		gap: var(--size-400);
+		place-items: center;
+
+		@include mq(mobile, min) {
+			grid-template-columns: 3fr 4fr;
+		}
+	}
+
+	&-content {
+	}
+
+	&-title {
+	}
+	&-subtitle {
+	}
+}
+
 .hero-content {
 	position: relative;
-	inset: 0;
-	z-index: 2;
-	width: 70vw;
+	text-align: center;
 }
-.hero-images {
-	display: flex;
-	justify-content: space-between;
-	position: relative;
-	inset: 0;
-	z-index: 1;
-	width: 100%;
-
-	.superhero-kid {
-		width: 30vw;
-		width: clamp(50px, 30vw, 300px);
-		height: auto;
+.superhero-kid {
+	display: none;
+	@include mq(mobile, min) {
+		display: block;
 	}
 }
 
-@keyframes fly-around {
-	from {
-		transform: translateX(130vw) scaleX(1);
-	}
-	50% {
-		transform: translateX(-70%) scaleX(1);
-	}
-	70% {
-		transform: translateX(-70%) scaleX(-1);
-	}
-	to {
-		transform: translateX(0%) scaleX(-1);
-	}
-}
-
-@keyframes fly-up {
-	from {
-		transform: translateY(80%);
-		opacity: 0;
-	}
-	50% {
-		opacity: 1;
-	}
-	to {
-		transform: translateY(0%);
-		opacity: 1;
-	}
-}
 .fly-kid {
 	animation-duration: 5s;
 	animation-name: fly-around;
 	animation-fill-mode: forwards;
-}
-.fly-girl {
-	animation: 3s;
-	animation: fly-up 3s forwards;
 }

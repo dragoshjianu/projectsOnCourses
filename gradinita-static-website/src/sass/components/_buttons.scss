@@ -17,7 +17,7 @@
 
 	&:hover {
 		color: var(--clr-secondary-400);
-		background-color: transparent;
+		background-color: var(--clr-neutral-100);
 		border: 1px solid var(--clr-secondary-400);
 	}
 }
