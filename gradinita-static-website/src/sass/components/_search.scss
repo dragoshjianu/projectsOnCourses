@@ -2,9 +2,12 @@
 
 .search-bar {
 	display: none;
+	
 	@include mq(tablet, max) {
 		--size: var(--size-600);
 		display: flex;
+		grid-area: search;
+		place-self:center end;
 		position: relative;
 		align-items: center;
 		border-radius: 100vh;

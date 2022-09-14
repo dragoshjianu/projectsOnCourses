@@ -57,6 +57,28 @@
 		<header class="primary-header">
 			<div class="container">
 				<div class="nav-wrapper">
+					<a href="./" class="logo-link">
+						<picture class="logo-picture">
+							<!-- Mobile-->
+					<source
+					media="(min-width:100px)"
+					srcset="./assets/images/webp/logo-mobile-webp.webp"
+					type="image/webp"
+				/>
+								<!-- Large Desktop -->
+								<source
+								media="(min-width:1140px)"
+								srcset="./assets/images/webp/logo-desktop-webp.webp"
+								type="image/webp"
+							/>
+
+							<!-- Default Mobile png-->
+							<img
+								src="./assets/images/logo-mobile-png.png"
+								alt="Logo-ul Gradiniței cu Program Prelungit Nr. 38 Ploiești"
+							/>
+						</picture>
+					</a>
 					<button
 						class="mobile-nav-toggle"
 						aria-controls="main-menu"
@@ -115,25 +137,33 @@
 		<main class="main-page">
 			<section class="hero">
 				<div class="container">
-					<div class="superhero-kid">
-						<img
-							src="./assets/images/svg/superheroes/superhero-kids/superhero-kid-6.svg"
-							data-speed="5"
-							class="fly-kid"
-							alt=""
-						/>
-					</div>
-
-					<div class="hero-content">
+					<div class="hero-content flow">
 						<h1 class="hero-title">
-							<span>Gradinița Nr. 38 Ploiești</span>
-							<span>cu Program Prelungit</span>
+							<span>Gradinița cu Program Prelungit </span>
+							<span> Nr. 38 Ploiești</span>
 						</h1>
-						<p class="hero-subtitle">Aici toți copiii sunt supereroi!</p>
+						<p class="hero-subtitle">Toți copiii sunt supereroi!</p>
 						<p class="hero-text">Programul gradiniței: 07:30 - 17:30</p>
-						<button class="btn btn-primary">Contact</button>
+
+						<button class="hero-contact-btn | btn btn-primary">Contact</button>
+						<button class="hero-transparenta-button btn btn-primary-inverted">
+							Transparență Instituțională
+						</button>
 					</div>
 				</div>
+			</section>
+
+			<section class="contact-cta">
+				<div class="container">
+					<div class="contact-cta-content">
+						<p class="contact-cta-text">
+							Pentru informatii sunați la:
+							<a href="tel:0040244514266" class="highlight">0244 541 266</a>
+						</p>
+						<a href="#" class="btn contactCta-btn">Contact</a>
+					</div>
+				</div>
+				
 			</section>
 		</main>
 		<footer class="page-footer"></footer>

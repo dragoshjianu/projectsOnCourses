@@ -1,12 +1,21 @@
 @use '../abstracts/' as *;
 
 .nav-wrapper {
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
+	// display: flex;
+	// justify-content: space-evenly;
+	// align-items: center;
+	display: grid;
+	gap:1em;
+	
 
 	@include mq(tablet, max) {
-		justify-content: space-between;
+		grid-template-areas:
+	 'logo logo'
+	 'menu search';
+	}
+	.logo-link{
+		grid-area: logo;
+		place-self:center;
 	}
 
 	.mobile-nav-toggle {
@@ -14,6 +23,8 @@
 
 		@include mq(tablet, max) {
 			display: block;
+			grid-area: menu;
+			place-self:center start;
 			width: 3em;
 			height: 27px;
 			@include btn-reset();
