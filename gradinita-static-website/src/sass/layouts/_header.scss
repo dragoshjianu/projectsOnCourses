@@ -6,7 +6,6 @@
 	position: sticky;
 	top: 0;
 	z-index: 999;
-	padding-block:var(--size-200);
 	background-color: var(--clr-primary-400);
 	color: var(--clr-neutral-100);
 	@include shadow();

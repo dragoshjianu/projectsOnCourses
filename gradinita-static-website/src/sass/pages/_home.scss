@@ -120,12 +120,16 @@
 		// @media screen and (min-width: 520px) {
 		// 	font-size: 1.5em;
 		// }
+		@include mq(tablet, min){
+			flex-direction: row;
+			justify-content: space-between;
+			padding-inline: 3em;
+			font-size: 1.3em;
+		}
 		// @media screen and (min-width: $break-tablet) {
-		// 	flex-direction: row;
-		// 	justify-content: space-evenly;
-		// 	padding-inline: 3em;
-		// 	font-size: 1.3em;
+		// 	
 		// }
+
 		// @media screen and (min-width: $break-large-desktop) {
 		// 	$font-size: 2em;
 		// }
@@ -133,6 +137,9 @@
 		a {
 			display: block;
 
+			@include mq(mobile, min){
+				display: inline-block;
+			}
 			// @media screen and (min-width: 400px) {
 			// 	display: inline;
 			// }
