@@ -31,6 +31,8 @@
 	}
 }
 
+
+
 @mixin hero-text-shadow($color) {
 	text-shadow: 3px 3px 0 $color, -1px -1px 0 $color, 1px -1px 0 $color, -1px 1px 0 $color,
 		1px 1px 0 $color;
