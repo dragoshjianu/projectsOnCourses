@@ -28,8 +28,8 @@
 			content: '';
 			vertical-align: middle;
 			height: 4px;
-			border-top: 1px solid var(--clr-secondary-400);
-			border-bottom: 1px solid var(--clr-secondary-400);
+			border-top: 1px solid hsl(var(--clr-secondary-400));
+			border-bottom: 1px solid hsl(var(--clr-secondary-400));
 			width: var(--size-800);
 			display: inline-block;
 		}
@@ -38,7 +38,7 @@
             padding-inline: var(--size-200);
 
 			g {
-				fill: var(--clr-secondary-400);
+				fill: hsl(var(--clr-secondary-400));
 			}
 		}
 	}

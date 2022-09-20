@@ -2,7 +2,7 @@
 body {
 	font-size: var(--fs-body);
 	font-family: var(--ff-body);
-	color: var(--clr-neutral-900);
+	color: hsl(var(--clr-neutral-900));
 	min-height: 100vh;
 }
 
@@ -14,5 +14,5 @@ a {
 .highlight {
 	font-size: 1.2em;
 	font-weight: bold;
-	color: var(--clr-accent-500);
+	color: hsl(var(--clr-accent-500));
 }

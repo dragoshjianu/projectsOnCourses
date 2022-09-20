@@ -1,28 +1,14 @@
-@keyframes fly-around {
-	from {
-		transform: translateX(130vw) scaleX(1);
-	}
-	50% {
-		transform: translateX(-70%) scaleX(1);
-	}
-	70% {
-		transform: translateX(-70%) scaleX(-1);
-	}
-	to {
-		transform: translateX(0%) scaleX(-1);
-	}
-}
+@keyframes gelatine {
+	from, to { transform: scale(1, 1); }
+	25% { transform: scale(0.9, 1.1); }
+	50% { transform: scale(1.1, 0.9); }
+	75% { transform: scale(0.95, 1.05); }
+  }
 
-@keyframes fly-up {
-	from {
-		transform: translateY(80%);
-		opacity: 0;
-	}
-	50% {
-		opacity: 1;
-	}
-	to {
-		transform: translateY(0%);
-		opacity: 1;
-	}
+  @keyframes bounce {
+    0% { transform:translateY(0%); }
+    25% { transform:translateY(-3.5%); }
+    50% { transform:translateY(0%); }
+    75% { transform:translateY(-1.5%); }
+    100% { transform:translateY(0); }
 }

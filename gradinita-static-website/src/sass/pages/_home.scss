@@ -1,7 +1,7 @@
 @use '../abstracts/' as *;
 
 .hero {
-	--clr-text-shadow: var(--clr-neutral-800);
+	--clr-text-shadow: hsl(var(--clr-neutral-800));
 	display: flex;
 	align-items: center;
 	background-image: url('../assets/images/webp/mobile-hero-background.webp');
@@ -24,7 +24,7 @@
 	}
 
 	&-title {
-		color: var(--clr-tertiary-400);
+		color: hsl(var(--clr-tertiary-400));
 		margin-bottom: var(--size-800);
 		font-family: var(--ff-secondary);
 		text-transform: uppercase;
@@ -49,12 +49,12 @@
 				font-size: var(--fs-600);
 				letter-spacing: normal;
 
-				@supports (-webkit-text-stroke: 2px var(--clr-tertiary-400)) {
+				@supports (-webkit-text-stroke: 2px hsl(var(--clr-tertiary-400))) {
 					-webkit-text-fill-color: var(
 						--clr-neutral-100
 					); /* Will override color (regardless of order) */
 					-webkit-text-stroke-width: 0.02em;
-					-webkit-text-stroke-color: var(--clr-tertiary-400);
+					-webkit-text-stroke-color: hsl(var(--clr-tertiary-400));
 				}
 			}
 		}
@@ -63,18 +63,18 @@
 	&-subtitle {
 		font-size: var(--fs-500);
 		text-transform: uppercase;
-		color: var(--clr-secondary-400);
+		color: hsl(var(--clr-secondary-400));
 		@include hero-text-shadow(var(--clr-text-shadow));
 	}
 
 	&-text {
 		font-size: var(--fs-500);
-		@supports (-webkit-text-stroke: 2px var(--clr-tertiary-400)) {
-			-webkit-text-fill-color: var(
+		@supports (-webkit-text-stroke: 2px hsl(var(--clr-tertiary-400))) {
+			-webkit-text-fill-color: hsl(var(
 				--clr-neutral-100
-			); /* Will override color (regardless of order) */
+			)); /* Will override color (regardless of order) */
 			-webkit-text-stroke-width: 0.02em;
-			-webkit-text-stroke-color: var(--clr-tertiary-400);
+			-webkit-text-stroke-color: hsl(var(--clr-tertiary-400));
 		}
 		@include hero-text-shadow(var(--clr-text-shadow));
 	}
@@ -106,7 +106,7 @@
 		text-align: center;
 
 		.contact-cta-btn:hover {
-			background-color: var(--clr-neutral-100);
+			background-color: hsl(var(--clr-neutral-100));
 		}
 
 		
@@ -131,68 +131,60 @@
 		.noutati-item {
 			display: flex;
 			flex-direction: column;
-			gap: 1.5em;			
-
-			.noutati-thumbnail {		
-				border-radius: 1em;
-				position: relative;
+			gap: 1.5em;	
+			
+			figure{
 				overflow: hidden;
-				display: grid;
-				place-items: center;
-
-				// & > *{
-				// 	width: 100%;
-				// 	height:100%;
-				// }
-
+				position: relative;
 				
 
-				.noutati-image {					
-					border-radius: 1em;
-					transition: all 5s ease;
+				img{
+					transition: all 2s linear;	
 				}
-
-				&::before,
-				&::after{
+				figcaption{
+					display: flex;
+					justify-content: center;
+					align-items: center;
 					position: absolute;
 					inset: 0;
+					width:100%;
+					height:100%;
 					opacity: 0;
-					transition: opacity 2s ease;
-				}
-				
-				&::before{
-					content: '';
-					z-index: 5;
-					width: 100%;
-					height:100%;
-					background: var(--clr-neutral-900);
-				}
+					transition: all 1s linear;
 
-				&::after{
-					content: '';					
-					z-index: 6;
-					width: 100%;
-					height:100%;
-					background-color: var(--clr-neutral-100);
-					-webkit-mask-image: url(../assets/images/svg/plus-icon.svg);
-					mask-image: url(../assets/images/svg/plus-icon.svg);
-					mask-size:4em 4em;
-					mask-repeat: no-repeat;
-					mask-position: center center;
+					svg{
+						width:4.5em;
+						height:4.5em;
 
-				}
+						path {
+							fill:hsl(var(--clr-neutral-100));
+							translateY: -50%;
+							opacity: 0;
+							transition: all .5s ease; 
+						}
 
-				&:hover::before{
-					opacity: .5;
+						&:hover path{
+							fill: hsl(var(--clr-primary-100));
+							animation: bounce 0.5s ease;
+						}
+					}
 				}
-				&:hover::after{
-					opacity: 1;
-				}
+			}
 
-				&:hover .noutati-image{		
+			&:hover {
+				img{
 					scale: 1.3;
-					rotate: 10deg;	
-						
+					rotate: 10deg;
+				}
+
+				figcaption{
+					opacity: 1;
+					background-color: hsl(var(--clr-neutral-800) / .6);
+
+					path{
+						translateY:0;
+						opacity:1;
+					}
 				}
 			}
 
@@ -208,10 +200,10 @@
 					align-items: center;
 					gap: var(--size-100);
 					padding: var(--size-200) var(--size-300);
-					color:var(--clr-neutral-100);
-					background-color: var(--clr-secondary-400);
+					color:hsl(var(--clr-neutral-100));
+					background-color: hsl(var(--clr-secondary-400));
 					font-weight: var(--fw-bold);
-					font-size: var(--fs-500);
+					font-size: var(--fs-400);
 					
 				}
 				.noutati-description {
@@ -223,6 +215,8 @@
 					}
 					.noutati-article-title {
 						justify-content: flex-start;
+						font-weight: var(--fw-bold);
+						font-size: var(--fs-500);
 					}
 					.noutati-info {
 						justify-content: flex-end;
@@ -238,4 +232,90 @@
 		}
 	}
 
+}
+
+.prezentare {
+	display: grid;
+	grid-template-rows: 1fr auto;
+	background: url('../../../assets/images/webp/sky.webp') top left no-repeat;
+	background-size: cover;
+	padding-top: 1rem;
+	padding-inline: 2rem;
+
+	.prezentare-content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		@include mq(tablet) {
+			flex-direction: row;
+		}
+
+		.prezentare-image {
+			// grid-column: 2/3;
+		}
+		.prezentare-columns {
+			// grid-column: 3/4;
+			display: flex;
+			flex-direction: column;
+			gap: 3rem;
+
+			.prezentare-column {
+				display: grid;
+				grid-template-columns: 2fr 3fr;
+
+				gap: 2em;
+
+				&:nth-of-type(n + 1) > .prezentare-icon {
+					color: hsl(var(--clr-primary-500));
+					svg {
+						fill: currentColor;
+					}
+				}
+				&:nth-of-type(n + 2) > .prezentare-icon {
+					color: hsl(var(--clr-secondary-400));
+					svg {
+						fill: currentColor;
+					}
+				}
+				&:nth-of-type(n + 3) > .prezentare-icon {
+					color: hsl(var(--clr-tertiary-400));
+					svg {
+						fill: currentColor;
+					}
+				}
+				&:nth-of-type(n + 4) > .prezentare-icon {
+					color: hsl(var(--clr-accent-400));
+					svg {
+						fill: currentColor;
+					}
+				}
+
+				.prezentare-icon {
+					display: grid;
+					// place-items: center;
+					justify-self: end;
+					border-radius: 50%;
+					padding: 1rem;
+					align-self: center;
+					justify-self: end;
+					background-color: hsl(var(--clr-neutral-100));
+					border: 2px solid currentColor;
+					box-shadow: 0px 0px 0px 1rem hsl(0, 100%, 100%, 0.5);
+
+					.prezentare-icon-image {
+						width: 32px;
+						height: 32px;
+					}
+				}
+				.prezentare-description {
+					max-width: 50ch;
+					.prezentare-head {
+					}
+					.prezentare-text {
+					}
+				}
+			}
+		}
+	}
 }

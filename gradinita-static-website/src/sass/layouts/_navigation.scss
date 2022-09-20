@@ -35,7 +35,7 @@
 			width: 2em;
 			height: 3px;
 			border-radius: 2px;
-			background-color: var(--clr-neutral-100);
+			background-color: hsl(var(--clr-neutral-100));
 
 			&::after,
 			&::before {
@@ -45,7 +45,7 @@
 				width: 2em;
 				height: 3px;
 				border-radius: 2px;
-				background-color: var(--clr-neutral-100);
+				background-color: hsl(var(--clr-neutral-100));
 			}
 
 			&::before {
@@ -66,7 +66,7 @@
 			top: 100%;
 			left: 0;
 			padding: var(--size-400);
-			background-color: var(--clr-neutral-100);
+			background-color: hsl(var(--clr-neutral-100));
 			transform: scale(0, 1);
 			transform-origin: left;
 			transition: all 0.4s ease-in-out;
@@ -98,7 +98,7 @@
 					padding-block: var(--size-200);
 
 					&:not(:last-of-type) {
-						border-bottom: 1px solid var(--clr-neutral-300);
+						border-bottom: 1px solid hsl(var(--clr-neutral-300));
 					}
 
 					&[data-parent] a {
@@ -182,7 +182,7 @@
 						}
 					}
 					&.contact {
-						color: var(--clr-neutral-900);
+						color: hsl(var(--clr-neutral-900));
 						&::before {
 							background-image: url('../assets/images/svg/avengers/jl.svg');
 						}
@@ -215,7 +215,7 @@
 					&[data-visible] {
 						max-height: 100vh;
 						transform: scale(1, 1);
-						background-color: var(--clr-neutral-100);
+						background-color: hsl(var(--clr-neutral-100));
 						@include shadow;
 
 						@include mq(tablet, max) {
