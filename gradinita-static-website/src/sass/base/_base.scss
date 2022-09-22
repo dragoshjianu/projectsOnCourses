@@ -1,3 +1,5 @@
+@use '../abstracts/' as *;
+
 // Base General Styling
 body {
 	font-size: var(--fs-body);
@@ -16,3 +18,4 @@ a {
 	font-weight: bold;
 	color: hsl(var(--clr-accent-500));
 }
+

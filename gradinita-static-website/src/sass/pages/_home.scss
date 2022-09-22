@@ -96,6 +96,10 @@
 	padding-block: var(--size-600);
 	background: url('../assets/images/white-texture.jpg') top center repeat;
 
+	.container{
+		padding-block: unset;
+	}
+
 	&-content {
 		display: flex;
 		flex-direction: column;
@@ -235,36 +239,32 @@
 }
 
 .prezentare {
-	display: grid;
-	grid-template-rows: 1fr auto;
 	background: url('../../../assets/images/webp/sky.webp') top left no-repeat;
 	background-size: cover;
-	padding-top: 1rem;
-	padding-inline: 2rem;
 
 	.prezentare-content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
+		display: grid;
+		gap: var(--size-900);
+		grid-template-columns: auto;
+		justify-items: center;
+		
 
 		@include mq(tablet) {
-			flex-direction: row;
+			grid-template-columns: 1fr 1fr;
+			grid-template-rows: repeat(3, 1fr);
 		}
 
 		.prezentare-image {
-			// grid-column: 2/3;
+			align-self: center;
 		}
 		.prezentare-columns {
-			// grid-column: 3/4;
-			display: flex;
-			flex-direction: column;
-			gap: 3rem;
+			display: grid;
+			grid-template-columns: 1fr auto;
 
 			.prezentare-column {
-				display: grid;
-				grid-template-columns: 2fr 3fr;
-
-				gap: 2em;
+				grid-column: 1 /-1;
+				display: flex;
+				gap: var(--size-500);
 
 				&:nth-of-type(n + 1) > .prezentare-icon {
 					color: hsl(var(--clr-primary-500));
@@ -293,19 +293,17 @@
 
 				.prezentare-icon {
 					display: grid;
-					// place-items: center;
-					justify-self: end;
-					border-radius: 50%;
+					border-radius: 100vh;
+					width:4rem;
+					height:4rem;
 					padding: 1rem;
-					align-self: center;
-					justify-self: end;
 					background-color: hsl(var(--clr-neutral-100));
 					border: 2px solid currentColor;
 					box-shadow: 0px 0px 0px 1rem hsl(0, 100%, 100%, 0.5);
 
 					.prezentare-icon-image {
-						width: 32px;
-						height: 32px;
+						width: 2em;
+						height: 2em;
 					}
 				}
 				.prezentare-description {
