@@ -1,6 +1,6 @@
 @use '../abstracts/' as *;
 
-.hero {
+.hero-section {
 	--clr-text-shadow: hsl(var(--clr-neutral-800));
 	display: flex;
 	align-items: center;
@@ -19,11 +19,11 @@
 		text-align: left;
 	}
 
-	&-content {
+	.hero-content {
 		font-weight: var(--fw-bold);
 	}
 
-	&-title {
+	.hero-title {
 		color: hsl(var(--clr-tertiary-400));
 		margin-bottom: var(--size-800);
 		font-family: var(--ff-secondary);
@@ -60,14 +60,14 @@
 		}
 	}
 
-	&-subtitle {
+	.hero-subtitle {
 		font-size: var(--fs-500);
 		text-transform: uppercase;
 		color: hsl(var(--clr-secondary-400));
 		@include hero-text-shadow(var(--clr-text-shadow));
 	}
 
-	&-text {
+	.hero-text {
 		font-size: var(--fs-500);
 		@supports (-webkit-text-stroke: 2px hsl(var(--clr-tertiary-400))) {
 			-webkit-text-fill-color: hsl(var(
@@ -92,7 +92,7 @@
 	}
 }
 
-.contact-cta {
+.contact-cta-section {
 	padding-block: var(--size-600);
 	background: url('../assets/images/white-texture.jpg') top center repeat;
 
@@ -100,7 +100,7 @@
 		padding-block: unset;
 	}
 
-	&-content {
+	.contact-cta-content {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -130,8 +130,8 @@
 	}
 }
 
-.noutati{
-	&-list {
+.noutati-section{
+	.noutati-list {
 		.noutati-item {
 			display: flex;
 			flex-direction: column;
@@ -238,7 +238,7 @@
 
 }
 
-.prezentare {
+.prezentare-section {
 	background: url('../../../assets/images/webp/sky.webp') top left no-repeat;
 	background-size: cover;
 
@@ -308,7 +308,10 @@
 				
 				.prezentare-description {
 					max-width: 50ch;
+
 					.prezentare-head {
+						font-size: var(--fs-400);
+						font-weight: var(--fw-bold);
 					}
 					.prezentare-text {
 					}
