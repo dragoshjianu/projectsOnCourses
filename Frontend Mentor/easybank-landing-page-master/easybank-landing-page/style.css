@@ -102,7 +102,7 @@ body {
 /* Set core body defaults */
 body {
 	text-rendering: optimizeSpeed;
-	line-height: 1.5;
+	line-height: 1.55;
 }
 
 /* A elements that don't have a class get default styles */
@@ -190,10 +190,11 @@ svg {
 
 .fs-page-heading {
 	font-size: var(--fs-page-heading);
-	line-height: auto;
+	line-height: 1.14;
 }
 .fs-section-heading {
 	font-size: var(--fs-section-heading);
+	line-height: 1.6;
 }
 .fs-card-heading {
 	font-size: var(--fs-card-heading);
@@ -259,4 +260,27 @@ body {
 	font-size: var(--fs-body);
 	font-family: var(--ff-body);
 	color: var(--clr-neutral-400);
+}
+
+/* button */
+.btn {
+	border-radius: 100vmax;
+	padding: 0.5em 2em;
+	line-height: 2;
+	background: var(--clr-gradient);
+	color: var(--clr-neutral-100);
+	font-weight: var(--fw-bold);
+	font-size: var(--fs-200);
+	box-shadow: 0 0.25em 0.25em 0 rgb(0, 0, 0, 0.25);
+
+	outline: none;
+	border: none;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.btn:hover,
+.btn:focus-visible {
+	opacity: 0.7;
+	/* box-shadow: inset 0 4px 4px 0 rgb(0, 0, 0, 0.25); */
 }
