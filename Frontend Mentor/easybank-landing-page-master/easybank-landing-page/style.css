@@ -316,6 +316,12 @@ body {
 	.primary-navigation {
 		display: none;
 	}
+
+	.primary-navigation[data-visible] {
+		position: fixed;
+		display: block;
+	}
+
 	.mobile-nav-toggle {
 		cursor: pointer;
 		display: block;
