@@ -7,6 +7,7 @@
 	--clr-secondary-300: hsl(192, 70%, 51%);
 	--clr-secondary-100: hsl(220, 16%, 96%);
 
+	--clr-neutral-900: hsl(0, 0%, 0%);
 	--clr-neutral-400: hsl(233, 8%, 62%);
 	--clr-neutral-200: hsl(0, 0%, 98%);
 	--clr-neutral-100: hsl(0, 0%, 100%);
@@ -56,6 +57,8 @@
 	--size-700: 3rem;
 	--size-800: 4rem;
 	--size-900: 5rem;
+
+	--box-shadow: 0 0.25em 0.25em 0 rgb(0, 0, 0, 0.25);
 }
 
 @media (min-width: 50rem) {
@@ -64,7 +67,7 @@
 		--fs-section-heading: var(--fs-800);
 		--fs-subheading: var(--fs-500);
 		--fs-card-heading: var(--fs-700);
-		--fs-navigation: var(--fs-500);
+		--fs-navigation: var(--fs-200);
 		--fs-body: var(--fs-400);
 	}
 }
@@ -151,7 +154,7 @@ svg {
 	color: var(--clr-primary-400);
 }
 .text-secondary-400 {
-	color: var(--clr-secondaru-400);
+	color: var(--clr-secondary-400);
 }
 .text-secondary-300 {
 	color: var(--clr-secondary-300);
@@ -283,7 +286,7 @@ body {
 	color: var(--clr-neutral-100);
 	font-weight: var(--fw-bold);
 	font-size: var(--fs-200);
-	box-shadow: 0 0.25em 0.25em 0 rgb(0, 0, 0, 0.25);
+	box-shadow: var(--box-shadow);
 
 	outline: none;
 	border: none;
@@ -294,7 +297,6 @@ body {
 .btn:hover,
 .btn:focus-visible {
 	opacity: 0.7;
-	/* box-shadow: inset 0 4px 4px 0 rgb(0, 0, 0, 0.25); */
 }
 
 /* navigation */
@@ -312,13 +314,65 @@ body {
 	display: none;
 }
 
+.nav-list {
+	font-weight: var(--fw-regular);
+	font-size: var(--fs-navigation);
+	color: var(--clr-neutral-100);
+}
+
+.nav-list a {
+	text-decoration: none;
+	color: var(--clr-neutral-400);
+}
+
+.nav-list a:hover,
+.nav-list a:focus {
+	color: var(--clr-secondary-400);
+	border-bottom: 2px solid transparent;
+	border-image: var(--clr-gradient);
+	border-image-slice: 1;
+	width: 100%;
+}
+
 @media (max-width: 50em) {
 	.primary-navigation {
 		display: none;
+		position: absolute;
+		padding: var(--size-800);
+		inset: 5.5rem var(--size-500) auto;
+		background: var(--clr-neutral-100);
+		border-radius: var(--size-100);
+		box-shadow: var(--box-shadow);
+	}
+
+	.primary-navigation::before {
+		content: '';
+		position: fixed;
+		inset: 0;
+		margin-block-start: var(--size-900);
+		background-image: linear-gradient(to bottom, var(--clr-secondary-400), transparent);
+		width: 100vw;
+		height: 100vh;
+	}
+
+	.nav-list {
+		display: grid;
+		gap: var(--size-600);
+		text-align: center;
+		z-index: 2;
+	}
+
+	.nav-list a {
+		color: var(--clr-secondary-400);
+	}
+
+	.nav-list a:hover,
+	.nav-list a:focus {
+		color: var(--clr-primary-400);
+		border: none;
 	}
 
 	.primary-navigation[data-visible] {
-		position: fixed;
 		display: block;
 	}
 
