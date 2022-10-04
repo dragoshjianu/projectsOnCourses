@@ -142,6 +142,17 @@ body {
 	font-size: var(--fs-body);
 	font-family: var(--ff-body);
 	color: var(--clr-neutral-400);
+	background-color: var(--clr-neutral-200);
+	width: 100vw;
+	overflow-x: hidden;
+}
+
+p:not([class]) {
+	max-width: 41ch;
+}
+
+p[data-width='wide'] {
+	max-width: 60ch;
 }
 
 /* button */
@@ -168,21 +179,18 @@ body {
 }
 
 .primary-header {
-	max-height: var(--size-900);
+	position: relative;
+	background-color: var(--clr-neutral-100);
+	width: 100vw;
+	padding-block: var(--size-600);
 }
 
 /* navigation */
-/* .primary-header {
-	max-height: 4rem;
-	padding-block: 1.375rem;
-} */
-
 .nav-wrapper {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	height: 100%;
-	padding-block: var(--size-600);
 }
 
 .mobile-nav-toggle {
@@ -199,17 +207,25 @@ body {
 
 .nav-list a {
 	display: block;
+	position: relative;
 	text-decoration: none;
 	color: var(--clr-neutral-400);
 	height: 100%;
 }
 
-.nav-list a:hover,
-.nav-list a:focus {
-	color: var(--clr-secondary-400);
-	border-bottom: 2px solid transparent;
-	border-image: var(--clr-gradient);
-	border-image-slice: 1;
+.nav-list li a::after {
+	content: '';
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: calc(var(--size-700) * (-1) + 6px);
+	width: 0;
+	height: 4px;
+	background-image: var(--clr-gradient);
+	transition: all 0.5s;
+}
+
+.nav-list li a:hover::after {
 	width: 100%;
 }
 
@@ -271,6 +287,33 @@ body {
 	}
 }
 
+/* main */
+.hero {
+	background-image: url('./images/bg-intro-mobile.svg');
+}
+.hero-title h1 {
+	color: var(--clr-secondary-400);
+}
+
+@media (min-width: 50em) {
+	.hero {
+		background-image: url('./images/bg-intro-desktop.svg');
+		background-repeat: no-repeat;
+		background-position: top 55% right -100%;
+		padding-block: 8em;
+	}
+	.hero-title {
+		place-self: center;
+	}
+
+	.hero-image {
+		position: absolute;
+		scale: 0.8;
+		top: -5em;
+		right: -11em;
+	}
+}
+
 /* Utility classes */
 .sr-only {
 	position: absolute;
@@ -299,6 +342,7 @@ body {
 .even-columns {
 	display: grid;
 	gap: 1rem;
+	/* position: relative; */
 }
 
 @media (min-width: 50em) {
