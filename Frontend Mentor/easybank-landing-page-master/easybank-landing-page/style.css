@@ -289,17 +289,20 @@ p[data-width='wide'] {
 
 /* main */
 .hero {
-	background-image: url('./images/bg-intro-mobile.svg');
+	position: relative;
+	overflow: hidden;
+	/* background-image: url('./images/bg-intro-mobile.svg'); */
 }
 .hero-title h1 {
 	color: var(--clr-secondary-400);
 }
 
-@media (min-width: 50em) {
+@media (min-width: 60em) {
 	.hero {
 		background-image: url('./images/bg-intro-desktop.svg');
 		background-repeat: no-repeat;
-		background-position: top 55% right -100%;
+		background-position: top -11.25rem right -41rem;
+		background-attachment: fixed;
 		padding-block: 8em;
 	}
 	.hero-title {
@@ -308,6 +311,7 @@ p[data-width='wide'] {
 
 	.hero-image {
 		position: absolute;
+		z-index: 1;
 		scale: 0.8;
 		top: -5em;
 		right: -11em;
