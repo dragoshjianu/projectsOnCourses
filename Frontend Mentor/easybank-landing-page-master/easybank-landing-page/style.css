@@ -320,18 +320,30 @@ p[data-width='wide'] {
 }
 
 @media (min-width: 50rem) {
+	.hero {
+		min-height: 41rem;
+	}
+
+	.hero .even-columns {
+		min-height: 41rem;
+	}
 	.hero-image {
 		grid-column: 2/3;
 		background-image: url('/images/bg-intro-desktop.svg');
 		background-size: 100%;
-		/* background-position: top -10rem right -32.125rem; */
+		height: 100%;
 	}
 	.hero-title {
 		grid-column: 1/2;
 		grid-row: 1/-1;
 		text-align: left;
-		margin-inline: auto;
+		place-self: center;
+		max-width: 50ch;
 	}
+}
+
+.reasons-head {
+	margin-block-end: var(--size-800);
 }
 
 /* Utility classes */
