@@ -38,21 +38,35 @@ export const StateContext = ({ children }) => {
 		toast.success(`${qty} ${product.name} added to the cart.`);
 	};
 
-	const increaseQty = () => {
-		setQty((prev) => {
-			return prev + 1;
-		});
-	};
-
 	const toggleCartItemQuantity = (id, value) => {
 		foundProduct = cartItems.find((item) => item._id === id);
 		index = cartItems.findIndex((product) => product._id === id);
 
+		const newCartItems = cartItems.filter((item) => item._id !== id);
+
 		if (value === 'inc') {
-			foundProduct.quantity += 1;
-			cartItems[index] = foundProduct;
+			setCartItems([
+				...newCartItems,
+				{ ...foundProduct, quantity: foundProduct.quantity + 1 },
+			]);
+			setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price);
+			setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
 		} else if (value === 'dec') {
+			if (foundProduct.quantity > 1) {
+				setCartItems([
+					...newCartItems,
+					{ ...foundProduct, quantity: foundProduct.quantity - 1 },
+				]);
+				setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price);
+				setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1);
+			}
 		}
+	};
+
+	const increaseQty = () => {
+		setQty((prev) => {
+			return prev + 1;
+		});
 	};
 
 	const decreaseQty = () => {
@@ -74,6 +88,7 @@ export const StateContext = ({ children }) => {
 				decreaseQty,
 				onAdd,
 				setShowCart,
+				toggleCartItemQuantity,
 			}}
 		>
 			{children}
