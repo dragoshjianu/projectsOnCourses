@@ -31,6 +31,7 @@ const ProductDetails = ({ product, products }) => {
 								src={urlFor(item)}
 								className={i === index ? 'small-image selected-image' : 'small-image'}
 								onMouseEnter={() => setIndex(i)}
+								key={i}
 							/>
 						))}
 					</div>
@@ -70,7 +71,7 @@ const ProductDetails = ({ product, products }) => {
 						>
 							Add To Cart
 						</button>
-						<button type='button' className='buy-now' onClick=''>
+						<button type='button' className='buy-now' onClick={() => {}}>
 							Buy Now
 						</button>
 					</div>
