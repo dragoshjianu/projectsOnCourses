@@ -1,0 +1,7 @@
+:root {
+	--clr-primary: hsl(0, 36%, 70%);
+}
+
+body {
+	min-width: 100vh;
+}
