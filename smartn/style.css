@@ -1,0 +1,234 @@
+/**
+* Scrie aici codul tau CSS...https://www.smartn.ro/gomag/theme/config
+*/
+
+/*General*/
+.strong,
+h3,
+h4 {
+	font-weight: bold;
+}
+.all-caps {
+	text-transform: uppercase;
+}
+img {
+	display: block;
+	max-width: 100%;
+	border-radius: 10px;
+}
+.no-dots {
+	list-style: none;
+}
+.product-listing {
+	border: none;
+}
+
+/* Layout */
+.container {
+	max-width: 100%;
+	margin-inline: auto;
+	margin-bottom: 2em;
+}
+.two-cols {
+	columns: 2;
+}
+
+.even-columns {
+	display: grid;
+	gap: 1rem;
+}
+section {
+	margin-bottom: 1em;
+}
+
+/* alignment */
+.gr-align-end {
+	justify-self: end;
+}
+.gr-align-center {
+	justify-self: center;
+}
+.align-center {
+	text-align: center;
+}
+.wish-section {
+	text-align: center;
+}
+.catTitle {
+	text-align: left;
+}
+
+/* Distantieri */
+.flow :not(div, :first-child) {
+	margin-top: 1em;
+}
+.padding-block-700 {
+	padding-block: 3rem;
+}
+.padding-block-900 {
+	padding-block: 5rem;
+}
+.short-desc > * {
+	margin-bottom: 1em;
+}
+.even-columns[role='list'] > * {
+	margin-top: 1em;
+}
+.product-bottom {
+	margin-top: 0;
+}
+.even-columns > * {
+	min-width: 30%;
+}
+@media (min-width: 50em) {
+	.even-columns {
+		grid-auto-flow: column;
+		grid-auto-columns: 1fr;
+	}
+}
+
+/* Page Header */
+/*Modifcare pozitie elemente in header*/
+.logo-h {
+	order: 0;
+}
+.search-form-box {
+	order: 1;
+	flex-grow: 3;
+	justify-content: end;
+}
+.acount-section {
+	order: 2;
+}
+
+/* Ascunde breadcrumbs */
+.breadcrumb-box,
+.breadcrumbs-default {
+	display: none;
+}
+
+/* Top Product Page */
+/* acundere icon-uri verzi */
+.detail-prod-attr .icon-group,
+.icon-g-scroll {
+	display: none !important;
+}
+
+/* Modificare elemente GOMAG */
+/*Modificare icon-uri*/
+.fa-user-o::before,
+.fa-user::before {
+}
+
+/*Modificare Formular Newsletter*/
+.newsletter-form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+#_emailAddress {
+	padding-inline: 1rem;
+	padding-block: 0.2rem;
+	border-radius: 5px;
+	border: 1px solid #cad3db;
+	background-color: white;
+	width: 100%;
+	max-width: 220px;
+	color: #0f121f;
+}
+
+#_emailAddress:focus {
+	outline: 1px solid rgb(21, 90, 158);
+}
+
+.newsletter-form input[type='submit'] {
+	background: rgb(190, 62, 149);
+	border: none;
+	border-radius: 5px;
+	color: white;
+}
+
+.form__button:hover {
+	box-shadow: 0 10px 20px rgba(190, 62, 149, 0.7);
+}
+
+.custom-chk label .new-checkbox {
+	margin-right: 1rem;
+}
+
+.product-code {
+	display: none;
+}
+
+.specs-table :not(:first-child) {
+	margin-top: 1.5em;
+}
+
+/* Descriere produs */
+/* Descriere scurta - banuti */
+.certificari {
+	display: block;
+	margin: 0 auto;
+	width: 70%;
+}
+.line {
+	display: flex;
+	gap: 1em;
+	flex-direction: row;
+	margin-bottom: 1.2em;
+}
+.line img {
+	width: 80%;
+}
+
+/* Sub-descriere scurta */
+.detail-product-atributes,
+.add-section {
+	display: flex;
+	justify-content: space-around;
+}
+
+.detail-product-atributes > * {
+	text-align: center;
+}
+
+.detail-product-atributes .prod-attr-h {
+	display: none;
+}
+
+/* Descriere lunga */
+.detail-tabs .resp-tab-content {
+	max-width: 100%;
+}
+
+.descriere-subtitlu {
+	font-size: 1.875rem;
+	font-weight: bold;
+	margin-bottom: 2rem;
+}
+h4.small-heading {
+	font-size: 1.5;
+	font-weight: 700;
+	margin-bottom: 0.7rem;
+}
+
+.container .descriere-ul,
+.container .descriere-ul li,
+.container .descriere-li:not(:first-child) {
+	margin-top: 1em;
+}
+
+/*Rearanjare Pagina Produs Parte de jos - Review pe ultima pozitie*/
+.product-bottom .row {
+	display: flex;
+	flex-direction: column;
+}
+.detail-tabs {
+	order: 99;
+	margin-bottom: 0;
+}
+.detail-recomended {
+	order: 100;
+}
