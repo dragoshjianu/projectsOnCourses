@@ -62,12 +62,32 @@
 		<meta name="theme-color" content="#EE8B8B" />
 	</head>
 	<body>
-		<header class="logo">
-			<img src="./assets/img/logo.svg" alt="MedaArt: clay & resin logo" />
+		<header class="header">
+			<div class="container headerContainer">
+				<a href="/" class="logo" title="Revino pe prima pagină a site-ului MedaArt.ro">
+					<picture class="logoPicture">
+						<source
+							type="image/svg+xml"
+							srcset="./assets/img/logo.svg"
+							media="(min-width: 100px)"
+						/>
+
+						<img
+							src="./assets/img/logo.png"
+							alt="MedaArt: clay & resin logo"
+							height="60"
+						/>
+					</picture>
+				</a>
+			</div>
 		</header>
 		<aside class="banner">
 			<picture class="heroBanner">
-				<source media="(min-width: 768px)" srcset="./assets/img/hero-desktop.jpg" />
+				<source
+					media="(min-width: 768px)"
+					srcset="./assets/img/hero-desktop.jpg"
+					height="100%"
+				/>
 				<img src="./assets/img/hero-mobile.jpg" alt="MedaArt Hero Mobile Banner" />
 			</picture>
 		</aside>
@@ -80,22 +100,22 @@
 					voluptatum sed excepturi culpa totam sapiente quos incidunt laudantium, laborum
 					asperiores!
 				</p>
+				<form action="#" class="form">
+					<div class="form-item">
+						<input
+							type="email"
+							class="form-input"
+							placeholder="Adresa de Email"
+							aria-label="email address"
+						/>
+						<img src="./assets/img/icon-error.svg" class="error errorImage" />
+					</div>
+					<button class="form-button" type="submit">
+						<img src="./assets/img/icon-arrow.svg" />
+					</button>
+				</form>
+				<p class="error errorMessage">Please provide a valid email.</p>
 			</div>
-			<form action="#" class="form">
-				<div class="form-item">
-					<input
-						type="email"
-						class="form-input"
-						placeholder="Introdu Adresa de Email"
-						aria-label="email address"
-					/>
-					<img src="./assets/img/icon-error.svg" class="error" />
-				</div>
-				<button class="form-button" type="submit">
-					<img src="./assets/img/icon-arrow.svg" />
-				</button>
-			</form>
-			<p class="error error-message">Please provide a valid email.</p>
 		</main>
 	</body>
 </html>
