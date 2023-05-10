@@ -22,7 +22,7 @@
 
 body {
 	display: grid;
-	min-height: 100vh;
+	min-height: 100svh;
 	font-family: 'Josefin Sans', sans-serif;
 	font-size: var(--fs-paragraph);
 	color: var(--clr-primary);
