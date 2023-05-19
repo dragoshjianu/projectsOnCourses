@@ -88,15 +88,18 @@ header {
 	font-weight: var(--fw-light);
 	display: block;
 }
+
 .form {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
 	border: 1px solid var(--clr-primary);
 	border-radius: 1000rem;
 	color: var(--clr-primary);
 	padding-inline-start: 2rem;
 	margin-block-start: 2rem;
+}
+._form-content {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 .form-item {
 	display: flex;
@@ -148,7 +151,7 @@ header {
 	}
 	.banner {
 		grid-column: 2/3;
-		grid-row: 1 / span 2;
+		grid-row: 1 / 3;
 	}
 
 	.logoPicture img {
@@ -157,7 +160,7 @@ header {
 	}
 
 	.mainContent {
-		place-self: center;
+		place-self: center start;
 		max-width: 75%;
 		padding: 0;
 		text-align: left;
